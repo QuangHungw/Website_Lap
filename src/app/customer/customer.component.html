@@ -7,7 +7,7 @@
 						<div class="input-group">
 							<input type="text" class="search-query form-control input-group" Placeholder="My laptop.">
 							<span class="input-group-btn">
-								<button class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
+								<button class="btn btn-primary rounded-circle btnpro" (click)="onSearchClick()" type="button" id="btn-search">
 									<span class="fas fa-search"></span>
 								</button>
 							</span>
@@ -132,7 +132,7 @@
 			</div>
 			<div class="span7">					
 				<h4 class="title"><span class="text"><strong>Lịch sử</strong> mua hàng</span></h4>
-				<form action="newcustomer.html" method="post" class="form-stacked">
+				<form action="/newcustomer" method="post" class="form-stacked">
 					<fieldset>
 						<div class="control-group">
 							<label class="control-label"><strong>Các sản phẩm đã mua</strong> </label>

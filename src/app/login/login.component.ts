@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  onSearchClick(): void {
+    window.location.href = "/products";
+  }
   loginObj: Login;
   constructor(private http: HttpClient, private router: Router) {
     this.loginObj = new Login();

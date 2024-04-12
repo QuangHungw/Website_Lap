@@ -9,6 +9,9 @@ import { Product2Component } from './product2/product2.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { SignupComponent } from './signup/signup.component';
+import { NewcustomerComponent } from './newcustomer/newcustomer.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 
@@ -24,8 +27,16 @@ export const routes: Routes = [
     component: LoginComponent
     },
     {
+        path: 'signup',
+        component: SignupComponent
+        },
+    {
         path: 'customer',
         component: CustomerComponent
+    },
+    {
+        path: 'newcustomer',
+        component: NewcustomerComponent
     },
     {
         path: 'products',
@@ -51,6 +62,10 @@ export const routes: Routes = [
     {
         path: 'checkout',
         component: CheckoutComponent
+    },
+    {
+        path: 'menu',
+        component: MenuComponent
     },
     
     

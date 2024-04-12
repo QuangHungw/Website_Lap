@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 
-
 @Component({
-  selector: 'app-web-lap',
+  selector: 'app-newcustomer',
   standalone: true,
   imports: [],
-  templateUrl: './web-lap.component.html',
-  styleUrl: './web-lap.component.scss'
+  templateUrl: './newcustomer.component.html',
+  styleUrl: './newcustomer.component.scss'
 })
-export class WebLapComponent {
+export class NewcustomerComponent {
   onSearchClick(): void {
     window.location.href = "/products";
   }

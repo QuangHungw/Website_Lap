@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './product2.component.scss'
 })
 export class Product2Component {
-
+  onSearchClick(): void {
+    window.location.href = "/products";
+  }
 }

@@ -20,8 +20,8 @@
 					<ul class="user-menu">				
 						
 						<li><a href="/cart">Giỏ hàng</a></li>
-						<li><a href="/checkout">Thanh toán</a></li>	
-						<li><a href="/signup">Đăng ký</a></li>					
+						<li><a href="/checkout">Thanh toán</a></li>		
+						<li><a href="/signup">Đăng ký</a></li>				
 						<li><a href="/login">Đăng nhập</a></li>		
 					</ul>
 				</div>
@@ -103,39 +103,36 @@
 		<section class="main-content">				
 			<div class="row">
 				<div class="span5">					
-					<div class="login" >
-						<h4 class="title"><span class="text"><strong>Đăng nhập </strong> </span></h4>
-					<!-- <form action="customer.html" method="post"> -->
-						<input type="hidden" name="next" value="/">
+					<h4 class="title"><span class="text"><strong>Đăng kí Form </strong> </span></h4>
+					<!-- <form action="/newcustomer" method="post"> -->
 						<fieldset>
+							<div class="control-group">
+								<label class="control-label">Tên tài khoản</label>
+								<div class="controls">
+									<input type="text" [(ngModel)]="signupObj.name" placeholder="Nhập tên tài khoản" class="input-xlarge"
+									id="name" name="name" required>
+								</div>
+							</div>
 							<div class="control-group">
 								<label class="control-label">Email</label>
 								<div class="controls">
-									<input type="email"  [(ngModel)]="loginObj.email"  placeholder="Nhập Email" id="email" class="input-xlarge" name="email" required>
+									<input type="email" [(ngModel)]="signupObj.email" placeholder="Nhập email" class="input-xlarge" id="email" name="email" required>
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Mật khẩu</label>
+								<label class="control-label">Mật khẩu:</label>
 								<div class="controls">
-
-									<input type="password" [(ngModel)]="loginObj.password"  placeholder="Nhập mật khẩu" id="password" class="input-xlarge" name="password" required>
+									<input type="password" [(ngModel)]="signupObj.password" placeholder="Nhập mật khẩu" class="input-xlarge" id="password" name="password" required>
 								</div>
-							</div>
-							<label>
-								<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Ghi nhớ mật khẩu
-							</label>
-							<div class="control-group">
-								<button tabindex="3" class="btn btn-primary large" (click)="onLogin()" >Đăng nhập</button>
-								<!-- type="submit" id="submit" onclick="validate()" -->
-								<hr>
-								<p class="reset">Thay đổi <a tabindex="4" href="#" title="Recover your username or password">tên đăng nhập và mật khẩu</a></p>
-								
-							</div>
+							</div>							                            
+							<hr>
+							<div class="g-recaptcha" data-sitekey="6LfExFUUAAAAAD2ouMMgpoIrl6tZED6yKcqrpa1i"></div>
+							<div class="actions"><button tabindex="9" class="btn btn-primary large" (click)="onSigup()" value="Tạo tài khoản"> Tạo tài khoản</button></div>
+							<!--type="submit" id="submit1" onclick="validate1()" -->
 						</fieldset>
-					<!-- </form>	 -->
-					</div>			
-				</div>
-							
+						
+								
+				</div>				
 			</div>
 		</section>			
 		<section style="background-color: #857474;" id="footer-bar">
@@ -213,7 +210,7 @@
 			if(username=="DHP" && password=="DHP")
 			{
 				alert("Login successfully!");
-				window.location="/index.html";
+				window.location="/index";
 				return false;
 			}
 			else{
@@ -234,7 +231,7 @@
 			if(username=="DHP" && password=="DHP" && email=="123@gmail.com")
 			{
 				alert("Create account successfully!");
-				window.location="index.html";
+				window.location="/index";
 				return false;
 			}
 			else{

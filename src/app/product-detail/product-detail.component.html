@@ -7,7 +7,7 @@
                     <div class="input-group">
                         <input type="text" class="search-query form-control input-group" Placeholder="My laptop.">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
+                            <button class="btn btn-primary rounded-circle btnpro" (click)="onSearchClick()" type="button" id="btn-search">
                                 <span class="fa fa-search"></span>
                             </button>
                         </span>
@@ -20,7 +20,8 @@
                     <ul class="user-menu">				
                         
                         <li><a href="/cart">Giỏ hàng</a></li>
-                        <li><a href="/checkout">Thanh toán</a></li>					
+                        <li><a href="/checkout">Thanh toán</a></li>	
+                        <li><a href="/signup">Đăng ký</a></li>					
                         <li><a href="/login">Đăng nhập</a></li>		
                     </ul>
                 </div>
