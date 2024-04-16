@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { WebLapComponent } from './web-lap/web-lap.component';
-import { ProductsComponent } from './products/products.component';
-import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './Sign in and log in/login/login.component';
+import { WebLapComponent } from './Home page/web-lap/web-lap.component';
+
+import { CartComponent } from './Function/cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
-import { Product2Component } from './product2/product2.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { CustomerComponent } from './customer/customer.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { SignupComponent } from './signup/signup.component';
-import { NewcustomerComponent } from './newcustomer/newcustomer.component';
-import { MenuComponent } from './menu/menu.component';
+import { Product2Component } from './Product/product2/product2.component';
+import { CheckoutComponent } from './Function/checkout/checkout.component';
+import { CustomerComponent } from './Customers/customer/customer.component';
+import { ProductDetailComponent } from './Product/product-detail/product-detail.component';
+
+import { NewcustomerComponent } from './Customers/newcustomer/newcustomer.component';
+import { MenuComponent } from './Function/menu/menu.component';
+import { SignupComponent } from './Sign in and log in/signup/signup.component';
+import { ProductsComponent } from './Product/products/products.component';
 
 
 

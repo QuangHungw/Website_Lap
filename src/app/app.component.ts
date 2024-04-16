@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { WebLapComponent } from './web-lap/web-lap.component';
+import { WebLapComponent } from './Home page/web-lap/web-lap.component';
 
 
 @Component({
