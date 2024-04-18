@@ -12,4 +12,5 @@ import { WebLapComponent } from './Home page/web-lap/web-lap.component';
 })
 export class AppComponent {
   title = 'car-rent';
+  
 }

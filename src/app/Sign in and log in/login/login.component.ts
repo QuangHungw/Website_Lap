@@ -21,22 +21,24 @@ export class LoginComponent {
     this.loginObj = new Login();
 }
 onLogin() {
-   
-  // debugger
-  this.http.post('http://localhost:3000/auth/login', this.loginObj).subscribe((res:any)=>{
-    if(res) {
-      console.log(res);
-      if(res.status == 200) {
-      this.router.navigateByUrl("/customer");
-      alert(res.message)
+      //debugger
+  this.http.post<any>('http://localhost:3000/auth/login', this.loginObj).subscribe(
+    (res) => {
+      if (res && res.accessToken) {
+        console.log(res);
+        localStorage.setItem('accessToken', res.accessToken); // Lưu token vào localStorage để sử dụng sau này
+        this.router.navigateByUrl("/customer");
+        alert("Login successful");
+      } else {
+        alert("Login failed");
       }
-      else alert(res.message)
-    } else {
-      alert(res)
+    },
+    (error) => {
+      console.error('Error:', error);
+      alert("Login failed");
     }
-    })
-  }
-
+  );
+}
 }
 
 export class Login {

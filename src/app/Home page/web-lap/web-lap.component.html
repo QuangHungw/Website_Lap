@@ -1,74 +1,9 @@
-<div class="html" id="body">
-  <div id="top-bar" class="container">
-    <div class="row">
-      <div class="span4">
-        <form method="POST" class="search_form">
-          <div class="input-group">
-            <input
-              type="text"
-              class="search-query form-control input-group"
-              Placeholder="My laptop."
-            />
-            <span class="input-group-btn">
-              <button
-                class="btn btn-primary rounded-circle btnpro"
-                (click)="onSearchClick()"
-                type="button"
-                id="btn-search"
-              >
-                <span class="fa fa-search"></span>
-              </button>
-            </span>
-          </div>
-        </form>
-      </div>
-      <div class="span8">
-        <div class="account pull-right">
-          <ul class="user-menu">
-            <li><a href="/cart">Giỏ hàng</a></li>
-            <li><a href="/checkout">Thanh toán</a></li>
-            <li><a href="/signup">Đăng ký</a></li>
-            <li><a href="/login">Đăng nhập</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="wrapper" class="container">
-    <section class="navbar main-menu">
-      <div class="navbar-inner main-menu">
-        <a href="" class="logo pull-left"><h4 class="title">ILAPTOP</h4></a>
-        <nav id="menu" class="pull-right">
-          <ul>
-            <li>
-              <a href="/products">Hãng sản xuất</a>
-              <ul>
-                <li><a href="/products">Apple</a></li>
-                <li><a href="/products">Dell</a></li>
-                <li><a href="/products">Asus</a></li>
-                <li><a href="/products">HP</a></li>
-                <li><a href="/products">Acer</a></li>
-                <li><a href="/products">Lenovo</a></li>
-              </ul>
-            </li>
 
-            <li>
-              <a href="/products">Loại sản phẩm</a>
-              <ul>
-                <li><a href="/products">Chơi game</a></li>
-                <li><a href="/products">Học tập-văn phòng</a></li>
-                <li><a href="/products">Đồ họa-kỹ thuật</a></li>
-                <li><a href="/products">Cao cấp sang trọng</a></li>
-              </ul>
-            </li>
-            <!-- <li><a href="/products">Man</a></li>						
-							<li><a href="/products">Hangbag</a></li> -->
-            <li><a href="/products">Bán chạy nhất</a></li>
-            <li><a href="/products">Sản phẩm mới</a></li>
-          </ul>
-        </nav>
-      </div>
-    </section>
+
+
+  
+  <div id="wrapper" class="container">
+ 
     <section class="homepage-slider" id="home-slider">
       <div class="flexslider">
         <ul class="slides">
@@ -104,23 +39,7 @@
       </div>
     </section>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var slides = document.querySelectorAll(".slides li");
-        var currentSlide = 0;
-
-        function showSlide(index) {
-          slides[currentSlide].style.display = "none";
-          currentSlide = index;
-          slides[currentSlide].style.display = "block";
-        }
-
-        setInterval(function () {
-          var nextSlideIndex = (currentSlide + 1) % slides.length;
-          showSlide(nextSlideIndex);
-        }, 5000); // Change slide every 5 seconds
-      });
-    </script>
+   
 
     <section class="header_text">
       Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới
@@ -138,7 +57,7 @@
                 <span class="pull-left"
                   ><span class="text"
                     ><span class="line"
-                      ><a href="/product_detail"
+                      ><a [routerLink]="['/product_detail']"
                         ><strong>Các sản phẩm gần đây nhất</strong></a
                       ></span
                     ></span
@@ -166,16 +85,16 @@
                         <div class="product-box">
                           <span class="sale_tag"></span>
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh1.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Asus K45A-VX229 (K45A-3CVX)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">11.000.000đ</p></a
                           >
                         </div>
@@ -183,16 +102,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh2.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Dell Vostro 2420 (V522412)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">12.679.000đ</p></a
                           >
                         </div>
@@ -200,16 +119,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh3.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >HP Stream 14-ax000na 14-inch HD</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">15.679.000đ</p></a
                           >
                         </div>
@@ -217,16 +136,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh4.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Acer Chromebook R11 CB5-132T 11.6-Inch</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">16.500.000đ</p></a
                           >
                         </div>
@@ -238,32 +157,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh16.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">18.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh11.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">16.500.000đ</p>
@@ -272,32 +191,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh17.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >You think water</a
                           ><br />
-                          <a href="/products" class="category">World once</a>
+                          <a [routerLink]="['/products']" class="category">World once</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh14.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Quis nostrud exerci</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
@@ -310,32 +229,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh18.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">28.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh9.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">19.500.000đ</p>
@@ -355,7 +274,7 @@
                 <span class="pull-left"
                   ><span class="text"
                     ><span class="line"
-                      ><a href="/product_detail"
+                      ><a  [routerLink]="['/product_detail']"
                         ><strong>Các sản phẩm bán chạy nhất</strong></a
                       ></span
                     ></span
@@ -383,16 +302,16 @@
                         <div class="product-box">
                           <span class="sale_tag"></span>
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh5.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Asus K45A-VX229 (K45A-3CVX)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">11.000.000đ</p></a
                           >
                         </div>
@@ -400,16 +319,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh6.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Dell Vostro 2420 (V522412)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">12.679.000đ</p></a
                           >
                         </div>
@@ -417,16 +336,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh7.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >HP Stream 14-ax000na 14-inch HD</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">15.679.000đ</p></a
                           >
                         </div>
@@ -434,16 +353,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh8.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Acer Chromebook R11 CB5-132T 11.6-Inch</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">16.500.000đ</p></a
                           >
                         </div>
@@ -455,32 +374,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh10.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">18.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh9.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">16.500.000đ</p>
@@ -489,32 +408,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh11.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >You think water</a
                           ><br />
-                          <a href="/products" class="category">World once</a>
+                          <a [routerLink]="['/products']" class="category">World once</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh12.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Quis nostrud exerci</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
@@ -527,32 +446,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh13.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">28.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh14.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">19.500.000đ</p>
@@ -572,7 +491,7 @@
                 <span class="pull-left"
                   ><span class="text"
                     ><span class="line"
-                      ><a href="/product_detail"
+                      ><a  [routerLink]="['/product_detail']"
                         ><strong>Các sản phẩm được xem nhiều nhất</strong></a
                       ></span
                     ></span
@@ -600,16 +519,16 @@
                         <div class="product-box">
                           <span class="sale_tag"></span>
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh15.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Asus K45A-VX229 (K45A-3CVX)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">11.000.000đ</p></a
                           >
                         </div>
@@ -617,16 +536,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh11.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Dell Vostro 2420 (V522412)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">12.679.000đ</p></a
                           >
                         </div>
@@ -634,16 +553,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh12.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >HP Stream 14-ax000na 14-inch HD</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">15.679.000đ</p></a
                           >
                         </div>
@@ -651,16 +570,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh13.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Acer Chromebook R11 CB5-132T 11.6-Inch</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">16.500.000đ</p></a
                           >
                         </div>
@@ -672,32 +591,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh6.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">18.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh9.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">16.500.000đ</p>
@@ -706,32 +625,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh7.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >You think water</a
                           ><br />
-                          <a href="/products" class="category">World once</a>
+                          <a [routerLink]="['/products']" class="category">World once</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh11.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Quis nostrud exerci</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
@@ -744,32 +663,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh10.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">28.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh13.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">19.500.000đ</p>
@@ -789,7 +708,7 @@
                 <span class="pull-left"
                   ><span class="text"
                     ><span class="line"
-                      ><a href="/product_detail"
+                      ><a  [routerLink]="['/product_detail']"
                         ><strong>Các sản phẩm khác</strong></a
                       ></span
                     ></span
@@ -817,16 +736,16 @@
                         <div class="product-box">
                           <span class="sale_tag"></span>
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh24.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Asus K45A-VX229 (K45A-3CVX)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">11.000.000đ</p></a
                           >
                         </div>
@@ -834,16 +753,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh23.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Dell Vostro 2420 (V522412)</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">12.679.000đ</p></a
                           >
                         </div>
@@ -851,16 +770,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh22.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >HP Stream 14-ax000na 14-inch HD</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">15.679.000đ</p></a
                           >
                         </div>
@@ -868,16 +787,16 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh21.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Acer Chromebook R11 CB5-132T 11.6-Inch</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             ><p class="price">16.500.000đ</p></a
                           >
                         </div>
@@ -889,32 +808,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh20.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">18.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh13.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">16.500.000đ</p>
@@ -923,32 +842,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh14.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >You think water</a
                           ><br />
-                          <a href="/products" class="category">World once</a>
+                          <a [routerLink]="['/products']" class="category">World once</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/anh19.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Quis nostrud exerci</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">16.500.000đ</p>
                         </div>
                       </li>
@@ -961,32 +880,32 @@
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/laptop4.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Know exactly</a
                           ><br />
-                          <a href="/products" class="category">Quis nostrud</a>
+                          <a [routerLink]="['/products']" class="category">Quis nostrud</a>
                           <p class="price">28.500.000đ</p>
                         </div>
                       </li>
                       <li class="span3">
                         <div class="product-box">
                           <p>
-                            <a href="/product_detail"
+                            <a  [routerLink]="['/product_detail']"
                               ><img
                                 src="assets/themes/images/cloth/laptop2.jpg"
                                 alt=""
                             /></a>
                           </p>
-                          <a href="/product_detail" class="title"
+                          <a  [routerLink]="['/product_detail']" class="title"
                             >Ut wisi enim ad</a
                           ><br />
-                          <a href="/products" class="category"
+                          <a [routerLink]="['/products']" class="category"
                             >Commodo consequat</a
                           >
                           <p class="price">19.500.000đ</p>
@@ -1038,21 +957,4 @@
       </div>
     </div>
 
-    <script src="assets/themes/js/common.js"></script>
-    <script src="assets/themes/js/jquery.flexslider-min.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        $(document).ready(function () {
-          $(".flexslider").flexslider({
-            animation: "fade",
-            slideshowSpeed: 4000,
-            animationSpeed: 600,
-            controlNav: false,
-            directionNav: true,
-            controlsContainer: ".flex-container", // the container that holds the flexslider
-          });
-        });
-      });
-    </script>
   </div>
-</div>

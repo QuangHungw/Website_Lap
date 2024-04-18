@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
+import { CartComponent } from '../../Function/cart/cart.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-cart',
+  selector: 'app-header',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss'
 })
-export class CartComponent {
+export class HeaderComponent {
   onSearchClick(): void {
     window.location.href = "/products";
-  }
+}
 }

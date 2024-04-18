@@ -23,24 +23,29 @@ export class SignupComponent {
   
 
   // Gửi yêu cầu đăng ký đến NestJS
- 
-  onSigup() {
-   // debugger
-    this.http.post('http://localhost:3000/user/signup', this.signupObj).subscribe((res:any)=>{
-      if(res) {
-        console.log(res);
-        if(res.status == 200) {
-        this.router.navigateByUrl("/newcustomer");
-        alert(res.message)
-        }
-        else alert(res.message)
-      } else {
-        alert(res)
-      }
-      })
-    }
-  }
 
+  onSigup() {
+    //debugger
+    // Assuming this.signupObj contains the registration data
+    this.http.post<any>('http://localhost:3000/auth/register', this.signupObj).subscribe(
+        (res) => {
+            if (res) {
+                console.log(res);
+                localStorage.setItem('accessToken', res.accessToken);
+                // Optionally, you can redirect the user to the login page after successful signup
+                this.router.navigateByUrl("/newcustomer");
+                alert("Sign up successful");
+            } else {
+                alert("Sign up failed");
+            }
+        },
+        (error) => {
+            console.error('Error:', error);
+            alert("Sign up failed");
+        }
+    );
+}
+}
 
 export class Signup {
   email: string;
@@ -49,6 +54,8 @@ export class Signup {
   address:string;
   phone:string;
   province:string;
+  role_id: number;
+  create_at: Date;
   constructor() {
     this.name =  "";
     this.email= "";
@@ -56,5 +63,8 @@ export class Signup {
     this.address="";
     this.phone="";
     this.province="";
+    this.role_id= 1;
+    this.create_at= new Date();
+
   }
 }

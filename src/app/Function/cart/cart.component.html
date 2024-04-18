@@ -1,71 +1,7 @@
-<div class="html" id="body">
-  <div id="top-bar" class="container">
-    <div class="row">
-      <div class="span4">
-        <form method="POST" class="search_form">
-          <div class="input-group">
-            <input
-              type="text"
-              class="search-query form-control input-group"
-              Placeholder="My laptop."
-            />
-            <span class="input-group-btn">
-              <button
-                class="btn btn-primary rounded-circle btnpro"
-                (click)="onSearchClick()"
-                id="btn-search"
-                type="button"
-              >
-                <span class="fas fa-search"></span>
-              </button>
-            </span>
-          </div>
-        </form>
-      </div>
-      <div class="span8">
-        <div class="account pull-right">
-          <ul class="user-menu">
-            <li><a href="/cart"> Giỏ hàng </a></li>
-            <li><a href="/checkout"> Thanh toán </a></li>
-            <li><a href="/signup">Đăng ký</a></li>
-            <li><a href="/login"> Đăng nhập </a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
   <div id="wrapper" class="container">
-    <section class="navbar main-menu">
-      <div class="navbar-inner main-menu">
-        <a href="" class="logo pull-left"><h4 class="title">ILAPTOP</h4> </a>
-        <nav id="menu" class="pull-right">
-          <ul>
-            <li>
-              <a href="/products">Hãng sản xuất</a>
-              <ul>
-                <li><a href="/products">Apple</a></li>
-                <li><a href="/products">Dell</a></li>
-                <li><a href="/products">Asus</a></li>
-                <li><a href="/products">HP</a></li>
-                <li><a href="/products">Acer</a></li>
-                <li><a href="/products">Lenovo</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="/products">Loại sản phẩm</a>
-              <ul>
-                <li><a href="/products">Chơi game</a></li>
-                <li><a href="/products">Học tập-văn phòng</a></li>
-                <li><a href="/products">Đồ họa-kỹ thuật</a></li>
-                <li><a href="/products">Cao cấp sang trọng</a></li>
-              </ul>
-            </li>
-            <li><a href="/products">Bán chạy nhất</a></li>
-            <li><a href="/products">Sản phẩm mới</a></li>
-          </ul>
-        </nav>
-      </div>
-    </section>
+ 
     <section class="header_text sub">
       <img
         class="pageBanner"
@@ -96,7 +32,7 @@
               <tr>
                 <td><input type="checkbox" value="option1" /></td>
                 <td>
-                  <a href="/product_detail"
+                  <a [routerLink]="['/product_detail']"
                     ><img alt="" src="assets/themes/images/cloth/anh2.jpg"
                   /></a>
                 </td>
@@ -110,7 +46,7 @@
               <tr>
                 <td><input type="checkbox" value="option1" /></td>
                 <td>
-                  <a href="/product_detail"
+                  <a [routerLink]="['/product_detail']"
                     ><img alt="" src="assets/themes/images/cloth/anh17.jpg"
                   /></a>
                 </td>
@@ -126,7 +62,7 @@
               <tr>
                 <td><input type="checkbox" value="option1" /></td>
                 <td>
-                  <a href="/product_detail"
+                  <a [routerLink]="['/product_detail']"
                     ><img alt="" src="assets/themes/images/cloth/anh24.jpg"
                   /></a>
                 </td>
@@ -191,19 +127,19 @@
           <div class="block">
             <ul class="nav nav-list">
               <li class="nav-header">Laptop khác</li>
-              <li><a href="/products">LapTop Dell</a></li>
-              <li class="active"><a href="/products">Laptop Apple</a></li>
-              <li><a href="/products">Laptop ASUS</a></li>
-              <li><a href="/products">Laptop HP </a></li>
-              <li><a href="/products">Laptop Lenovo </a></li>
-              <li><a href="/products">LapTop Acer </a></li>
+              <li><a [routerLink]="['/products']">LapTop Dell</a></li>
+              <li class="active"><a [routerLink]="['/products']">Laptop Apple</a></li>
+              <li><a [routerLink]="['/products']">Laptop ASUS</a></li>
+              <li><a [routerLink]="['/products']">Laptop HP </a></li>
+              <li><a [routerLink]="['/products']">Laptop Lenovo </a></li>
+              <li><a [routerLink]="['/products']">LapTop Acer </a></li>
             </ul>
             <br />
             <ul class="nav nav-list below">
               <li class="nav-header">Loại Laptop</li>
-              <li><a href="/products">Chơi Game</a></li>
-              <li><a href="/products">Tin học - văn phòng</a></li>
-              <li><a href="/products">Đồ họa</a></li>
+              <li><a [routerLink]="['/products']">Chơi Game</a></li>
+              <li><a [routerLink]="['/products']">Tin học - văn phòng</a></li>
+              <li><a [routerLink]="['/products']">Đồ họa</a></li>
             </ul>
           </div>
           <div class="block">
@@ -225,12 +161,12 @@
                     <li class="span3">
                       <div class="product-box">
                         <span class="sale_tag"></span>
-                        <a href="/product_detail"
+                        <a [routerLink]="['/product_detail']"
                           ><img
                             alt=""
                             src="assets/themes/images/cloth/anh13.jpg" /></a
                         ><br />
-                        <a href="/product_detail" class="title"
+                        <a [routerLink]="['/product_detail']" class="title"
                           >Asus X441NA N4200/4GB/500GB/Win10</a
                         ><br />
                         <a href="#" class="category">ASUS Laptop</a>
@@ -243,12 +179,12 @@
                   <ul class="thumbnails listing-products">
                     <li class="span3">
                       <div class="product-box">
-                        <a href="/product_detail"
+                        <a [routerLink]="['/product_detail']"
                           ><img
                             alt=""
                             src="assets/themes/images/cloth/anh18.jpg" /></a
                         ><br />
-                        <a href="/product_detail" class="title"
+                        <a [routerLink]="['/product_detail']" class="title"
                           >Laptop HP 15 bs161TU i5 8250U/4GB/1TB/Win10/</a
                         ><br />
                         <a href="#" class="category">HP Laptop</a>
@@ -263,62 +199,8 @@
         </div>
       </div>
     </section>
-    <section style="background-color: #857474" id="footer-bar">
-      <div class="row">
-        <div class="span3">
-          <h4>Điều Hướng</h4>
-          <ul class="nav">
-            <li><a href="">Trang chủ</a></li>
-            <li><a href="/about">Thông tin</a></li>
-            <li><a href="/contact">Liên hệ</a></li>
-            <li><a href="/cart">Giỏ hàng</a></li>
-            <li><a href="/login">Đăng nhập</a></li>
-          </ul>
-        </div>
-        <div class="span4">
-          <h4>My Account</h4>
-          <ul class="nav">
-            <li><a href="#">Tài khoản của tôi</a></li>
-            <li><a href="#">Lịch sử đặt hàng</a></li>
-            <li><a href="#">Danh sách yêu thích</a></li>
-            <!-- <li><a href="#">Làm mới</a></li> -->
-          </ul>
-        </div>
-        <div class="span5">
-          <p class="logo">
-            <!-- <img src="themes/images/logo.png" class="site_logo" alt=""> -->
-          </p>
-          <h4>ILAPTOP</h4>
-
-          <p style="color: white">
-            Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín
-            và mới nhất trên thị trường hiện nay <br />Hãy ghé thăm trang web
-            của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
-          </p>
-          <div style="margin-left: 60px">
-            <a href="#" class="button">
-              <i class="fab fa-facebook-f fa-lg"></i>
-            </a>
-            <a href="#" class="button">
-              <i class="fab fa-twitter fa-lg"></i>
-            </a>
-            <a href="#" class="button">
-              <i class="fab fa-instagram fa-lg"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="copyright">
-      <span>3S HUE INTERNATIONAL SOFTWARE JOINT STOCK COMPANY.</span>
-    </section>
+    
+    
   </div>
-  <script src="assets/themes/js/common.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("#checkout").click(function (e) {
-        document.location.href = "checkout.html";
-      });
-    });
-  </script>
-</div>
+ 
+

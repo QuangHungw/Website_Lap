@@ -1,0 +1,72 @@
+
+<div id="top-bar" class="container">
+    <div class="row">
+      <div class="span4">
+        <form method="POST" class="search_form">
+          <div class="input-group">
+            <input
+              type="text"
+              class="search-query form-control input-group"
+              Placeholder="My laptop."
+            />
+            <span class="input-group-btn">
+              <button
+                class="btn btn-primary rounded-circle btnpro"
+                (click)="onSearchClick()"
+                type="button"
+                id="btn-search"
+              >
+                <span class="fa fa-search"></span>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="span8">
+        <div class="account pull-right">
+          <ul class="user-menu">
+            <li><a [routerLink]="['/cart']">Giỏ hàng</a></li>
+            <li><a [routerLink]="['/checkout']">Thanh toán</a></li>
+            <li><a [routerLink]="['/signup']">Đăng ký</a></li>
+            <li><a [routerLink]="['/login']">Đăng nhập</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <section class="navbar main-menu">
+      <div class="navbar-inner main-menu">
+        <a [routerLink]="['']" class="logo pull-left"><h4 class="title">ILAPTOP</h4></a>
+        <nav id="menu" class="pull-right">
+          <ul>
+            <li>
+              <a [routerLink]="['/products']" >Hãng sản xuất</a>
+              <ul>
+                <li><a [routerLink]="['/products']" >Apple</a></li>
+                <li><a [routerLink]="['/products']" >Dell</a></li>
+                <li><a [routerLink]="['/products']" >Asus</a></li>
+                <li><a [routerLink]="['/products']" >HP</a></li>
+                <li><a [routerLink]="['/products']" >Acer</a></li>
+                <li><a [routerLink]="['/products']" >Lenovo</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a [routerLink]="['/products']" >Loại sản phẩm</a>
+              <ul>
+                <li><a [routerLink]="['/products']" >Chơi game</a></li>
+                <li><a [routerLink]="['/products']" >Học tập-văn phòng</a></li>
+                <li><a [routerLink]="['/products']" >Đồ họa-kỹ thuật</a></li>
+                <li><a [routerLink]="['/products']" >Cao cấp sang trọng</a></li>
+              </ul>
+            </li>
+            <!-- <li><a [routerLink]="['/products']" >Man</a></li>						
+							<li><a [routerLink]="['/products']" >Hangbag</a></li> -->
+            <li><a [routerLink]="['/products']" >Bán chạy nhất</a></li>
+            <li><a [routerLink]="['/products']" >Sản phẩm mới</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </div>
+
+  

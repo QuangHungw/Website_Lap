@@ -14,6 +14,7 @@ import { NewcustomerComponent } from './Customers/newcustomer/newcustomer.compon
 import { MenuComponent } from './Function/menu/menu.component';
 import { SignupComponent } from './Sign in and log in/signup/signup.component';
 import { ProductsComponent } from './Product/products/products.component';
+import { DefaultLayoutComponent } from './Layout/default-layout/default-layout.component';
 
 
 
@@ -21,9 +22,14 @@ export const routes: Routes = [
    
     {
         path: '',
-    component: WebLapComponent
-    },
+    component: DefaultLayoutComponent,
     
+    
+    children: [ 
+        {
+        path: '',
+        component: WebLapComponent,
+        },
     {
     path: 'login',
     component: LoginComponent
@@ -68,10 +74,12 @@ export const routes: Routes = [
     {
         path: 'menu',
         component: MenuComponent
-    },
+    }
     
-    
+]
 
-    
+}
+
+
    
 ];
