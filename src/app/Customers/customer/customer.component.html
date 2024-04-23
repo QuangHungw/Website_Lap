@@ -50,52 +50,56 @@
         </h4>
         <form action="/customer" method="post">
           <input type="hidden" name="next" value="/" />
-          <fieldset>
-            <div class="control-group">
-              <label class="control-label">Họ tên</label>
-              <div class="controls">
-                <input
+          <div *ngFor="let user of users">
+            <fieldset>
+              <div class="control-group">
+                <label class="control-label">Họ tên</label>
+                <div class="controls">
+                  <span>{{ user.name }}</span>
+                  <!-- <input
                   type="value"
                   class="output-xlarge"
                   id="name"
                   value="Nguyễn Quang Hưng"
-                />
+                /> -->
+                </div>
               </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Địa chỉ</label>
-              <div class="controls">
-                <input
-                  type="value"
-                  class="output-xlarge"
-                  id="address"
-                  value="TP Huế"
-                />
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Số điện thoại</label>
-              <div class="controls">
-                <input
+              <div class="control-group">
+                <label class="control-label">Số điện thoại</label>
+                <div class="controls">
+                  <span>{{ user.phone }}</span>
+                  <!-- <input
                   type="value"
                   class="output-xlarge"
                   id="numberphone"
                   value="01234567489"
-                />
+                /> -->
+                </div>
               </div>
-            </div>
-            <div class="control-group">
-              <input
-                tabindex="3"
-                class="btn btn-primary large"
-                type="submit"
-                id="submit"
-                onclick=""
-                value="Thay đổi thông tin"
-              />
-              <hr />
-            </div>
-          </fieldset>
+              <div class="control-group">
+                <label class="control-label">Địa chỉ</label>
+                <div class="controls">
+                  <span>{{ user.address }}</span>
+                  <!-- <input
+                  type="value"
+                  class="output-xlarge"
+                  id="address"
+                  value="TP Huế"
+                /> -->
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Tỉnh/Thành</label>
+                <div class="controls">
+                  <span>{{ user.province }}</span>
+                </div>
+              </div>
+              <div class="control-group">
+                <button (click)="onEditClick()">Thay đổi thông tin</button>
+                <hr />
+              </div>
+            </fieldset>
+          </div>
         </form>
       </div>
       <div class="span7">
@@ -111,12 +115,12 @@
             </div>
             <li class="span3">
               <div class="product-box">
-                <a href="/product_detail"
+                <a [routerLink]="['/product_detail']"
                   ><img
                     alt=""
                     src="assets/themes/images/cloth/laptop1.jpg" /></a
                 ><br />
-                <a href="/product_detail" class="title"
+                <a [routerLink]="['/product_detail']" class="title"
                   >ASUS VivoBook Swift SF315</a
                 ><br />
                 <a href="#" class="category">i5 8250U/4GB/1TB/Win10</a>
@@ -126,12 +130,12 @@
             <li class="span3">
               <div class="product-box">
                 <span class="sale_tag"></span>
-                <a href="/product_detail"
+                <a [routerLink]="['/product_detail']"
                   ><img
                     alt=""
                     src="assets/themes/images/cloth/laptop2.jpg" /></a
                 ><br />
-                <a href="/product_detail" class="title"
+                <a [routerLink]="['/product_detail']" class="title"
                   >ASUS Vivobook Max X441UA</a
                 ><br />
                 <a href="#" class="category">intel Core i3, RAM 4GB DDR4</a>
@@ -141,10 +145,10 @@
             <li class="span3">
               <div class="product-box">
                 <span class="sale_tag"></span>
-                <a href="/product_detail"
+                <a [routerLink]="['/product_detail']"
                   ><img alt="" src="assets/themes/images/cloth/anh4.jpg" /></a
                 ><br />
-                <a href="/product_detail" class="title"
+                <a [routerLink]="['/product_detail']" class="title"
                   >Acer Chromebook R11 CB5-132T 11.6-Inch</a
                 ><br />
                 <a href="#" class="category">i5 8250U/4GB/1TB/Win10</a>
@@ -153,10 +157,11 @@
             </li>
             <li class="span3">
               <div class="product-box">
-                <a href="/product_detail"
+                <a [routerLink]="['/product_detail']"
                   ><img alt="" src="assets/themes/images/cloth/anh8.jpg" /></a
                 ><br />
-                <a href="/product_detail" class="title">ROG ZENPHYRUS(GX501)</a
+                <a [routerLink]="['/product_detail']" class="title"
+                  >ROG ZENPHYRUS(GX501)</a
                 ><br />
                 <a href="#" class="category"
                   >Intel Core i7-7700HQ/24GB RAM/1TB SSD PCie</a
@@ -169,8 +174,4 @@
       </div>
     </div>
   </section>
- 
-
-
 </div>
-

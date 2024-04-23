@@ -10,7 +10,7 @@ import { CheckoutComponent } from './Function/checkout/checkout.component';
 import { CustomerComponent } from './Customers/customer/customer.component';
 import { ProductDetailComponent } from './Product/product-detail/product-detail.component';
 
-import { NewcustomerComponent } from './Customers/newcustomer/newcustomer.component';
+import { EditCustomerComponent } from './Customers/Editcutomer/editcustomer.component';
 import { MenuComponent } from './Function/menu/menu.component';
 import { SignupComponent } from './Sign in and log in/signup/signup.component';
 import { ProductsComponent } from './Product/products/products.component';
@@ -43,8 +43,8 @@ export const routes: Routes = [
         component: CustomerComponent
     },
     {
-        path: 'newcustomer',
-        component: NewcustomerComponent
+        path: 'editcustomer',
+        component: EditCustomerComponent
     },
     {
         path: 'products',

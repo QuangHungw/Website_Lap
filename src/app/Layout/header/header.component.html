@@ -25,10 +25,22 @@
       <div class="span8">
         <div class="account pull-right">
           <ul class="user-menu">
+          
+           <div *ngIf="!token; else elsetoken">
             <li><a [routerLink]="['/cart']">Giỏ hàng</a></li>
             <li><a [routerLink]="['/checkout']">Thanh toán</a></li>
-            <li><a [routerLink]="['/signup']">Đăng ký</a></li>
-            <li><a [routerLink]="['/login']">Đăng nhập</a></li>
+            <li><a *ngIf="!token" [routerLink]="['/signup']">Đăng ký</a></li>
+  <li><a  [routerLink]="['/login']">Đăng nhập</a></li>
+  
+           </div>
+           <ng-template #elsetoken>
+             <div  *ngFor="let user of users">
+            <li><a [routerLink]="['/cart']">Giỏ hàng</a></li>
+            <li><a [routerLink]="['/checkout']">Thanh toán</a></li>
+            <li><a  [routerLink]="['/customer']">{{ user.name }}</a></li>
+            <li><a (click)="logout( )" >Đăng xuất</a></li>
+          </div>
+          </ng-template>
           </ul>
         </div>
       </div>
@@ -40,7 +52,7 @@
           <ul>
             <li>
               <a [routerLink]="['/products']" >Hãng sản xuất</a>
-              <ul>
+              <ul class="dropdown123">
                 <li><a [routerLink]="['/products']" >Apple</a></li>
                 <li><a [routerLink]="['/products']" >Dell</a></li>
                 <li><a [routerLink]="['/products']" >Asus</a></li>

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,11 +13,9 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  onSearchClick(): void {
-    window.location.href = "/products";
-  }
+ 
   loginObj: Login;
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient ) {
     this.loginObj = new Login();
 }
 onLogin() {
@@ -27,8 +25,8 @@ onLogin() {
       if (res && res.accessToken) {
         console.log(res);
         localStorage.setItem('accessToken', res.accessToken); // Lưu token vào localStorage để sử dụng sau này
-        this.router.navigateByUrl("/customer");
-        alert("Login successful");
+        window.location.href = "/customer"
+        alert("login successful");
       } else {
         alert("Login failed");
       }

@@ -1,0 +1,7 @@
+.dropdown123 {
+    display: none; /* Ẩn menu dropdown ban đầu */
+  }
+  
+  li:hover > .dropdown123 {
+    display: block; /* Hiển thị menu dropdown khi rê chuột vào */
+  }

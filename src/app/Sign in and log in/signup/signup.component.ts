@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,11 +13,9 @@ import { Router } from '@angular/router';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  onSearchClick(): void {
-    window.location.href = "/products";
-  }
+
   signupObj: Signup;
-  constructor(private http: HttpClient,private router: Router) {
+  constructor(private http: HttpClient) {
     this.signupObj = new Signup();
 }
   
@@ -33,7 +31,7 @@ export class SignupComponent {
                 console.log(res);
                 localStorage.setItem('accessToken', res.accessToken);
                 // Optionally, you can redirect the user to the login page after successful signup
-                this.router.navigateByUrl("/newcustomer");
+                window.location.href = "/customer"
                 alert("Sign up successful");
             } else {
                 alert("Sign up failed");
