@@ -58,10 +58,12 @@
                 <div class="controls">
                   <input
                     type="text"
+                    [(ngModel)]="editObj.name"
                     class="input-xlarge"
                     name="name"
                     value="{{ user.name }}"
                     required
+                    
                   />
                 </div>
               </div>
@@ -70,6 +72,7 @@
                 <div class="controls">
                   <input
                     type="text"
+                    [(ngModel)]="editObj.phone"
                     class="input-xlarge"
                     name="phone"
                     value="{{ user.phone }}"
@@ -82,6 +85,7 @@
                 <div class="controls">
                   <input
                     type="text"
+                    [(ngModel)]="editObj.address"
                     class="input-xlarge"
                     name="address"
                     value="{{ user.address }}"
@@ -94,16 +98,18 @@
                 <div class="controls">
                   <input
                     type="text"
+                    [(ngModel)]="editObj.province"
                     class="input-xlarge"
                     name="address"
                     value="{{ user.province }}"
                     required
+                   
                   />
                 </div>
               </div>
 
               <div class="control-group">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" (click)="onEdit()">
                   <i class="fa fa-floppy-o"></i> Lưu dữ liệu
                 </button>
                 &#160;

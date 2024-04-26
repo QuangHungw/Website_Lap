@@ -61,19 +61,29 @@
                     <div class="product-box">
                       <span class="sale_tag"></span>
                       <p>
-                        <a [routerLink]="['/product_detail']"
+                        <a [routerLink]="['/product_detail', product.id]"
                           ><img src="{{ product.photo }}" alt=""
                         /></a>
                       </p>
-                      <a [routerLink]="['/product_detail']" class="title">{{
-                        product.product_name
-                      }}</a
+                      <a
+                        [routerLink]="['/product_detail', product.id]"
+                        class="title"
+                        >{{ product.product_name }}</a
                       ><br />
-                      <a [routerLink]="['/products']" class="category"
+                      <a [routerLink]="['/product_detail', product.id]" class="category"
                         ><p class="price">
                           {{ formatPrice(product.price) }} {{ product.unit }}
                         </p></a
                       >
+                      <button
+                        height="2rem"
+                        color="primary500"
+                        class="css-16gdkk6"
+                        type="button"
+                        (click)="onButtonClick()"
+                      >
+                        <div type="body" color="primary500">Thêm vào giỏ</div>
+                      </button>
                     </div>
                   </li>
                 </ul>
@@ -100,19 +110,29 @@
                       <div class="product-box">
                         <span class="sale_tag"></span>
                         <p>
-                          <a [routerLink]="['/product_detail']"
+                          <a [routerLink]="['/product_detail', product.id]"
                             ><img src="{{ product.photo }}"
                           /></a>
                         </p>
-                        <a [routerLink]="['/product_detail']" class="title">{{
-                          product.product_name
-                        }}</a
+                        <a
+                          [routerLink]="['/product_detail', product.id]"
+                          class="title"
+                          >{{ product.product_name }}</a
                         ><br />
-                        <a [routerLink]="['/products']" class="category"
+                        <a [routerLink]="['/product_detail', product.id]" class="category"
                           ><p class="price">
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
+                        <button
+                          height="2rem"
+                          color="primary500"
+                          class="css-16gdkk6"
+                          type="button"
+                          (click)="onButtonClick()"
+                        >
+                          <div type="body" color="primary500">Thêm vào giỏ</div>
+                        </button>
                       </div>
                     </li>
                   </ul>
@@ -144,19 +164,29 @@
                       <div class="product-box">
                         <span class="sale_tag"></span>
                         <p>
-                          <a [routerLink]="['/product_detail']"
+                          <a [routerLink]="['/product_detail', product.id]"
                             ><img src="{{ product.photo }}" alt=""
                           /></a>
                         </p>
-                        <a [routerLink]="['/product_detail']" class="title">{{
-                          product.product_name
-                        }}</a
+                        <a
+                          [routerLink]="['/product_detail', product.id]"
+                          class="title"
+                          >{{ product.product_name }}</a
                         ><br />
-                        <a [routerLink]="['/products']" class="category"
+                        <a [routerLink]="['/product_detail', product.id]" class="category"
                           ><p class="price">
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
+                        <button
+                          height="2rem"
+                          color="primary500"
+                          class="css-16gdkk6"
+                          type="button"
+                          (click)="onButtonClick()"
+                        >
+                          <div type="body" color="primary500">Thêm vào giỏ</div>
+                        </button>
                       </div>
                     </li>
                   </ul>
@@ -184,19 +214,29 @@
                       <div class="product-box">
                         <span class="sale_tag"></span>
                         <p>
-                          <a [routerLink]="['/product_detail']"
+                          <a [routerLink]="['/product_detail', product.id]"
                             ><img src="{{ product.photo }}"
                           /></a>
                         </p>
-                        <a [routerLink]="['/product_detail']" class="title">{{
-                          product.product_name
-                        }}</a
+                        <a
+                          [routerLink]="['/product_detail', product.id]"
+                          class="title"
+                          >{{ product.product_name }}</a
                         ><br />
-                        <a [routerLink]="['/products']" class="category"
+                        <a [routerLink]="['/product_detail', product.id]" class="category"
                           ><p class="price">
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
+                        <button
+                        height="2rem"
+                        color="primary500"
+                        class="css-16gdkk6"
+                        type="button"
+                        (click)="onButtonClick()"
+                      >
+                        <div type="body" color="primary500">Thêm vào giỏ</div>
+                      </button>
                       </div>
                     </li>
                   </ul>

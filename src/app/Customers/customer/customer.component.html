@@ -48,12 +48,12 @@
         <h4 class="title">
           <span class="text"><strong>Thông tin</strong> cá nhân</span>
         </h4>
-        <form action="/customer" method="post">
+        <form action="/customer" method="get">
           <input type="hidden" name="next" value="/" />
           <div *ngFor="let user of users">
             <fieldset>
               <div class="control-group">
-                <label class="control-label">Họ tên</label>
+                <label class="control-label">Họ tên:</label>
                 <div class="controls">
                   <span>{{ user.name }}</span>
                   <!-- <input
@@ -65,7 +65,7 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Số điện thoại</label>
+                <label class="control-label">Số điện thoại:</label>
                 <div class="controls">
                   <span>{{ user.phone }}</span>
                   <!-- <input
@@ -77,7 +77,7 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Địa chỉ</label>
+                <label class="control-label">Địa chỉ:</label>
                 <div class="controls">
                   <span>{{ user.address }}</span>
                   <!-- <input
@@ -89,13 +89,15 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Tỉnh/Thành</label>
+             <label class="control-label">Tỉnh/Thành:</label>
                 <div class="controls">
                   <span>{{ user.province }}</span>
                 </div>
               </div>
               <div class="control-group">
-                <button (click)="onEditClick()">Thay đổi thông tin</button>
+                <button [routerLink]="['/editcustomer']" class="btn">Thay đổi thông tin</button>
+                &#160;
+                <button [routerLink]="['/changepassword']" class="btn btn-default"  >Đổi mật khẩu</button>
                 <hr />
               </div>
             </fieldset>

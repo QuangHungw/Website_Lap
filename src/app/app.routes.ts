@@ -15,6 +15,7 @@ import { MenuComponent } from './Function/menu/menu.component';
 import { SignupComponent } from './Sign in and log in/signup/signup.component';
 import { ProductsComponent } from './Product/products/products.component';
 import { DefaultLayoutComponent } from './Layout/default-layout/default-layout.component';
+import { ChangePasswordComponent } from './Customers/change-password/change-password.component';
 
 
 
@@ -47,6 +48,10 @@ export const routes: Routes = [
         component: EditCustomerComponent
     },
     {
+        path: 'changepassword',
+        component: ChangePasswordComponent
+    },
+    {
         path: 'products',
         component: ProductsComponent
     },
@@ -55,18 +60,14 @@ export const routes: Routes = [
         component: Product2Component
     },
     {
-        path: 'product_detail',
+        path: 'product_detail/:id',
         component: ProductDetailComponent
     },
     {
         path: 'cart',
         component: CartComponent
     },
-    {
-        path: 'admin',
-        component: AdminComponent
-    },
-  
+
     {
         path: 'checkout',
         component: CheckoutComponent
@@ -76,8 +77,12 @@ export const routes: Routes = [
         component: MenuComponent
     }
     
-]
+] 
 
+} , 
+{
+    path: 'admin',
+    component: AdminComponent
 }
 
 

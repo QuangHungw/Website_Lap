@@ -1,0 +1,24 @@
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
+
+
+
+// @NgModule({
+//   declarations: [],
+//   imports: [
+//     CommonModule
+    
+//   ]
+// })
+export interface Password {
+
+  oldPassword: string;
+  newPassword:string ;
+  confirmNewPassword:string;
+   
+   
+  }
+
+
+export class ChangePasswordModule { }

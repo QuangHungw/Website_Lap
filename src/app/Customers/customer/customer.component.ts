@@ -31,9 +31,7 @@ export class CustomerComponent implements OnInit{
       
   }
   }
-  onEditClick(): void {
-    this.router.navigateByUrl('/editcustomer');
-  }
+
 
 
 

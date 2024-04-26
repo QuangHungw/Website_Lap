@@ -1,4 +1,4 @@
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Product } from './web-lap.module';
 import { WebLapService } from './web-lap.service';
@@ -14,7 +14,12 @@ import { NgFor, NgIf } from '@angular/common';
 export class WebLapComponent implements OnInit {
   products?: Product[] = [];
 
-  constructor(private productService: WebLapService) {}
+  constructor(private productService: WebLapService, private router: Router) {}
+  onButtonClick() {
+    // Xử lý khi nhấn vào nút, ví dụ: chuyển hướng đến trang thanh toán
+    this.router.navigateByUrl('/cart');
+     // Thay '/checkout' bằng URL của trang thanh toán
+  }
 
   ngOnInit(): void {
     this.productService.getProduct().subscribe((data: Product) => {

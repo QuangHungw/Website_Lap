@@ -23,7 +23,7 @@ export class SignupComponent {
   // Gửi yêu cầu đăng ký đến NestJS
 
   onSigup() {
-    //debugger
+
     // Assuming this.signupObj contains the registration data
     this.http.post<any>('http://localhost:3000/auth/register', this.signupObj).subscribe(
         (res) => {

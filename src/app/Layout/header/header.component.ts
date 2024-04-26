@@ -26,21 +26,25 @@ export class HeaderComponent implements OnInit {
       this.token = localStorage.getItem('accessToken');
       console.log('token', this.token);
       
-      if(localStorage.getItem('accessToken')) {
-      
-      this.userService.getUser(this.token).subscribe((data: User) => {
-        //console.log(data);
-
-        this.users = this.users?.concat(data);
-
-      });
+      if (localStorage.getItem('accessToken')) {
+        this.userService.getUser(this.token).subscribe(
+        (data: User) => {
+            this.users = this.users?.concat(data);
+          },
+          (error) => {
+            if (error.status === 401 ) { // Xử lý lỗi token hết hạn
+              console.log('Token expired or invalid');
+              localStorage.removeItem('accessToken');
+              window.location.href = '/login'; // Xóa token hết hạn từ localStorage
+              // Redirect user to login page or display error message
+            }
+            
+          }
+      );
+      }
     }
-      // const accessToken = localStorage.getItem('accessToken');
-      // if (accessToken) {
-      // this.getUserData(accessToken);
-    
   }
-  }
+
 
   logout(): void {
     localStorage.removeItem('accessToken');
