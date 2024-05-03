@@ -17,6 +17,7 @@ export interface User {
   address:string;
   phone:string;
   province:string;
+  role_id:number;
  
 }
 export class CustomerModule { }

@@ -20,6 +20,10 @@ export interface Product {
   create_at: Date;
   category_id: number;
 }
-
+export interface Category {
+  id : number;
+  description: string;
+  category_name: string;
+ }
 
 export class ProductsModule { }

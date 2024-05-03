@@ -19,7 +19,9 @@ export class ProductDetailService {
   }
   getCategoryById(categoryId: string | null): Observable<Category> {
     return this.http.get<Category>(`${this.apiUrl2}/${categoryId}`);
-
+}
+  getProduct(): Observable<Product> {
+  return this.http.get<Product>(this.apiUrl);
 }
 }
 

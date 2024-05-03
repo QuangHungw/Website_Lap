@@ -1,0 +1,98 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a [routerLink]="['/admin']">Trang chủ</a
+    ><i class="fa fa-angle-right"></i>Sản phẩm
+  </li>
+</ol>
+
+<!-- grids -->
+<div class="grids">
+  <div class="agile-calendar-grid">
+    <div class="page">
+      <div class="w3l-calendar-left">
+        <div class="calendar-heading">
+          <div class="agile-tables">
+            <div class="w3l-table-info">
+              <h2>Danh sách sản phẩm</h2>
+              <input
+                    style="width:84.8%"
+                    type="text"
+                    class="search-query form-control input-group"
+                    Placeholder="Nhập tên sản phẩm cần tìm"
+                  />
+
+                    <span class="input-group-btn">
+                      <button
+                        class="btn btn-primary rounded-circle btnpro"
+                        
+                        type="button"
+                        id="btn-search"
+                      >
+                        <span class="fa fa-search"></span>
+                      </button>
+                      <a [routerLink]="['/addproduct']" class="btn btn-primary" style="margin-left:5px;">
+                        <i class="fa fa-plus"></i> Bổ sung
+                    </a>
+                    </span>
+              <table id="table">
+                <thead>
+                  <tr>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th style="text-align: center">Mô tả</th>
+                    <th>Giá bán</th>
+                    <th>Loại sản phẩm</th>
+                    <th>Chỉnh sửa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="info" *ngFor="let product of products">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.description }}  </td>
+                    <td>  {{ formatPrice(product.price) }}{{ product.unit }}</td>
+                    <td>{{product.category_id}}</td>
+                    <td >
+                      <span>
+                        <a 
+                        [routerLink]="['/editproduct']"
+                          class="agile-icon"
+                          data-toggle="modal"
+                          data-target="#myModal"
+                          ><i class="fa fa-pencil-square-o" style="margin-bottom:12px"></i
+                        ></a>
+                      </span>
+                      <span >
+                        <a 
+                          class="agile-icon"
+                          href="#"
+                          data-toggle="modal"
+                          data-target="#myModal1"
+                          ><i class="fa fa-times-circle"></i
+                        ></a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!-- //grids -->
+<!--photoday-section-->
+
+<div class="col-sm-4 wthree-crd">
+  <div class="card">
+    <div class="card-body"></div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="inner-block"></div>

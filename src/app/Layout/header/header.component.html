@@ -38,7 +38,7 @@
             <li><a [routerLink]="['/cart']">Giỏ hàng</a></li>
             <li><a [routerLink]="['/checkout']">Thanh toán</a></li>
             <li><a  [routerLink]="['/customer']">{{ user.name }}</a></li>
-            <li><a (click)="logout( )" >Đăng xuất</a></li>
+            <li><a (click)="logout()" >Đăng xuất</a></li>
           </div>
           </ng-template>
           </ul>
@@ -50,19 +50,16 @@
         <a [routerLink]="['']" class="logo pull-left"><h4 class="title">ILAPTOP</h4></a>
         <nav id="menu" class="pull-right">
           <ul>
-            <li>
+            <li >
               <a [routerLink]="['/products']" >Hãng sản xuất</a>
-              <ul class="dropdown" >
-                <li><a [routerLink]="['/products']" >Apple</a></li>
-                <li><a [routerLink]="['/products']" >Dell</a></li>
-                <li><a [routerLink]="['/products']" >Asus</a></li>
-                <li><a [routerLink]="['/products']" >HP</a></li>
-                <li><a [routerLink]="['/products']" >Acer</a></li>
-                <li><a [routerLink]="['/products']" >Lenovo</a></li>
+              <ul  class="dropdown" >
+                <li  *ngFor="let category of categories">
+                  <a [routerLink]="['/products', category.id]" >{{ category.category_name }}</a></li>
+
               </ul>
             </li>
 
-            <li>
+            <!-- <li>
               <a [routerLink]="['/products']" >Loại sản phẩm</a>
               <ul class="dropdown" >
                 <li><a [routerLink]="['/products']" >Chơi game</a></li>
@@ -70,7 +67,7 @@
                 <li><a [routerLink]="['/products']" >Đồ họa-kỹ thuật</a></li>
                 <li><a [routerLink]="['/products']" >Cao cấp sang trọng</a></li>
               </ul>
-            </li>
+            </li> -->
             <!-- <li><a [routerLink]="['/products']" >Man</a></li>						
 							<li><a [routerLink]="['/products']" >Hangbag</a></li> -->
             <li><a [routerLink]="['/products']" >Bán chạy nhất</a></li>

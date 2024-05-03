@@ -18,13 +18,17 @@ export class CustomerComponent implements OnInit{
     if (typeof window !== 'undefined') {
       
       this.token = localStorage.getItem('accessToken');
-      console.log('token', this.token);
+     // console.log('token', this.token);
       
       if(localStorage.getItem('accessToken')) {
       
       this.userService.getUser(this.token).subscribe((data: User) => {
         //console.log(data);
         this.users = this.users?.concat(data);
+        // if(data.role_id == 0) 
+        //   { 
+        //     this.router.navigateByUrl('/admin');
+        //   }
 
       });
     }

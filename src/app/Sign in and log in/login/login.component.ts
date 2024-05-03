@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { LoginService } from './login.service';
+import { User } from './login.module';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
- 
+export class LoginComponent  {
+  token?: string | null;
+  users?: User[] = [];
   loginObj: Login;
-  constructor(private http: HttpClient ) {
+  constructor(private http: HttpClient,private userService: LoginService, ) {
     this.loginObj = new Login();
 }
 onLogin() {
@@ -25,8 +26,20 @@ onLogin() {
       if (res && res.accessToken) {
         console.log(res);
         localStorage.setItem('accessToken', res.accessToken); // Lưu token vào localStorage để sử dụng sau này
-        window.location.href = "/customer"
         alert("login successful");
+        this.token = localStorage.getItem('accessToken');
+        if(localStorage.getItem('accessToken')) {
+          this.userService.getUser(this.token).subscribe((data: User) => {
+            this.users = this.users?.concat(data);
+            console.log(data);
+            if(data.role_id == 0) 
+                 { 
+                  window.location.href = "/admin"
+                }
+          });
+        }
+           window.location.href = "/customer"
+
       } else {
         alert("Login failed");
       }
@@ -37,6 +50,7 @@ onLogin() {
     }
   );
 }
+
 }
 
 export class Login {

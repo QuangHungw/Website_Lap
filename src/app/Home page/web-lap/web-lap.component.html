@@ -70,7 +70,9 @@
                         class="title"
                         >{{ product.product_name }}</a
                       ><br />
-                      <a [routerLink]="['/product_detail', product.id]" class="category"
+                      <a
+                        [routerLink]="['/product_detail', product.id]"
+                        class="category"
                         ><p class="price">
                           {{ formatPrice(product.price) }} {{ product.unit }}
                         </p></a
@@ -119,7 +121,9 @@
                           class="title"
                           >{{ product.product_name }}</a
                         ><br />
-                        <a [routerLink]="['/product_detail', product.id]" class="category"
+                        <a
+                          [routerLink]="['/product_detail', product.id]"
+                          class="category"
                           ><p class="price">
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
@@ -173,7 +177,9 @@
                           class="title"
                           >{{ product.product_name }}</a
                         ><br />
-                        <a [routerLink]="['/product_detail', product.id]" class="category"
+                        <a
+                          [routerLink]="['/product_detail', product.id]"
+                          class="category"
                           ><p class="price">
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
@@ -223,20 +229,22 @@
                           class="title"
                           >{{ product.product_name }}</a
                         ><br />
-                        <a [routerLink]="['/product_detail', product.id]" class="category"
+                        <a
+                          [routerLink]="['/product_detail', product.id]"
+                          class="category"
                           ><p class="price">
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
                         <button
-                        height="2rem"
-                        color="primary500"
-                        class="css-16gdkk6"
-                        type="button"
-                        (click)="onButtonClick()"
-                      >
-                        <div type="body" color="primary500">Thêm vào giỏ</div>
-                      </button>
+                          height="2rem"
+                          color="primary500"
+                          class="css-16gdkk6"
+                          type="button"
+                          (click)="onButtonClick()"
+                        >
+                          <div type="body" color="primary500">Thêm vào giỏ</div>
+                        </button>
                       </div>
                     </li>
                   </ul>

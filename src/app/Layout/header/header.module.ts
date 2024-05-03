@@ -20,4 +20,9 @@ export interface User {
   province:string;
  
 }
+export interface Category {
+  id : number;
+  description: string;
+  category_name: string;
+ }
 export class HeaderModule { }

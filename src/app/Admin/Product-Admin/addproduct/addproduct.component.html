@@ -1,0 +1,100 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/admin']">Trang chủ</a
+        ><i class="fa fa-angle-right"></i><a [routerLink]="['/productadmin']">Sản phẩm</a>
+        <i class="fa fa-angle-right"></i>Thêm sản phẩm
+    </li>
+  </ol>
+  
+  <!-- grids -->
+  <div class="grids">
+    <div class="agile-calendar-grid">
+      <div class="page">
+        <div class="w3l-calendar-left">
+          <div class="calendar-heading">
+            <div class="agile-tables">
+              <div class="w3l-table-info">
+                <h2>Thêm sản phẩm</h2>
+                <br>
+                <div class="row">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                          <form action="">
+                            <div class="form-group">
+                              <label for="ma">Mã sản phẩm:</label>
+                              <input type="text" class="form-control" id="ma" />
+                            </div>
+                            <div class="form-group">
+                              <label for="ten">Tên sản phẩm:</label>
+                              <input type="text" class="form-control" id="ten" />
+                            </div>
+                            <div class="form-group">
+                              <label for="comment">Mô tả:</label>
+                              <textarea
+                                class="form-control"
+                                rows="5"
+                                id="comment"
+                              ></textarea>
+                            </div>
+  
+                            <div class="form-group">
+                              <label for="loai">Loại:</label>
+                              <input
+                                type="textarea"
+                                class="form-control"
+                                id="loai"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="nsx">Nhà sản xuất:</label>
+                              <input type="text" class="form-control" id="nsx" />
+                            </div>
+                            <div class="form-group">
+                              <label for="gia">Giá bán:</label>
+                              <input
+                                type="textarea"
+                                class="form-control"
+                                id="gia"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="xuatxu">Xuất xứ:</label>
+                              <input
+                                type="textarea"
+                                class="form-control"
+                                id="xuatxu"
+                              />
+                            </div>
+                            <button type="submit" class="btn btn-primary" >
+                             Thêm sản phẩm
+                            </button>
+                            &#160;
+                            <a [routerLink]="['/productadmin']" class="btn btn-default">
+                              Quay lại
+                            </a>
+                          </form>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                      </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!-- //grids -->
+  <!--photoday-section-->
+  
+  <div class="col-sm-4 wthree-crd">
+    <div class="card">
+      <div class="card-body"></div>
+    </div>
+  </div>
+  
+  <div class="clearfix"></div>
+  
+  <div class="inner-block"></div>
+  

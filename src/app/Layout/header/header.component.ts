@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,RouterLink } from '@angular/router';
 import { NgIf ,NgFor} from '@angular/common';
-import { User } from './header.module';
+import { User,Category } from './header.module';
 import { HeaderService } from './header.service';
 
 @Component({
@@ -15,12 +15,18 @@ export class HeaderComponent implements OnInit {
   
   token?: string | null;
   users?: User[] = [];
+  categories?: Category[] = []
   
   constructor(private userService: HeaderService, private router: Router) {}
   onSearchClick(): void {
     this.router.navigateByUrl('/products');
   }
   ngOnInit(): void {
+    this.userService.getCategory().subscribe((category: Category) => {
+      //console.log(category);
+
+      this.categories = this.categories?.concat(category);
+    });
     if (typeof window !== 'undefined') {
       
       this.token = localStorage.getItem('accessToken');
@@ -50,14 +56,4 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('accessToken');
     window.location.href = '/login';
   }
-  // getUserData(accessToken: string): void {
-  //   this.http.get<any>('http://localhost:3000/users/me', { headers: { Authorization: `Bearer ${accessToken}` } }).subscribe(
-  //     (res) => {
-  //       this.user = res.data; // Assign the retrieved user data to the 'user' variable
-  //     },
-  //     (error) => {
-  //       console.error('Error:', error);
-  //     }
-  //   );
-  // }
 }

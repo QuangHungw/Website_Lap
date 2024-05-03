@@ -45,7 +45,7 @@
     <div class="row">
       <div class="span9">
         <ul class="thumbnails listing-products">
-          <li class="span3" *ngFor="let product of products?.slice(16, 25)">
+          <li class="span3" *ngFor="let product of getPaginatedProducts()">
             <div class="product-box">
               <span class="sale_tag"></span>
               <a [routerLink]="['/product_detail', product.id]"
@@ -78,20 +78,8 @@
         <hr />
         <div class="pagination pagination-small pagination-centered">
           <ul>
-            <li>
-              <a [routerLink]="['/products']" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span> Prev</span>
-              </a>
-            </li>
-
-            <li class="active"><a [routerLink]="['/products']">1</a></li>
-            <li><a [routerLink]="['/product2']">2</a></li>
-            <li>
-              <a [routerLink]="['/product2']" aria-label="Next">
-                <span>Next </span>
-                <span aria-hidden="true">&raquo;</span>
-              </a>
+            <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
+              <a (click)="setCurrentPage(page)">{{ page }}</a>
             </li>
           </ul>
         </div>
