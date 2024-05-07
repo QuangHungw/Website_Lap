@@ -2,11 +2,11 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Category, Product } from './product-detail.module';
 import { ProductDetailService } from './product-detail.service';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [RouterLink, NgFor, NgIf ],
+  imports: [RouterLink, CommonModule ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss'
 })

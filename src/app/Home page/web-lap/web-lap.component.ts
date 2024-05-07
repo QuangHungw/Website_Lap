@@ -2,12 +2,12 @@ import { Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Product } from './web-lap.module';
 import { WebLapService } from './web-lap.service';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-web-lap',
   standalone: true,
-  imports: [RouterLink, NgFor, NgIf],
+  imports: [RouterLink, CommonModule],
   templateUrl: './web-lap.component.html',
   styleUrl: './web-lap.component.scss',
 })

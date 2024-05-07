@@ -24,6 +24,10 @@ import { EditproductComponent } from './Admin/Product-Admin/editproduct/editprod
 import { EditcategoryComponent } from './Admin/Category-Admin/editcategory/editcategory.component';
 import { AddcategoryComponent } from './Admin/Category-Admin/addcategory/addcategory.component';
 import { EditcustomeradminComponent } from './Admin/Customer-Admin/editcustomeradmin/editcustomeradmin.component';
+import { AddcustomerComponent } from './Admin/Customer-Admin/addcustomer/addcustomer.component';
+import { UseradminComponent } from './Admin/User-Admin/useradmin/useradmin.component';
+import { EditAdminComponent } from './Admin/User-Admin/edit-admin/edit-admin.component';
+import { ChangePasswordAdminComponent } from './Admin/User-Admin/change-password-admin/change-password-admin.component';
 
 
 
@@ -72,6 +76,10 @@ export const routes: Routes = [
         component:  ProductsComponent
     },
     {
+        path: 'products/search/:name',
+        component:  ProductsComponent
+    },
+    {
         path: 'cart',
         component: CartComponent
     },
@@ -98,7 +106,18 @@ children: [
     path: 'admin',
     component: AdminComponent,
     },
-{
+            {
+                path: 'useradmin',
+                component: UseradminComponent
+            },
+                    {
+                        path: 'editadmin',
+                        component: EditAdminComponent
+                    },       {
+                                 path: 'changepasswordadmin',
+                                component: ChangePasswordAdminComponent
+                             },  
+    {
 path: 'order',
 component: OrderComponent
 },
@@ -110,7 +129,7 @@ component: OrderComponent
         path: 'addproduct',
         component: AddproductComponent
                 },{
-                path: 'editproduct',
+                path: 'editproduct/:id',
                 component: EditproductComponent
                 },
 {
@@ -118,9 +137,14 @@ component: OrderComponent
     component: CustomeradminComponent
 },
         {
-            path: 'editcustomeradmin',
+            path: 'editcustomeradmin/:id',
             component: EditcustomeradminComponent
         },
+            {
+                path: 'addcustomer',
+                component: AddcustomerComponent
+            },
+        
     
 
 {
@@ -128,7 +152,7 @@ component: OrderComponent
     component: CategoryadminComponent
 },
         {
-            path: 'editcategory',
+            path: 'editcategory/:id',
             component: EditcategoryComponent
                     } , {
                         path: 'addcategory',

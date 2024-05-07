@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Category } from './categoryadmin.module';
 import { CategoryadminService } from './categoryadmin.service';
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-categoryadmin',
   standalone: true,
-  imports: [RouterLink, NgFor],
+  imports: [RouterLink, CommonModule],
   templateUrl: './categoryadmin.component.html',
   styleUrl: './categoryadmin.component.scss',
 })
-export class CategoryadminComponent  {
+export class CategoryadminComponent  implements OnInit{
   categories: Category[] = [];
   constructor(private categoryadminService: CategoryadminService) {}
 

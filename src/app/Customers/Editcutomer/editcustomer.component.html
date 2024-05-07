@@ -54,7 +54,7 @@
           <div *ngFor="let user of users">
             <fieldset>
               <div class="control-group">
-                <label class="control-label">Họ tên</label>
+                <label class="control-label">Họ và tên</label>
                 <div class="controls">
                   <input
                     type="text"
@@ -100,7 +100,7 @@
                     type="text"
                     [(ngModel)]="editObj.province"
                     class="input-xlarge"
-                    name="address"
+                    name="province"
                     value="{{ user.province }}"
                     required
                    

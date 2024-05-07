@@ -17,7 +17,13 @@ export interface Product {
   photo: string;
   unit: string;
   create_at: Date;
-  category_id: number;
+  category_id: string;
+  category_name: string;
 }
-
+export interface Category {
+  id: number;
+  category_name: string;
+  description: string;
+  
+  }
 export class ProductadminModule { }

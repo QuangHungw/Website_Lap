@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
@@ -32,7 +32,7 @@ onLogin() {
           this.userService.getUser(this.token).subscribe((data: User) => {
             this.users = this.users?.concat(data);
             console.log(data);
-            if(data.role_id == 0) 
+            if(data.role_id == 2) 
                  { 
                   window.location.href = "/admin"
                 }

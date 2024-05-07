@@ -2,12 +2,12 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Product, Category } from './products.module';
 import { ProductsService } from './products.service';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink, NgFor, NgIf ],
+  imports: [RouterLink, CommonModule ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -27,26 +27,46 @@ totalPages: number = 0;
 
   }
   ngOnInit(): void {
-    
+    if (typeof window !== 'undefined') {
     this.productService.getProduct().subscribe((data: Product) => {
       //console.log(data);
       this.products = this.products?.concat(data);
       this.totalPages = Math.ceil(this.products.length / this.pageSize);
     });
+    this.route.paramMap.subscribe(params => {
     const categoryId = this.route.snapshot.paramMap.get('id');
+    const product_name = this.route.snapshot.paramMap.get('name');
     if (categoryId) {
       this.productService.getCategoryById(categoryId).subscribe((category: Category) => {
         this.categories.push(category);
-        if (this.categories.length > 0) {
-          const category_id = this.categories[0].id.toString();
-          this.productService.getProductByCategoryId(category_id).subscribe((product: Product) => {
-            this.productsByCategory.push(product);
-            //console.log(category);
-           // console.log(product);
-          });
-        }
+        const categoryId1  = category.id;
+        this.productService.searchProductsByCategoryId(categoryId1).subscribe((data1: Product[]) => {
+          this.products = data1;
+          this.totalPages = Math.ceil(this.products.length / this.pageSize); 
+          
+          //console.log(this.products)
+        });
+       // console.log(category)
       });
     }
+    if (product_name ) {
+       const name = product_name
+      this.productService.searchProductsByName(name).subscribe((data2: Product[]) => {
+        this.products = data2;
+        this.totalPages = Math.ceil(this.products.length / this.pageSize); 
+        
+       // console.log(this.products)
+      });
+     // console.log(category)
+ 
+  }
+    });
+   
+   
+    
+      
+  }
+  
 
 
   }

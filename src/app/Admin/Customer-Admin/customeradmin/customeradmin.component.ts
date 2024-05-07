@@ -1,13 +1,14 @@
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CustomeradminService } from './customeradmin.service';
 import { User,Role } from './customeradmin.module';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-customeradmin',
   standalone: true,
-  imports: [RouterLink, NgFor],
+  imports: [RouterLink, CommonModule, DatePipe],
   templateUrl: './customeradmin.component.html',
   styleUrl: './customeradmin.component.scss',
 })

@@ -1,65 +1,96 @@
-
 <div id="top-bar" class="container">
-    <div class="row">
-      <div class="span4">
-        <form method="POST" class="search_form">
-          <div class="input-group">
-            <input
-              type="text"
-              class="search-query form-control input-group"
-              Placeholder="My laptop."
-            />
-            <span class="input-group-btn">
-              <button
-                class="btn btn-primary rounded-circle btnpro"
-                (click)="onSearchClick()"
-                type="button"
-                id="btn-search"
-              >
-                <span class="fa fa-search"></span>
-              </button>
-            </span>
-          </div>
-        </form>
-      </div>
-      <div class="span8">
-        <div class="account pull-right">
-          <ul class="user-menu">
-          
-           <div *ngIf="!token; else elsetoken">
-            <li><a [routerLink]="['/cart']">Giỏ hàng</a></li>
-            <li><a [routerLink]="['/checkout']">Thanh toán</a></li>
-            <li><a *ngIf="!token" [routerLink]="['/signup']">Đăng ký</a></li>
-  <li><a  [routerLink]="['/login']">Đăng nhập</a></li>
-  
-           </div>
-           <ng-template #elsetoken>
-             <div  *ngFor="let user of users">
-            <li><a [routerLink]="['/cart']">Giỏ hàng</a></li>
-            <li><a [routerLink]="['/checkout']">Thanh toán</a></li>
-            <li><a  [routerLink]="['/customer']">{{ user.name }}</a></li>
-            <li><a (click)="logout()" >Đăng xuất</a></li>
-          </div>
-          </ng-template>
-          </ul>
+  <div class="row">
+    <div class="span4">
+      <form method="POST" class="search_form">
+        <div class="input-group">
+          <input
+          [(ngModel)]="searchContent"
+            name="searchContent"
+            type="text"
+            class="search-query form-control input-group"
+            Placeholder="My laptop."
+          />
+          <span class="input-group-btn">
+            <button
+              class="btn btn-primary rounded-circle btnpro"
+              (click)="onSearchClick()"
+              type="button"
+              id="btn-search"
+              
+            >
+              <span class="fa fa-search"></span>
+            </button>
+          </span>
         </div>
+      </form>
+    </div>
+    <div class="span8">
+      <div class="account pull-right">
+        <ul class="user-menu">
+          <div *ngIf="!token; else elsetoken">
+            <li>
+              <a [routerLink]="['/cart']">Giỏ hàng </a
+              >
+            </li>
+            <li>
+              <a [routerLink]="['/checkout']">Thanh toán </a
+              >
+            </li>
+            <li><a *ngIf="!token" [routerLink]="['/signup']">Đăng ký</a></li>
+            <li><a [routerLink]="['/login']">Đăng nhập</a></li>
+          </div>
+          <ng-template #elsetoken>
+            <div *ngFor="let user of users">
+              <div (click)="toggleProfile()" class="user-profile">
+                <li>
+                  <a [routerLink]="['/cart']">Giỏ hàng </a
+                  ><i class="fa-solid fa-cart-shopping"></i>
+                </li>
+                <li>
+                  <a [routerLink]="['/checkout']">Thanh toán </a
+                  ><i class="fa-regular fa-credit-card"></i>
+                </li>
+                <li style="border-right:none;">
+                <a>{{ user.name }} </a><i class="fa fa-user"></i></li>
+                <!-- Hiển thị phần profile khi người dùng nhấp vào -->
+                <div *ngIf="showProfile" class="profile-container">
+                  <ul class="profile-menu">
+                    <li style="display: block;border-right:none;">
+                      <a [routerLink]="['/customer']">Thông tin &#160; <i class="fa fa-user"></i> </a
+                      >
+                    </li>
+                    <li>
+                      <a (click)="logout()">Đăng xuất &#160; <i class="fa fa-sign-out"></i> </a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ul>
       </div>
     </div>
-      <section class="navbar main-menu">
-      <div class="navbar-inner main-menu">
-        <a [routerLink]="['']" class="logo pull-left"><h4 class="title">ILAPTOP</h4></a>
-        <nav id="menu" class="pull-right">
-          <ul>
-            <li >
-              <a [routerLink]="['/products']" >Hãng sản xuất</a>
-              <ul  class="dropdown" >
-                <li  *ngFor="let category of categories">
-                  <a [routerLink]="['/products', category.id]" >{{ category.category_name }}</a></li>
+  </div>
+  <section class="navbar main-menu">
+    <div class="navbar-inner main-menu">
+      <a [routerLink]="['']" class="logo pull-left"
+        ><h4 class="title">ILAPTOP</h4></a
+      >
+      <nav id="menu" class="pull-right">
+        <ul>
+          <li>
+            <a [routerLink]="['/products']">Hãng sản xuất</a>
+            <ul class="dropdown">
+              <li *ngFor="let category of categories">
+                <a [routerLink]="['/products', category.id]">{{
+                  category.category_name
+                }}</a>
+              </li>
+            </ul>
+          </li>
 
-              </ul>
-            </li>
-
-            <!-- <li>
+          <!-- <li>
               <a [routerLink]="['/products']" >Loại sản phẩm</a>
               <ul class="dropdown" >
                 <li><a [routerLink]="['/products']" >Chơi game</a></li>
@@ -68,14 +99,12 @@
                 <li><a [routerLink]="['/products']" >Cao cấp sang trọng</a></li>
               </ul>
             </li> -->
-            <!-- <li><a [routerLink]="['/products']" >Man</a></li>						
+          <!-- <li><a [routerLink]="['/products']" >Man</a></li>						
 							<li><a [routerLink]="['/products']" >Hangbag</a></li> -->
-            <li><a [routerLink]="['/products']" >Bán chạy nhất</a></li>
-            <li><a [routerLink]="['/products']" >Sản phẩm mới</a></li>
-          </ul>
-        </nav>
-      </div>
-    </section>
-  </div>
-
-  
+          <li><a [routerLink]="['/products']">Bán chạy nhất</a></li>
+          <li><a [routerLink]="['/products']">Sản phẩm mới</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</div>

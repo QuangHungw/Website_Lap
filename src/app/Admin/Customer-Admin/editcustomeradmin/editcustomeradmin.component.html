@@ -19,49 +19,44 @@
                 <div class="row">
                         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                          <form action="">
-                            <div class="form-group">
-                              <label for="ma">Mã khách hàng:</label>
-                              <span> 1</span>
-                             
-                            </div>
+                          <form action="" *ngFor="let user of users">
                             <br>
                             <div class="form-group">
                               <label for="ten">Tên khách hàng:</label>
-                            <span> Nguyễn Quang Hưng</span>
+                            <span> {{user.name}}</span>
                             </div>
                             <br>
                             <div class="form-group">
                               <label for="comment">Địa chỉ:</label>
-                              <span> Phú Vang</span>
+                              <span> {{user.address}} </span>
                             </div>
                             <br>
                             <div class="form-group">
                               <label for="sdt">Số điện thoại:</label>
-                              <span> 0333732524</span>
+                              <span> {{user.phone}}</span>
                             </div>
                             <br>
                             <div class="form-group">
-                              <label for="nsx">Nhà lập:</label>
-                              <span> 03/05/2024</span>
+                              <label for="nsx">Ngày lập:</label>
+                              <span> {{ user.create_at | date: 'dd/MM/yyyy' }}</span>
                             </div>
                             <br>
                             <div class="form-group">
                               <label for="gia">Tỉnh:</label>
-                              <span> Huế</span>
+                              <span> {{user.province}}</span>
                             </div>
                             <br>
-                            <div class="form-group">
+                            <div class="form-group" >
                               <label for="role">Phân Quyền:</label> &#160;
                             <select class="form-control" style="display: inline;
                             width: 25%;"  >
                                 <option value="">-- Chọn phân quyền--</option>
-                                <option value="admin" >Admin</option>
-                                <option value="employee" >Customer</option>
+                                <option value="2" >Admin</option>
+                                <option value="1" >Customer</option>
                             </select>
         
                             </div>
-                            <button type="submit" class="btn btn-primary" >
+                            <button type="submit" class="btn btn-primary"  >
                               <i class="fa fa-floppy-o"></i> Lưu dữ liệu
                             </button>
                             &#160;

@@ -61,7 +61,7 @@ export class Signup {
     this.address="";
     this.phone="";
     this.province="";
-    this.role_id= 1;
+    this.role_id= 2;
     this.create_at= new Date();
 
   }

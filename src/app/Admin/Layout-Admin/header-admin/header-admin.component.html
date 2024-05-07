@@ -9,12 +9,12 @@
             data-toggle="dropdown"
             aria-expanded="false"
           >
-            <div class="profile_img">
+            <div class="profile_img"*ngIf="token" >
               <span class="prfil-img"
                 ><img src="assets/images/in5.jpg" alt="" />
               </span>
-              <div class="user-name" *ngIf="token">
-                <p>{{users?.name}}</p>
+              <div class="user-name"  *ngFor="let user of users">
+                <p>{{user.name}}</p>
                 <span>Admin</span>
               </div>
               <i class="fa fa-angle-down" *ngIf="!dropdownVisible"></i>
@@ -23,6 +23,7 @@
             </div>
           </a>
           <ul class="dropdown-menu drp-mnu" *ngIf="dropdownVisible">
+            <li> <a [routerLink]="['/useradmin']"><i class="fa fa-user"></i> Thông tin</a> </li> 
             <li>
               <a  (click)="logout()" ><i class="fa fa-sign-out"></i> Đăng xuất</a>
             </li>

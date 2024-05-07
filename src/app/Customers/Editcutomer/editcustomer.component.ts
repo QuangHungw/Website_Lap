@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { NgIf, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { User } from './editcustomer.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EditCustomerService } from './editcustomer.service';
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [RouterLink, NgIf, NgFor,FormsModule, HttpClientModule],
+  imports: [RouterLink, CommonModule,FormsModule, HttpClientModule],
   templateUrl: './editcustomer.component.html',
   styleUrl: './editcustomer.component.scss',
 })
@@ -44,8 +44,8 @@ export class EditCustomerComponent implements OnInit {
         (res) => {
           if (res) {
             console.log(res);
-           window.location.href = "/customer";
-           
+          // window.location.href = "/customer";
+           this.router.navigateByUrl('/customer');
             alert("Edit successful");
           } else {
             alert("Edit failed");

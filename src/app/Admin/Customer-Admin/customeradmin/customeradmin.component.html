@@ -30,7 +30,7 @@
                   >
                     <span class="fa fa-search"></span>
                   </button>
-                  <a [routerLink]="['/addproduct']" class="btn btn-primary" style="margin-left:5px;">
+                  <a [routerLink]="['/addcustomer']" class="btn btn-primary" style="margin-left:5px;">
                     <i class="fa fa-plus"></i> Bổ sung
                 </a>
                 </span>
@@ -53,13 +53,13 @@
                       <td>{{user.name}}</td>
                       <td>{{user.address}}</td>
                       <td>{{user.phone}}</td>
-                      <td>{{user.create_at}}</td>
+                      <td>{{ user.create_at | date: 'dd/MM/yyyy' }}</td>
                       <td>{{user.province}}</td>
                       <td>{{user.role_name}}</td>
                       <td style="text-align: center">
                         <a
                           class="agile-icon"
-                          [routerLink]="['/editcustomeradmin']" 
+                          [routerLink]="['/editcustomeradmin', user.id]" 
                           data-toggle="modal"
                           data-target="#myModal"
                           ><i class="fa fa-pencil-square-o"></i

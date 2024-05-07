@@ -39,7 +39,7 @@
                     <table id="table">
                       <thead>
                         <tr>
-                          <th>Mã loại sản phẩm</th>
+                         
                           <th>Tên loại sản phẩm</th>
                           <th>Miêu tả</th>
                           <th>Chỉnh sửa</th>
@@ -47,12 +47,12 @@
                       </thead>
                       <tbody>
                         <tr class="info" *ngFor="let category of categories">
-                          <td>{{category.id}}</td>
+                        
                           <td>{{category.category_name}}</td>
                           <td>{{category.description}}</td>
                           <td >
                             <span>
-                              <a [routerLink]="['/editcategory']"
+                              <a [routerLink]="['/editcategory', category.id]" 
                               
                                 class="agile-icon"
                               
