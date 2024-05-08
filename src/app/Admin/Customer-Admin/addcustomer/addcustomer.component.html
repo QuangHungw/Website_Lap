@@ -90,8 +90,11 @@
                         required
                       />
                     </div>
-                    <br />
-
+              
+                    <div *ngIf="errorMessage" class="error-message" style="color: red;">
+                      {{ errorMessage }}
+                    </div>
+                  <br>
                     <button class="btn btn-primary large"   (click)="onAddadmin()" >Tạo tài khoản</button>
                     &#160;
                     <a

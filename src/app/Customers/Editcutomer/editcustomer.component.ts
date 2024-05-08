@@ -16,6 +16,7 @@ export class EditCustomerComponent implements OnInit {
   token?: string | null;
   users: User []= [];
   editObj: Edit;
+  errorMessage: string = ''; 
   constructor(
     private userService: EditCustomerService,private http: HttpClient,
     private router: Router
@@ -52,8 +53,7 @@ export class EditCustomerComponent implements OnInit {
           }
         },
         (error) => {
-          console.error('Error:', error);
-          alert("Edit failed");
+          this.errorMessage=(error.error.message);
         }
       );
     }

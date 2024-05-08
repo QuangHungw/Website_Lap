@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink, CommonModule ],
+  imports: [RouterLink, CommonModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -15,10 +15,13 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
   productsByCategory: Product[] = [];
+  categoryName: string | null = null;
   currentPage: number = 1;
 pageSize: number = 9;
 totalPages: number = 0;
-
+get routeSnapshot() {
+  return this.route.snapshot;
+}
   constructor(private productService: ProductsService, private router: Router,private route: ActivatedRoute) {}
   onButtonClick() {
     // Xử lý khi nhấn vào nút, ví dụ: chuyển hướng đến trang thanh toán
@@ -26,6 +29,7 @@ totalPages: number = 0;
      // Thay '/checkout' bằng URL của trang thanh toán
 
   }
+  
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
     this.productService.getProduct().subscribe((data: Product) => {
@@ -40,6 +44,7 @@ totalPages: number = 0;
       this.productService.getCategoryById(categoryId).subscribe((category: Category) => {
         this.categories.push(category);
         const categoryId1  = category.id;
+        this.categoryName = category.category_name;
         this.productService.searchProductsByCategoryId(categoryId1).subscribe((data1: Product[]) => {
           this.products = data1;
           this.totalPages = Math.ceil(this.products.length / this.pageSize); 

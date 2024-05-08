@@ -44,7 +44,7 @@ export class ChangePasswordComponent {
           window.location.href = '/login';
         },
         (error) => {
-          console.error('Error:', error);
+          //console.error('Error:', error);
           if (error.status === 400) {
             this.errorMessage = 'Old password is incorrect';
           } else {

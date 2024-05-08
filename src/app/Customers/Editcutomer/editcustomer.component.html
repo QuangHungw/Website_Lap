@@ -107,6 +107,10 @@
                   />
                 </div>
               </div>
+              <div *ngIf="errorMessage" class="error-message" style="color: red;">
+                {{ errorMessage }}
+              </div>
+            <br>
 
               <div class="control-group">
                 <button type="submit" class="btn btn-primary" (click)="onEdit()">

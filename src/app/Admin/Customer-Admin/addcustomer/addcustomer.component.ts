@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule ,HttpClient} from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -6,17 +7,18 @@ import { RouterLink ,Router} from '@angular/router';
 @Component({
   selector: 'app-addcustomer',
   standalone: true,
-  imports: [RouterLink,FormsModule,HttpClientModule],
+  imports: [RouterLink,FormsModule,HttpClientModule,CommonModule],
   templateUrl: './addcustomer.component.html',
   styleUrl: './addcustomer.component.scss'
 })
 export class AddcustomerComponent {
   addadminObj: Addadmin;
+  errorMessage: string = ''; 
   constructor(private http: HttpClient,private router:Router) {
     this.addadminObj = new Addadmin();
 }
 onAddadmin() {
-debugger
+
   // Assuming this.signupObj contains the registration data
   this.http.post<any>('http://localhost:3000/auth/admin-register', this.addadminObj).subscribe(
       (res) => {
@@ -31,8 +33,10 @@ debugger
           }
       },
       (error) => {
-          console.error('Error:', error);
-          alert("Add admin failed");
+        this.errorMessage=(error.error.message);
+          //console.error('Error:', error.error.message);
+         
+          
       }
   );
 }

@@ -55,7 +55,11 @@ export class HeaderComponent implements OnInit {
         this.userService.getUser(this.token).subscribe(
         (data: User) => {
             this.users = this.users?.concat(data);
-            
+            // if(data.role_id == 2) 
+            //   { 
+            //    window.location.href = "/admin"
+            //  }
+    
           },
           (error) => {
             if (error.status === 401 ) { // Xử lý lỗi token hết hạn

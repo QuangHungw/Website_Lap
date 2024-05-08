@@ -49,7 +49,7 @@
                 <tbody>
                   <tr class="info" *ngFor="let product of getPaginatedProducts()">
                     <!-- <td>{{ product.id }}</td> -->
-                    <td><img class="profile-user-img img-responsive img-bordered" src="{{ product.photo }} " alt=""> </td>
+                    <td><img class="profile-user-img img-responsive img-bordered" src="assets/themes/images/cloth/{{ product.photo }} " alt=""> </td>
                     <td>{{ product.product_name }}</td>
                     <td>{{product.description}} </td>
                     <td>{{ formatPrice(product.price) }}{{ product.unit }}</td>

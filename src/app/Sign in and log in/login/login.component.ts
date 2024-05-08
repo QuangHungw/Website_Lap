@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { User } from './login.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -16,11 +17,13 @@ export class LoginComponent  {
   token?: string | null;
   users?: User[] = [];
   loginObj: Login;
+  errorMessage: string = ''; 
   constructor(private http: HttpClient,private userService: LoginService, ) {
     this.loginObj = new Login();
+    
 }
 onLogin() {
-  
+
   this.http.post<any>('http://localhost:3000/auth/login', this.loginObj).subscribe(
     (res) => {
       if (res && res.accessToken) {
@@ -45,8 +48,9 @@ onLogin() {
       }
     },
     (error) => {
-      console.error('Error:', error);
-      alert("Login failed");
+     // console.log('Error:', error.error.message);
+     this.errorMessage=(error.error.message);
+     //alert(error.error.message);
     }
   );
 }

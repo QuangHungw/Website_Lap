@@ -41,7 +41,7 @@
           </div>
           <ng-template #elsetoken>
             <div *ngFor="let user of users">
-              <div (click)="toggleProfile()" class="user-profile">
+              <div class="user-profile">
                 <li>
                   <a [routerLink]="['/cart']">Giỏ hàng </a
                   ><i class="fa-solid fa-cart-shopping"></i>
@@ -50,7 +50,7 @@
                   <a [routerLink]="['/checkout']">Thanh toán </a
                   ><i class="fa-regular fa-credit-card"></i>
                 </li>
-                <li style="border-right:none;">
+                <li style="border-right:none;"  (click)="toggleProfile()">
                 <a>{{ user.name }} </a><i class="fa fa-user"></i></li>
                 <!-- Hiển thị phần profile khi người dùng nhấp vào -->
                 <div *ngIf="showProfile" class="profile-container">

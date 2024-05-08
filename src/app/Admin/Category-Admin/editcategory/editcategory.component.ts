@@ -14,8 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './editcategory.component.scss'
 })
 export class EditcategoryComponent implements OnInit {
-  categories: Category[] = [];
-
+  categories?: Category[] = [];
+  errorMessage: string = ''; 
   editObj: Edit;
   constructor(private categoryService: EditcategoryService, private router: Router,private route: ActivatedRoute) {this. editObj = new Edit();}
 
@@ -24,7 +24,7 @@ export class EditcategoryComponent implements OnInit {
       const categoryId = params.get('id');
       if (categoryId) {
         this.categoryService.getCategoryById(categoryId).subscribe((data: Category) => {
-          this.categories.push(data);
+          this.categories?.push(data);
           this.editObj.category_name = data.category_name;
           this.editObj.description = data.description;
         
@@ -49,8 +49,8 @@ export class EditcategoryComponent implements OnInit {
             this.router.navigateByUrl('/categoryadmin');
           },
           (error) => {
-            console.error('Update failed:', error);
-            alert("Update failed");
+            this.errorMessage=(error.error.message);
+            //console.error('Error:', error.error.message);
           }
         );
       }

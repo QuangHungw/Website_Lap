@@ -42,13 +42,17 @@
                         required
                       />
                     </div>
+                    <div *ngIf="errorMessage" class="error-message" style="color: red;">
+                      {{ errorMessage }}
+                    </div>
+                    <br>
 
                     <button
                       type="submit"
                       (click)="onUpdateCategory()"
                       class="btn btn-primary"
                     >
-                      Thêm loại sản phẩm
+                      Lưu dữ liệu
                     </button>
                     &#160;
                     <a

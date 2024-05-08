@@ -37,6 +37,10 @@ export class HeaderAdminComponent implements OnInit {
         (data: User) => {
          console.log(data)
          this.users = this.users?.concat(data);
+         if(data.role_id == 1) 
+          { 
+           window.location.href = "/customer"
+         }
 
           },
           (error) => {

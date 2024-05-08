@@ -2,17 +2,19 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-addcategory',
   standalone: true,
-  imports: [RouterLink, FormsModule,HttpClientModule],
+  imports: [RouterLink, FormsModule,HttpClientModule,CommonModule],
   templateUrl: './addcategory.component.html',
   styleUrl: './addcategory.component.scss'
 })
 export class AddcategoryComponent {
   categoryObj: Category;
+  errorMessage: string = ''; 
   constructor(private http: HttpClient, private router:Router) {
     this.categoryObj= new Category();
 }
@@ -33,8 +35,8 @@ onCategory() {
           }
       },
       (error) => {
-          console.error('Error:', error);
-          alert("Add category failed");
+        this.errorMessage=(error.error.message);
+        //console.error('Error:', error.error.message);
       }
   );
 }

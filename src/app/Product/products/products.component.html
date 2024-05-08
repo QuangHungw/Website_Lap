@@ -39,7 +39,10 @@
     nhé!
   </section>
   <hr />
-  <h4><span>New products</span></h4>
+  <h4 >
+     <span *ngIf="routeSnapshot.paramMap.get('id')">Category: {{ categoryName }}</span>
+    <span *ngIf="routeSnapshot.paramMap.get('name')">Product: {{ routeSnapshot.paramMap.get('name') }}</span>
+  </h4>
 
   <section class="main-content">
     <div class="row">
@@ -49,7 +52,7 @@
             <div class="product-box">
               <span class="sale_tag"></span>
               <a [routerLink]="['/product_detail', product.id]"
-                ><img alt="" src="{{ product.photo }}" /></a
+                ><img alt="" src="assets/themes/images/cloth/{{ product.photo }}" /></a
               ><br />
               <a [routerLink]="['/product_detail', product.id]" class="title">{{
                 product.product_name
@@ -200,7 +203,7 @@
                     <div class="product-box">
                       <span class="sale_tag"></span>
                       <a [routerLink]="['/product_detail', product.id]"
-                        ><img alt="" src="{{ product.photo }}" /></a
+                        ><img alt="" src="assets/themes/images/cloth/{{ product.photo }}" /></a
                       ><br />
                       <a
                         [routerLink]="['/product_detail', product.id]"
