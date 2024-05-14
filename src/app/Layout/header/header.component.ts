@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,RouterLink , NavigationEnd } from '@angular/router';
 import { CommonModule} from '@angular/common';
-import { User,Category } from './header.module';
+import { User,Category,Order } from './header.module';
 import { HeaderService } from './header.service';
 import { FormsModule } from '@angular/forms';
+import { error } from 'console';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
 export class HeaderComponent implements OnInit {
   
   token?: string | null;
-  users?: User[] = [];
+  users?: User[] = [] ;
+  orders: Order[] = [];
   categories?: Category[] = []
   showProfile: boolean = false;
   searchContent: string = '';
@@ -38,7 +40,7 @@ export class HeaderComponent implements OnInit {
       // Nếu không có nội dung tìm kiếm, chỉ chuyển hướng đến trang sản phẩm
       this.router.navigateByUrl('/products');
     }
-    console.log(this.searchContent);
+   // console.log(this.searchContent);
   }
   ngOnInit(): void {
   
@@ -50,6 +52,7 @@ export class HeaderComponent implements OnInit {
       });
       this.token = localStorage.getItem('accessToken');
       console.log('token', this.token);
+   
       
       if (localStorage.getItem('accessToken')) {
         this.userService.getUser(this.token).subscribe(
@@ -71,10 +74,23 @@ export class HeaderComponent implements OnInit {
             
           }
       );
+      this.userService.postOrder(this.token).subscribe(
+(data1:Order) => {
+this.orders= this.orders?.concat(data1);
+//console.log(this.orders)
+
+
+},(error) => {
+//alert(error)
+console.log(error)
+}
+      )
       }
+      
     }
   }
   loadUserInfo() {
+    
     this.userService.getUser(this.token).subscribe((data: User) => {
       this.users = [data]; // Cập nhật thông tin người dùng
     });

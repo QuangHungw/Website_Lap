@@ -19,11 +19,18 @@ export interface Product {
   unit: string;
   create_at: Date;
   category_id: number;
+
 }
 export interface Category {
   id : number;
   description: string;
   category_name: string;
  }
-
+ export interface OrderDetail {
+  id        : number;     
+  price      :number;
+  quantity   :number;
+  product_id : number;
+  order_id   :number
+}
 export class ProductsModule { }

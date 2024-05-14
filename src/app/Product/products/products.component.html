@@ -52,7 +52,7 @@
             <div class="product-box">
               <span class="sale_tag"></span>
               <a [routerLink]="['/product_detail', product.id]"
-                ><img alt="" src="assets/themes/images/cloth/{{ product.photo }}" /></a
+                ><img style="height: 270px" alt="" src="assets/themes/images/cloth/{{ product.photo }} " /></a
               ><br />
               <a [routerLink]="['/product_detail', product.id]" class="title">{{
                 product.product_name
@@ -71,7 +71,7 @@
                 color="primary500"
                 class="css-16gdkk6"
                 type="button"
-                (click)="onButtonClick()"
+                (click)="onButtonClick(product.id, product.price)"
               >
                 <div type="body" color="primary500">Thêm vào giỏ</div>
               </button>
@@ -80,7 +80,7 @@
         </ul>
         <hr />
         <div class="pagination pagination-small pagination-centered">
-          <ul>
+          <ul *ngIf="products.length > pageSize">
             <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
               <a (click)="setCurrentPage(page)">{{ page }}</a>
             </li>
@@ -89,150 +89,25 @@
       </div>
       <div class="span3 col">
         <div id="menu-filter">
-          <h3>Mức Giá</h3>
+          <ul class="nav nav-list below">
+            <h3>Mức giá</h3>
+            <li > <a [routerLink]="['/products']">Tất cả</a></li>
+            <li > <a [routerLink]="['/products/price/10000000']">Dưới 10 triệu</a></li>
+            <li > <a [routerLink]="['/products/price/20000000']">Từ 10 - 20 triệu</a></li>
+            <li > <a [routerLink]="['/products/price/20000001']">Từ 20 - 30 triệu</a></li>
+            <li > <a [routerLink]="['/products/price/30000001']">Trên 30 triệu</a></li>
+          </ul>               
           <div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox1" type="checkbox" class="input-lg" />
-              <label for="checkbox1"> Tất cả </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox2" type="checkbox" class="input-lg" />
-              <label for="checkbox2"> Dưới 5 triệu </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox3" type="checkbox" class="input-lg" />
-              <label for="checkbox3"> Từ 5 - 10 triệu </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox4" type="checkbox" class="input-lg" />
-              <label for="checkbox4"> Từ 10 - 15 triệu </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox5" type="checkbox" class="input-lg" />
-              <label for="checkbox5"> Từ 15 - 20 triệu </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox6" type="checkbox" class="input-lg" />
-              <label for="checkbox6"> Trên 20 triệu </label>
-            </div>
-          </div>
-          <h3>Loại Sản Phẩm</h3>
-          <div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox11" type="checkbox" class="input-lg" />
-              <label for="checkbox11"> Tất cả </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox22" type="checkbox" class="input-lg" />
-              <label for="checkbox22"> Chơi game </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox33" type="checkbox" class="input-lg" />
-              <label for="checkbox33"> Học tập - văn phòng </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox44" type="checkbox" class="input-lg" />
-              <label for="checkbox44"> Đồ họa - kỹ thuật </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox55" type="checkbox" class="input-lg" />
-              <label for="checkbox55"> Cao cấp - Sang trọng </label>
-            </div>
-          </div>
-          <h3>Hãng Sản Xuất</h3>
-          <div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox111" type="checkbox" class="input-lg" />
-              <label for="checkbox111"> Tất cả </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox222" type="checkbox" class="input-lg" />
-              <label for="checkbox222"> Apple </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox333" type="checkbox" class="input-lg" />
-              <label for="checkbox333"> Dell </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox444" type="checkbox" class="input-lg" />
-              <label for="checkbox444"> Asus </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox555" type="checkbox" class="input-lg" />
-              <label for="checkbox555"> HP </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox666" type="checkbox" class="input-lg" />
-              <label for="checkbox666"> Acer </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox777" type="checkbox" class="input-lg" />
-              <label for="checkbox777"> Lenovo </label>
-            </div>
-          </div>
-          <h3>Hệ Điều Hành</h3>
-          <div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox8" type="checkbox" class="input-lg" />
-              <label for="checkbox8"> Tất cả </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox9" type="checkbox" class="input-lg" />
-              <label for="checkbox9"> Windows </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox10" type="checkbox" class="input-lg" />
-              <label for="checkbox10"> macOS </label>
-            </div>
-            <div class="checkbox checkbox-primary">
-              <input id="checkbox12" type="checkbox" class="input-lg" />
-              <label for="checkbox12"> Dos </label>
-            </div>
-          </div>
+          <br />
+          <ul class="nav nav-list below">
+            <h3>Hãng Sản Xuất</h3>
+            <li  *ngFor="let category1 of categories1">
+              <a [routerLink]="['/products', category1.id]">{{category1.category_name}}</a></li>
+          </ul>
         </div>
-        <div class="block">
- 
-          <div id="myCarousel" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="active item">
-                <ul class="thumbnails listing-products">
-                  <li
-                    class="span3"
-                    *ngFor="let product of products?.slice(18, 19)"
-                  >
-                    <div class="product-box">
-                      <span class="sale_tag"></span>
-                      <a [routerLink]="['/product_detail', product.id]"
-                        ><img alt="" src="assets/themes/images/cloth/{{ product.photo }}" /></a
-                      ><br />
-                      <a
-                        [routerLink]="['/product_detail', product.id]"
-                        class="title"
-                        >{{ product.product_name }}</a
-                      ><br />
-
-                      <a [routerLink]="['/product_detail', product.id]" class="category"
-                        ><p class="price">
-                          {{ formatPrice(product.price) }} {{ product.unit }}
-                        </p></a
-                      >
-                      <button
-                      height="2rem"
-                      color="primary500"
-                      class="css-16gdkk6"
-                      type="button"
-                      (click)="onButtonClick()"
-                    >
-                      <div type="body" color="primary500">Thêm vào giỏ</div>
-                    </button>
-                      
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
+        <br>
+     
       </div>
     </div>
   </section>

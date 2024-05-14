@@ -26,7 +26,13 @@ export interface Category {
  description: string;
  category_name: string;
 }
-
+export interface OrderDetail {
+  id        : number;     
+  price      :number;
+  quantity   :number;
+  product_id : number;
+  order_id   :number
+}
 
 
 export class ProductDetailModule { }

@@ -2,18 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule,CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-
+  errorMessage: string = ''; 
   signupObj: Signup;
   constructor(private http: HttpClient) {
     this.signupObj = new Signup();
@@ -38,8 +39,7 @@ export class SignupComponent {
             }
         },
         (error) => {
-            console.error('Error:', error);
-            alert("Sign up failed");
+          this.errorMessage=(error.error.message);
         }
     );
 }

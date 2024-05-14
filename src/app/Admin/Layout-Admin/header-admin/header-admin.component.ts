@@ -32,6 +32,11 @@ export class HeaderAdminComponent implements OnInit {
     if (typeof window !== 'undefined') {
       this.token = localStorage.getItem('accessToken');
       console.log('token', this.token);
+         if(this.token == null) 
+          { 
+            alert("Bạn không có quyền truy cập này")
+           window.location.href = "/login"
+         }
       if (localStorage.getItem('accessToken')) {
         this.userService.getUser(this.token).subscribe(
         (data: User) => {
@@ -39,6 +44,7 @@ export class HeaderAdminComponent implements OnInit {
          this.users = this.users?.concat(data);
          if(data.role_id == 1) 
           { 
+            alert("Bạn không có quyền truy cập này")
            window.location.href = "/customer"
          }
 

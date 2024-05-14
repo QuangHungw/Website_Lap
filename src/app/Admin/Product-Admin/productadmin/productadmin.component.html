@@ -15,6 +15,7 @@
             <div class="w3l-table-info">
               <h2>Danh sách sản phẩm</h2>
               <input
+                    [(ngModel)]="searchContent"
                     style="width:84.8%"
                     type="text"
                     class="search-query form-control input-group"
@@ -24,7 +25,7 @@
                     <span class="input-group-btn">
                       <button
                         class="btn btn-primary rounded-circle btnpro"
-                        
+                        (click)="onSearchClick()"
                         type="button"
                         id="btn-search"
                       >
@@ -66,6 +67,7 @@
                       </span>
                       <span >
                         <a 
+                        [routerLink]="['/deleteproduct', product.id]" 
                           class="agile-icon"
                           href="#"
                           data-toggle="modal"
@@ -78,7 +80,7 @@
                 </tbody>
               </table>
               <div class="pagination pagination-small pagination-centered">
-                <ul>
+                <ul *ngIf="products.length > pageSize">
                   <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
                     <a (click)="setCurrentPage(page)">{{ page }}</a>
                   </li>

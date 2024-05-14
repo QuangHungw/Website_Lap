@@ -2,8 +2,8 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a  [routerLink]="['/admin']" >Trang chủ</a>
-      <i class="fa fa-angle-right"></i><a  [routerLink]="['/customeradmin']" >Khách hàng</a>
-      <i class="fa fa-angle-right"></i>Cập nhật thông tin khách hàng
+      <i class="fa fa-angle-right"></i><a  [routerLink]="['/customeradmin']" >Tài khoản</a>
+      <i class="fa fa-angle-right"></i>Cập nhật thông tin 
     </li>
   </ol>
 
@@ -14,7 +14,7 @@
           <div class="calendar-heading">
             <div class="agile-tables">
               <div class="w3l-table-info">
-                <h2>Cập nhật thông tin khách hàng</h2>
+                <h2>Cập nhật thông tin tài khoản</h2>
                 <br>
                 <div class="row">
                         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -46,23 +46,24 @@
                               <span> {{user.province}}</span>
                             </div>
                             <br>
-                            <div class="form-group" >
+                            <div class="form-group">
                               <label for="role">Phân Quyền:</label> &#160;
-                            <select class="form-control" style="display: inline;
-                            width: 25%;"  >
-                                <option value="">-- Chọn phân quyền--</option>
-                                <option value="2" >Admin</option>
-                                <option value="1" >Customer</option>
-                            </select>
-        
-                            </div>
-                            <button type="submit" class="btn btn-primary"  >
+                              <select class="form-control" style="display: inline; width: 25%;" [(ngModel)]="editObj.role_id" name="role">
+                                  <option value="2">Admin</option>
+                                  <option value="1">Customer</option>
+                              </select>
+                          </div>
+                          <div *ngIf="errorMessage" class="error-message" style="color: red;">
+                            {{ errorMessage }}
+                          </div>
+                        <br>
+                          <button type="submit" class="btn btn-primary" (click)="onUpdateCategory()">
                               <i class="fa fa-floppy-o"></i> Lưu dữ liệu
-                            </button>
-                            &#160;
-                            <a [routerLink]="['/customeradmin']" class="btn btn-default">
+                          </button>
+                          &#160;
+                          <a [routerLink]="['/customeradmin']" class="btn btn-default">
                               Quay lại
-                            </a>
+                          </a>
                           </form>
                         </div>
                         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>

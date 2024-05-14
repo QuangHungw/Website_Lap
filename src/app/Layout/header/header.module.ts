@@ -26,4 +26,15 @@ export interface Category {
   description: string;
   category_name: string;
  }
+
+ export interface Order {
+  id         :  number;         
+  payment_id  : number;
+  order_time  : Date;
+  create_at    :Date;
+  modified_at  :Date;
+  status       :String
+  total        :number
+  user_id      :number
+ }
 export class HeaderModule { }

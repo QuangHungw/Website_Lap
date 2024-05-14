@@ -135,7 +135,10 @@
                 />
               </div>
             </div>
-         
+            <div *ngIf="errorMessage" class="error-message" style="color: red;">
+              {{ errorMessage }}
+            </div>
+           <br>
            
             <div class="actions">
               <button

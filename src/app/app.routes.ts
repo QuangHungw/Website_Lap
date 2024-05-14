@@ -3,12 +3,10 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './Sign in and log in/login/login.component';
 import { WebLapComponent } from './Home page/web-lap/web-lap.component';
 import { CartComponent } from './Function/cart/cart.component';
-
 import { CheckoutComponent } from './Function/checkout/checkout.component';
 import { CustomerComponent } from './Customers/customer/customer.component';
 import { ProductDetailComponent } from './Product/product-detail/product-detail.component';
 import { EditCustomerComponent } from './Customers/Editcutomer/editcustomer.component';
-import { MenuComponent } from './Function/menu/menu.component';
 import { SignupComponent } from './Sign in and log in/signup/signup.component';
 import { ProductsComponent } from './Product/products/products.component';
 import { DefaultLayoutComponent } from './Layout/default-layout/default-layout.component';
@@ -28,6 +26,8 @@ import { AddcustomerComponent } from './Admin/Customer-Admin/addcustomer/addcust
 import { UseradminComponent } from './Admin/User-Admin/useradmin/useradmin.component';
 import { EditAdminComponent } from './Admin/User-Admin/edit-admin/edit-admin.component';
 import { ChangePasswordAdminComponent } from './Admin/User-Admin/change-password-admin/change-password-admin.component';
+import { DeleteproductComponent } from './Admin/Product-Admin/deleteproduct/deleteproduct.component';
+import { DeletecategoryComponent } from './Admin/Category-Admin/deletecategory/deletecategory.component';
 
 
 
@@ -80,6 +80,10 @@ export const routes: Routes = [
         component:  ProductsComponent
     },
     {
+        path: 'products/price/:price',
+        component:  ProductsComponent
+    },
+    {
         path: 'cart',
         component: CartComponent
     },
@@ -88,10 +92,7 @@ export const routes: Routes = [
         path: 'checkout',
         component: CheckoutComponent
     },
-    {
-        path: 'menu',
-        component: MenuComponent
-    }
+ 
     
 ] 
 
@@ -131,8 +132,14 @@ component: OrderComponent
                 },{
                 path: 'editproduct/:id',
                 component: EditproductComponent
-                },
-{
+                        },  {
+                            path: 'deleteproduct/:id',
+                            component: DeleteproductComponent
+                                    },{
+                                            path: 'productadmin/search/:name',
+                                            component: ProductadminComponent
+                                            },
+ {
     path: 'customeradmin',
     component: CustomeradminComponent
 },
@@ -143,7 +150,10 @@ component: OrderComponent
             {
                 path: 'addcustomer',
                 component: AddcustomerComponent
-            },
+                        },  {
+                            path: 'customeradmin/search/:name',
+                            component: CustomeradminComponent
+                        },
         
     
 
@@ -154,10 +164,16 @@ component: OrderComponent
         {
             path: 'editcategory/:id',
             component: EditcategoryComponent
-                    } , {
-                        path: 'addcategory',
-                        component: AddcategoryComponent
-                    }
+                    } ,  {
+                        path: 'deletecategory/:id',
+                        component: DeletecategoryComponent
+                                 } ,{
+                                    path: 'addcategory',
+                                    component: AddcategoryComponent
+                                 }               ,{
+                                                    path: 'categoryadmin/search/:name',
+                                                    component: CategoryadminComponent
+                                                            } ,
 
 ] 
 

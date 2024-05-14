@@ -27,7 +27,7 @@ export class EditcategoryComponent implements OnInit {
           this.categories?.push(data);
           this.editObj.category_name = data.category_name;
           this.editObj.description = data.description;
-        
+       // console.log(this.categories)
         });
       }
     });

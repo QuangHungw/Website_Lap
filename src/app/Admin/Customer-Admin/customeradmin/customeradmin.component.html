@@ -2,7 +2,7 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a  [routerLink]="['/admin']" >Trang chủ</a
-      ><i class="fa fa-angle-right"></i>Khách hàng
+      ><i class="fa fa-angle-right"></i>Tài khoản
     </li>
   </ol>
 
@@ -13,7 +13,7 @@
           <div class="calendar-heading">
             <div class="agile-tables">
               <div class="w3l-table-info">
-                <h2>Danh sách khách hàng</h2>
+                <h2>Danh sách tài khoản</h2>
                 <input
                 style="width:84.8%"
                 type="text"
@@ -37,7 +37,7 @@
                 <table id="table">
                   <thead>
                     <tr>
-                      <th>Mã khách hàng</th>
+                   
                       <th>Tên khách hàng</th>
                       <th>Địa chỉ</th>
                       <th>Số điện thoại</th>
@@ -48,8 +48,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="danger" *ngFor="let user of users">
-                      <td>{{user.id}}</td>
+                    <tr class="danger" *ngFor="let user of getPaginatedUsers()">
+                  
                       <td>{{user.name}}</td>
                       <td>{{user.address}}</td>
                       <td>{{user.phone}}</td>
@@ -68,6 +68,13 @@
                     </tr>
                   </tbody>
                 </table>
+                <div class="pagination pagination-small pagination-centered">
+                  <ul *ngIf="users.length > pageSize">
+                    <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
+                      <a (click)="setCurrentPage(page)">{{ page }}</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

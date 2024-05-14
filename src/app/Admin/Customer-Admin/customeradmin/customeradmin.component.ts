@@ -15,11 +15,15 @@ import { DatePipe } from '@angular/common';
 export class CustomeradminComponent implements OnInit {
   users: User[] = [];
   role: Role[] = [];
+  currentPage: number = 1;
+  pageSize: number = 9;
+  totalPages: number = 0;
   constructor(private customeradminService: CustomeradminService) {}
 
   ngOnInit(): void {
     this.customeradminService.getUser().subscribe((data: User) => {
       this.users = this.users?.concat(data);
+      this.totalPages = Math.ceil(this.users.length / this.pageSize);
       this.getRoleNamesForUsers();
      // console.log(this.users)
     });
@@ -33,5 +37,16 @@ export class CustomeradminComponent implements OnInit {
        // console.log(role.role_name);
       });
     });
+  }
+  get pageNumbers(): number[] {
+    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+  }
+  getPaginatedUsers(): User[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.users.length);
+    return this.users.slice(startIndex, endIndex);
+  }
+  setCurrentPage(page: number) {
+  this.currentPage = page;
   }
 }

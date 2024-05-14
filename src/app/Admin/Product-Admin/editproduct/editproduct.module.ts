@@ -16,8 +16,7 @@ export interface Product {
   price: number;
   photo: string;
   unit: string;
-  create_at: Date;
-  category_id: string;
-  category_name: string;
+  category_id: number;
+
 }
 export class EditproductModule { }

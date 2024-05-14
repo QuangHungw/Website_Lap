@@ -17,6 +17,7 @@
                   
                     <h2>Danh sách loại sản phẩm</h2>
                     <input
+                    [(ngModel)]="searchContent"
                     style="width:84.8%"
                     type="text"
                     class="search-query form-control input-group"
@@ -26,7 +27,7 @@
                     <span class="input-group-btn">
                       <button
                         class="btn btn-primary rounded-circle btnpro"
-                        
+                        (click)="onSearchClick()"
                         type="button"
                         id="btn-search"
                       >
@@ -46,7 +47,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="info" *ngFor="let category of categories">
+                        <tr class="info" *ngFor="let category of getPaginatedCategories()">
                         
                           <td>{{category.category_name}}</td>
                           <td>{{category.description}}</td>
@@ -62,7 +63,7 @@
                               ></a>
                             </span>
                             <span>
-                              <a
+                              <a [routerLink]="['/deletecategory', category.id]" 
                                 class="agile-icon"
                                 href="#"
                                 data-toggle="modal"
@@ -75,6 +76,13 @@
                      
                       </tbody>
                     </table>
+                    <div class="pagination pagination-small pagination-centered">
+                      <ul *ngIf="categories.length > pageSize">
+                        <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
+                          <a (click)="setCurrentPage(page)">{{ page }}</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
