@@ -1,0 +1,225 @@
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a  [routerLink]="['/admin']">Trang chủ</a
+          ><i class="fa fa-angle-right"></i>Đơn hàng
+        </li>
+      </ol>
+
+      <div class="grids">
+        <div class="agile-calendar-grid">
+          <div class="page">
+            <div class="w3l-calendar-left">
+              <div class="calendar-heading">
+                <div class="agile-tables">
+                  <div class="w3l-table-info">
+                    <h2>Danh sách đơn hàng</h2>
+                    <table id="table">
+                      <thead>
+                        <tr>
+                          <th>Mã đơn hàng</th>
+                          <th>Tên khách hàng</th>
+                          <th>Địa chỉ</th>
+                          <th>Số điện thoại</th>
+                          <th>Ngày lập</th>
+                          <th>Tình trạng</th>
+                          <th>Chỉnh sửa</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="danger">
+                          <td>1</td>
+                          <td>Trần Văn Hùng</td>
+                          <td>83, An Dương Vương, P4, Q5</td>
+                          <td>09047383221</td>
+                          <td>17/05/2018</td>
+                          <td>Chưa giao</td>
+                          <td style="text-align: center">
+                            <a
+                              class="agile-icon"
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal"
+                              ><i class="fa fa-pencil-square-o"></i
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr class="danger">
+                          <td>2</td>
+                          <td>Trần Hạnh</td>
+                          <td>1, Nguyễn Thị Minh Khai, P4, Q5</td>
+                          <td>09047383221</td>
+                          <td>07/05/2018</td>
+                          <td>Chưa giao</td>
+                          <td style="text-align: center">
+                            <a
+                              class="agile-icon"
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal"
+                              ><i class="fa fa-pencil-square-o"></i
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr class="info">
+                          <td>3</td>
+                          <td>Nguyễn Long</td>
+                          <td>234, An Dương Vương, P4, Q5</td>
+                          <td>09047383221</td>
+                          <td>02/05/2018</td>
+                          <td>Đang giao</td>
+                          <td style="text-align: center">
+                            <a
+                              class="agile-icon"
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal"
+                              ><i class="fa fa-pencil-square-o"></i
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr class="info">
+                          <td>4</td>
+                          <td>Trần Thị Hà</td>
+                          <td>12, Trần Phú, P4, Q5</td>
+                          <td>09047300221</td>
+                          <td>27/04/2018</td>
+                          <td>Đang giao</td>
+                          <td style="text-align: center">
+                            <a
+                              class="agile-icon"
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal"
+                              ><i class="fa fa-pencil-square-o"></i
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr class="success">
+                          <td>5</td>
+                          <td>Trần Văn Hòa</td>
+                          <td>23, Lê Hồng Phong, P4, Q5</td>
+                          <td>09047383221</td>
+                          <td>25/04/2018</td>
+                          <td>Đã giao</td>
+                          <td style="text-align: center">
+                            <a
+                              class="agile-icon"
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal"
+                              ><i class="fa fa-pencil-square-o"></i
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr class="success">
+                          <td>6</td>
+                          <td>Trần Văn Tùng</td>
+                          <td>63, Nguyễn Văn Cừ, P4, Q5</td>
+                          <td>09047383221</td>
+                          <td>20/04/2018</td>
+                          <td>Đã giao</td>
+                          <td style="text-align: center">
+                            <a
+                              class="agile-icon"
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal"
+                              ><i class="fa fa-pencil-square-o"></i
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr class="success">
+                          <td>7</td>
+                          <td>Trần Văn Kiên</td>
+                          <td>123, An Dương Vương, P4, Q5</td>
+                          <td>09047383221</td>
+                          <td>11/04/2018</td>
+                          <td>Đã giao</td>
+                          <td style="text-align: center">
+                            <a
+                              class="agile-icon"
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#myModal"
+                              ><i class="fa fa-pencil-square-o"></i
+                            ></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                          >
+                            &times;
+                          </button>
+                          <h4 class="modal-title">
+                            Cập nhật trạng thái đơn hàng
+                          </h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>Mời bạn nhập tình trạng đơn hàng:</p>
+                          <form action="">
+                            <div class="form-group">
+                              <label for="ma">Mã đơn hàng:</label>
+                              <input type="text" class="form-control" id="ma" />
+                            </div>
+                            <div class="form-group">
+                              <label for="status">Tình trạng:</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="status"
+                              />
+                            </div>
+                            <button type="submit" class="btn btn-default">
+                              Cập nhật
+                            </button>
+
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-default"
+                                data-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+        <!-- //grids -->
+        <!--photoday-section-->
+
+        <div class="col-sm-4 wthree-crd">
+          <div class="card">
+            <div class="card-body"></div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="inner-block"></div>
+
+      </div>
+  
+ 

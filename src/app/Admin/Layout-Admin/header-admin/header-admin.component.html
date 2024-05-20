@@ -1,0 +1,36 @@
+
+<div class="header-main">
+    <div class="profile_details w3l">
+      <ul>
+        <li class="dropdown profile_details_drop" (click)="toggleDropdown($event)">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <div class="profile_img"*ngIf="token" >
+              <span class="prfil-img"
+                ><img src="assets/images/in5.jpg" alt="" />
+              </span>
+              <div class="user-name"  *ngFor="let user of users">
+                <p>{{user.name}}</p>
+                <span>Admin</span>
+              </div>
+              <i class="fa fa-angle-down" *ngIf="!dropdownVisible"></i>
+              <i class="fa fa-angle-up" *ngIf="dropdownVisible"></i>
+              <div class="clearfix"></div>
+            </div>
+          </a>
+          <ul class="dropdown-menu drp-mnu" *ngIf="dropdownVisible">
+            <li> <a [routerLink]="['/useradmin']"><i class="fa fa-user"></i> Thông tin</a> </li> 
+            <li>
+              <a  (click)="logout()" ><i class="fa fa-sign-out"></i> Đăng xuất</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="clearfix"></div>
+  </div>

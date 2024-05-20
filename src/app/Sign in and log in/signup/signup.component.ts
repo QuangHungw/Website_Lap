@@ -2,22 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule,CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  onSearchClick(): void {
-    window.location.href = "/products";
-  }
+  errorMessage: string = ''; 
   signupObj: Signup;
-  constructor(private http: HttpClient,private router: Router) {
+  constructor(private http: HttpClient) {
     this.signupObj = new Signup();
 }
   
@@ -25,7 +24,7 @@ export class SignupComponent {
   // Gửi yêu cầu đăng ký đến NestJS
 
   onSigup() {
-    //debugger
+
     // Assuming this.signupObj contains the registration data
     this.http.post<any>('http://localhost:3000/auth/register', this.signupObj).subscribe(
         (res) => {
@@ -33,15 +32,14 @@ export class SignupComponent {
                 console.log(res);
                 localStorage.setItem('accessToken', res.accessToken);
                 // Optionally, you can redirect the user to the login page after successful signup
-                this.router.navigateByUrl("/newcustomer");
+                window.location.href = "/customer"
                 alert("Sign up successful");
             } else {
                 alert("Sign up failed");
             }
         },
         (error) => {
-            console.error('Error:', error);
-            alert("Sign up failed");
+          this.errorMessage=(error.error.message);
         }
     );
 }
@@ -63,7 +61,7 @@ export class Signup {
     this.address="";
     this.phone="";
     this.province="";
-    this.role_id= 1;
+    this.role_id= 2;
     this.create_at= new Date();
 
   }

@@ -1,0 +1,131 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a [routerLink]="['/admin']">Trang chủ</a><i class="fa fa-angle-right"></i
+    ><a [routerLink]="['/productadmin']">Sản phẩm</a>
+    <i class="fa fa-angle-right"></i>Cập nhật thông tin sản phẩm
+  </li>
+</ol>
+
+<!-- grids -->
+<div class="grids">
+  <div class="agile-calendar-grid">
+    <div class="page">
+      <div class="w3l-calendar-left">
+        <div class="calendar-heading">
+          <div class="agile-tables">
+            <div class="w3l-table-info">
+              <h2>Cập nhật thông tin sản phẩm</h2>
+              <br />
+              <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                  <form action="" *ngFor="let product of products">
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" id="ma" />
+                    </div>
+                    <div class="form-group">
+                      <label for="ten">Tên sản phẩm:</label>
+                      <input
+                        type="text"
+                        [(ngModel)]="editObj.product_name"
+                        class="form-control"
+                        name="ten"
+                        value="{{ product.product_name }}"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="comment">Mô tả:</label>
+                      <textarea
+                        class="form-control"
+                        [(ngModel)]="editObj.description"
+                        rows="3"
+                        name="comment"
+                        value="{{ product.description }}"
+                        required
+                      ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="loai">Loại sản phẩm:</label>
+                      <input
+                        type="number"
+                        [(ngModel)]="editObj.category_id"
+                        class="form-control"
+                        name="loai"
+                        value="{{ product.category_id }}"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="gia">Giá bán:</label>
+                      <input
+                        type="number"
+                        [(ngModel)]="editObj.price"
+                        class="form-control"
+                        name="gia"
+                        value="{{ product.price }}"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="dv">Đơn vị:</label>
+                      <input
+                        type="textarea"
+                        [(ngModel)]="editObj.unit"
+                        class="form-control"
+                        name="dv"
+                        value="{{ product.unit }}"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="photo">Ảnh minh họa:</label>
+                      <input
+                        type="file"
+                        name="photo"
+                        accept="image/*"
+                        required
+                        (change)="onFileSelected($event)" 
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input id="PhotoInput" type="hidden" name="Photo"/>
+                      <img class="img-bordered" src="assets/themes/images/cloth/{{ product.photo }} "  style="width: 200px;">
+                    </div>
+                    <div *ngIf="errorMessage" class="error-message" style="color: red;">
+                      {{ errorMessage }}
+                    </div>
+                  <br>
+                    <button type="submit" class="btn btn-primary" (click)="onUpdateProduct()">
+                      <i class="fa fa-floppy-o"></i> Lưu dữ liệu
+                    </button>
+                    &#160;
+                    <a [routerLink]="['/productadmin']" class="btn btn-default">
+                      Quay lại
+                    </a>
+                  </form>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!-- //grids -->
+<!--photoday-section-->
+
+<div class="col-sm-4 wthree-crd">
+  <div class="card">
+    <div class="card-body"></div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="inner-block"></div>

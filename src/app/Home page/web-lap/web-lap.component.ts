@@ -1,15 +1,48 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Product ,OrderDetail} from './web-lap.module';
+import { WebLapService } from './web-lap.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-web-lap',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './web-lap.component.html',
-  styleUrl: './web-lap.component.scss'
+  styleUrl: './web-lap.component.scss',
 })
-export class WebLapComponent {
-  onSearchClick(): void {
-    window.location.href = "/products";
+export class WebLapComponent implements OnInit {
+  products?: Product[] = [];
+
+  token?: string | null;
+  orders: OrderDetail[] = [];
+  constructor(private productService: WebLapService, private router: Router) {}
+  onButtonClick(productId: number, price: number): void {
+    this.token = localStorage.getItem('accessToken');
+    if (this.token) {
+      const quantity = 1;
+      this.productService.postOrderdetail(this.token, price, productId, quantity).subscribe(
+        (data1: OrderDetail) => {
+          this.orders.push(data1);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  ngOnInit(): void {
+    this.productService.getProduct().subscribe((data: Product) => {
+      //console.log(data);
+
+      this.products = this.products?.concat(data);
+     // console.log(data)
+    
+    });
+    
+  }
+  formatPrice(price: number): string {
+    return price.toLocaleString('vi-VN'); // Format with Vietnamese locale
   }
 }
