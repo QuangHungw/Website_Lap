@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Product } from './editproduct.module';
+import { Product,Category } from './editproduct.module';
 import { EditproductService } from './editproduct.service';
 
 @Component({
@@ -13,13 +13,18 @@ import { EditproductService } from './editproduct.service';
   templateUrl: './editproduct.component.html',
   styleUrl: './editproduct.component.scss'
 })
-export class EditproductComponent {
+export class EditproductComponent implements OnInit{
   products?: Product[] = [];
+  categories: Category[] = [];
   errorMessage: string = ''; 
   editObj: Edit;
   constructor(private productService: EditproductService, private router: Router,private route: ActivatedRoute) {this. editObj = new Edit();}
 
 ngOnInit(): void {
+  this.productService.getCategory().subscribe((data: Category) => {
+    this.categories = this.categories?.concat(data);
+  //  console.log(data)
+  });
   this.route.paramMap.subscribe(params => {
     const productId = params.get('id');
     if (productId) {
@@ -32,12 +37,13 @@ ngOnInit(): void {
         this.editObj.photo = data.photo;
         this.editObj.category_id = data.category_id;   
       
+      
       });
     }
   });
 }
 onUpdateProduct(): void {
-  //debugger
+  debugger
   this.route.paramMap.subscribe(params => {
     const productId = params.get('id');
     if (productId) {
@@ -49,6 +55,9 @@ onUpdateProduct(): void {
         price: this.editObj.price,
         photo:this.editObj.photo,
         category_id:this.editObj.category_id
+
+        
+    
       };
       this.productService.updateProduct(productId, updatedProduct).subscribe(
         () => {

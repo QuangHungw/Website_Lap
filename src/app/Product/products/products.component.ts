@@ -3,11 +3,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Product, Category,OrderDetail } from './products.module';
 import { ProductsService } from './products.service';
 import { CommonModule } from '@angular/common';
+import { PostComponent } from '../../Function/post/post.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule,PostComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })

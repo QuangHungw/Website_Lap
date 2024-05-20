@@ -28,9 +28,5 @@ export interface Product {
   category_id: number;
 
 }
-export interface Category {
-  id : number;
-  description: string;
-  category_name: string;
- }
+
 export class CartModule { }

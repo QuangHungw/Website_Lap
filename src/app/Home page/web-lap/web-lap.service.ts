@@ -8,6 +8,7 @@ import { Product,OrderDetail } from './web-lap.module';
 export class WebLapService {
   private apiUrl = 'http://localhost:3000/product';
   private apiUrl1 = 'http://localhost:3000/orderdetail';
+  
   constructor(private http: HttpClient) {}
 
   getProduct(): Observable<Product> {
@@ -18,5 +19,6 @@ export class WebLapService {
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.post<OrderDetail>(this.apiUrl1, {price:price,productId : productId,quantity:quantity}, { headers: headers  });
   }
+
 
 }

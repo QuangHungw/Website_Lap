@@ -37,8 +37,23 @@ export class ProductDetailComponent implements OnInit{
       );
     }
   }
-  oncheckoutClick(){
-    this.router.navigateByUrl('/checkout'); 
+  oncheckoutClick(productId1: number , price1: number){
+   
+    this.token = localStorage.getItem('accessToken');
+    if (this.token) {
+    
+      this.productService.postOrderdetail(this.token, price1, productId1,this.editObj.quantity).subscribe(
+        (data1: OrderDetail) => {
+          this.order.push(data1);
+          this.router.navigateByUrl('/checkout'); 
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+ 
+  
   }
   onButton1Click(productId1: number , price1: number){
     this.token = localStorage.getItem('accessToken');
@@ -53,7 +68,7 @@ export class ProductDetailComponent implements OnInit{
         }
       );
     }
-   // this.router.navigateByUrl('/checkout'); 
+ 
   }
   ngOnInit(): void {
     this.productService.getProduct().subscribe((product: Product) => {    

@@ -46,17 +46,15 @@
                       ></textarea>
                     </div>
 
-                    <div class="form-group">
-                      <label for="loai">Loại sản phẩm:</label>
-                      <input
-                        type="number"
-                        [(ngModel)]="editObj.category_id"
-                        class="form-control"
-                        name="loai"
-                        value="{{ product.category_id }}"
-                        required
-                      />
-                    </div>
+                    <div class="form-group"   >
+                      <label for="loai">Loại sản phẩm:</label> &#160;
+                      <select class="form-control"  style="width: 15%;"   [(ngModel)]="editObj.category_id" name="loai">
+                          
+                          <option *ngFor="let category of categories" [ngValue]="category.id">{{category.category_name}}</option>
+
+                          <!-- editObj.role_id = parseInt(editObj.role_id); -->
+                      </select>
+                  </div>
                     <div class="form-group">
                       <label for="gia">Giá bán:</label>
                       <input
@@ -91,7 +89,7 @@
                     </div>
                     <div class="form-group">
                       <input id="PhotoInput" type="hidden" name="Photo"/>
-                      <img class="img-bordered" src="assets/themes/images/cloth/{{ product.photo }} "  style="width: 200px;">
+                      <img class="img-bordered" [src]="editObj.photo ? 'assets/themes/images/cloth/' + editObj.photo : 'assets/themes/images/carousel/{{ product.photo }}'"  style="width: 200px;">
                     </div>
                     <div *ngIf="errorMessage" class="error-message" style="color: red;">
                       {{ errorMessage }}

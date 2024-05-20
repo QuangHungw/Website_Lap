@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { Category } from './addproduct.module';
+import { AddproductService } from './addproduct.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -12,13 +14,19 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './addproduct.component.html',
   styleUrl: './addproduct.component.scss'
 })
-export class AddproductComponent {
+export class AddproductComponent implements OnInit{
   productObj: Product;
+  categories: Category[] = [];
   errorMessage: string = ''; 
-  constructor(private http: HttpClient,private router: Router){
+  constructor(private addproductService: AddproductService,private http: HttpClient,private router: Router){
     this.productObj = new Product();
   }
-
+  ngOnInit(): void {
+    this.addproductService.getCategory().subscribe((data: Category) => {
+      this.categories = this.categories?.concat(data);
+    //  console.log(data)
+    });
+  }
 onProduct() {
  // debugger
     // Assuming this.signupObj contains the registration data
@@ -55,13 +63,14 @@ export class Product {
   price: number;
   photo: string;
   unit: string;
-  category_id: number;
+  category_id: string;
   constructor() {
     this.product_name="";
     this.description="";
     this.price=0;
     this.photo="";
     this.unit="";
-    this.category_id = 0;
+    this.category_id = "";
   }
  }
+

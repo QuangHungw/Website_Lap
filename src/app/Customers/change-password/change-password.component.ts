@@ -4,11 +4,12 @@ import { ChangePasswordService } from './change-password.service';
 import { FormsModule } from '@angular/forms';
 import { Password } from './change-password.module';
 import { NgIf } from '@angular/common';
+import { PostComponent } from '../../Function/post/post.component';
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [RouterLink, FormsModule,NgIf],
+  imports: [RouterLink, FormsModule,NgIf,PostComponent],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss',
 })

@@ -2,37 +2,35 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Product,OrderDetail,Category } from './cart.module';
+import { Product,OrderDetail } from './cart.module';
 import { CartService } from './cart.service';
 import { FormsModule } from '@angular/forms';
 import { forkJoin } from 'rxjs';
+import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink,CommonModule,HttpClientModule,FormsModule],
+  imports: [RouterLink,CommonModule,HttpClientModule,FormsModule,PostComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
   products?: Product[] = [];
   orders: OrderDetail[] = [];
-  categories1?: Category[] = [];
   token?: string | null ;
   totalSum: number = 0;
   unit?: string | null;
-  orders1: OrderDetail[] = [];
+
 
 
 
   constructor(private router: Router,private cartService : CartService) {}
 ngOnInit(): void {
   if (typeof window !== 'undefined') {
-    this.cartService.getCategory().subscribe((category1: Category) => {
-      this.categories1= this.categories1?.concat(category1);
-     // console.log(category123);
-    });
+  
   this.token = localStorage.getItem('accessToken');
+  if(this.token == null) { this.router.navigateByUrl("/login")}
   if (this.token) {
 this.cartService.getOrderDetail(this.token).subscribe(
   (data : OrderDetail) => {
@@ -110,7 +108,9 @@ formatPrice(price: number): string {
   return price.toLocaleString('vi-VN'); // Format with Vietnamese locale
 }
 
-
+onCheckoutClick() {
+  this.router.navigateByUrl("/checkout")
+}
 }
 
 

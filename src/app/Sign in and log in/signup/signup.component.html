@@ -1,36 +1,6 @@
 <div id="wrapper" class="container">
   <section class="homepage-slider" id="home-slider">
-    <div class="flexslider">
-      <ul class="slides">
-        <li>
-          <img
-            src="assets/themes/images/carousel/slider_1.jpg"
-            alt="anh bia 1"
-          />
-          <div class="intro">
-            <!--<h1>Laptop mua online</h1>
-						<p><span>Giảm thêm đến 1.000.000đ</span></p>
-						<p><span>Áp dụng kèm theo khuyến mãi trả thẳng khác</span></p> -->
-          </div>
-        </li>
-        <!-- <li>
-					<img src="themes/images/carousel/slider_4.png" alt="anh bia 2" />
-					
-				</li>
-				<li>
-					<img src="themes/images/carousel/slider_5.png" alt="anh bia 3" />
-					
-				</li>
-				<li>
-					<img src="themes/images/carousel/slider_6.png" alt="anh bia 4" />
-					
-				</li>
-				<li>
-					<img src="themes/images/carousel/slider_7.png" alt="anh bia 5" />
-					
-				</li> -->
-      </ul>
-    </div>
+    <app-post></app-post>
   </section>
   <section class="header_text">
     Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới
@@ -73,7 +43,6 @@
                   class="input-xlarge"
                   id="email"
                   name="email"
-				 
                   required
                 />
               </div>
@@ -88,6 +57,20 @@
                   class="input-xlarge"
                   id="password"
                   name="password"
+                  required
+                />
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Nhập lại mật khẩu:</label>
+              <div class="controls">
+                <input
+                  type="password"
+                  [(ngModel)]="signupObj.confirmPassword"
+                  placeholder="Nhập lại mật khẩu"
+                  class="input-xlarge"
+                  id="confirmpassword"
+                  name="confirmpassword"
                   required
                 />
               </div>
@@ -135,17 +118,16 @@
                 />
               </div>
             </div>
-            <div *ngIf="errorMessage" class="error-message" style="color: red;">
+            <div *ngIf="errorMessage" class="error-message" style="color: red">
               {{ errorMessage }}
             </div>
-           <br>
-           
+            <br />
+
             <div class="actions">
               <button
                 tabindex="9"
                 class="btn btn-primary large"
                 (click)="onSigup()"
-              
               >
                 Tạo tài khoản
               </button>

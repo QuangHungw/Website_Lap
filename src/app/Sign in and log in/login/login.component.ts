@@ -5,11 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { User } from './login.module';
 import { CommonModule } from '@angular/common';
+import { PostComponent } from '../../Function/post/post.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, HttpClientModule,CommonModule],
+  imports: [FormsModule, HttpClientModule,CommonModule,PostComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -21,6 +22,20 @@ export class LoginComponent  {
   constructor(private http: HttpClient,private userService: LoginService, ) {
     this.loginObj = new Login();
     
+}
+ngOnInit(): void {
+   
+  if (typeof window !== 'undefined') {
+    this.token = localStorage.getItem('accessToken');
+ 
+       if(this.token) 
+        { 
+          window.location.href = "/login"
+          localStorage.removeItem('accessToken');
+        
+       }
+   
+  }
 }
 onLogin() {
 

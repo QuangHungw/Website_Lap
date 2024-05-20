@@ -1,36 +1,6 @@
 <div id="wrapper" class="container">
   <section class="homepage-slider" id="home-slider">
-    <div class="flexslider">
-      <ul class="slides">
-        <li>
-          <img
-            src="assets/themes/images/carousel/slider_1.jpg"
-            alt="anh bia 1"
-          />
-          <div class="intro">
-            <!--<h1>Laptop mua online</h1>
-							<p><span>Giảm thêm đến 1.000.000đ</span></p>
-							<p><span>Áp dụng kèm theo khuyến mãi trả thẳng khác</span></p> -->
-          </div>
-        </li>
-        <!-- <li>
-						<img src="themes/images/carousel/slider_4.png" alt="anh bia 2" />
-						
-					</li>
-					<li>
-						<img src="themes/images/carousel/slider_5.png" alt="anh bia 3" />
-						
-					</li>
-					<li>
-						<img src="themes/images/carousel/slider_6.png" alt="anh bia 4" />
-						
-					</li>
-					<li>
-						<img src="themes/images/carousel/slider_7.png" alt="anh bia 5" />
-						
-					</li> -->
-      </ul>
-    </div>
+    <app-post></app-post>
   </section>
   <section class="header_text">
     Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới
@@ -39,9 +9,13 @@
     nhé!
   </section>
   <hr />
-  <h4 >
-     <span *ngIf="routeSnapshot.paramMap.get('id')">Category: {{ categoryName }}</span>
-    <span *ngIf="routeSnapshot.paramMap.get('name')">Product: {{ routeSnapshot.paramMap.get('name') }}</span>
+  <h4>
+    <span *ngIf="routeSnapshot.paramMap.get('id')"
+      >Category: {{ categoryName }}</span
+    >
+    <span *ngIf="routeSnapshot.paramMap.get('name')"
+      >Product: {{ routeSnapshot.paramMap.get("name") }}</span
+    >
   </h4>
 
   <section class="main-content">
@@ -52,13 +26,19 @@
             <div class="product-box">
               <span class="sale_tag"></span>
               <a [routerLink]="['/product_detail', product.id]"
-                ><img style="height: 270px" alt="" src="assets/themes/images/cloth/{{ product.photo }} " /></a
+                ><img
+                  style="height: 270px"
+                  alt=""
+                  src="assets/themes/images/cloth/{{ product.photo }} " /></a
               ><br />
               <a [routerLink]="['/product_detail', product.id]" class="title">{{
                 product.product_name
               }}</a
               ><br />
-              <a [routerLink]="['/product_detail', product.id]" class="category">
+              <a
+                [routerLink]="['/product_detail', product.id]"
+                class="category"
+              >
                 <p class="price">
                   {{ formatPrice(product.price) }} {{ product.unit }}
                 </p></a
@@ -81,7 +61,10 @@
         <hr />
         <div class="pagination pagination-small pagination-centered">
           <ul *ngIf="products.length > pageSize">
-            <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
+            <li
+              *ngFor="let page of pageNumbers"
+              [class.active]="page === currentPage"
+            >
               <a (click)="setCurrentPage(page)">{{ page }}</a>
             </li>
           </ul>
@@ -91,23 +74,37 @@
         <div id="menu-filter">
           <ul class="nav nav-list below">
             <h3>Mức giá</h3>
-            <li > <a [routerLink]="['/products']">Tất cả</a></li>
-            <li > <a [routerLink]="['/products/price/10000000']">Dưới 10 triệu</a></li>
-            <li > <a [routerLink]="['/products/price/20000000']">Từ 10 - 20 triệu</a></li>
-            <li > <a [routerLink]="['/products/price/20000001']">Từ 20 - 30 triệu</a></li>
-            <li > <a [routerLink]="['/products/price/30000001']">Trên 30 triệu</a></li>
-          </ul>               
-          <div>
-          <br />
-          <ul class="nav nav-list below">
-            <h3>Hãng Sản Xuất</h3>
-            <li  *ngFor="let category1 of categories1">
-              <a [routerLink]="['/products', category1.id]">{{category1.category_name}}</a></li>
+            <li><a [routerLink]="['/products']">Tất cả</a></li>
+            <li>
+              <a [routerLink]="['/products/price/10000000']">Dưới 10 triệu</a>
+            </li>
+            <li>
+              <a [routerLink]="['/products/price/20000000']"
+                >Từ 10 - 20 triệu</a
+              >
+            </li>
+            <li>
+              <a [routerLink]="['/products/price/20000001']"
+                >Từ 20 - 30 triệu</a
+              >
+            </li>
+            <li>
+              <a [routerLink]="['/products/price/30000001']">Trên 30 triệu</a>
+            </li>
           </ul>
+          <div>
+            <br />
+            <ul class="nav nav-list below">
+              <h3>Hãng Sản Xuất</h3>
+              <li *ngFor="let category1 of categories1">
+                <a [routerLink]="['/products', category1.id]">{{
+                  category1.category_name
+                }}</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        </div>
-        <br>
-     
+        <br />
       </div>
     </div>
   </section>

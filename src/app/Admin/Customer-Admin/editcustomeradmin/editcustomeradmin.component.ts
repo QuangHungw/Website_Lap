@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { User } from './editcustomeradmin.module';
@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-editcustomeradmin',
   standalone: true,
-  imports: [CommonModule,RouterLink, DatePipe,FormsModule,HttpClientModule],
+  imports: [CommonModule,RouterLink,FormsModule,HttpClientModule],
   templateUrl: './editcustomeradmin.component.html',
   styleUrl: './editcustomeradmin.component.scss'
 })
@@ -31,7 +31,7 @@ export class EditcustomeradminComponent {
   });
 }
 
-onUpdateCategory(): void {
+onUpdateCustomer(): void {
  //debugger
   this.route.paramMap.subscribe(params => {
     const Id = params.get('id');

@@ -5,10 +5,11 @@ import { User } from './editcustomer.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EditCustomerService } from './editcustomer.service';
 import { FormsModule } from '@angular/forms';
+import { PostComponent } from '../../Function/post/post.component';
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [RouterLink, CommonModule,FormsModule, HttpClientModule],
+  imports: [RouterLink, CommonModule,FormsModule, HttpClientModule,PostComponent],
   templateUrl: './editcustomer.component.html',
   styleUrl: './editcustomer.component.scss',
 })

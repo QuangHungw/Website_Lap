@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DeleteproductService } from './deleteproduct.service';
 import { Product } from './deleteproduct.module';
@@ -12,7 +12,7 @@ import { Product } from './deleteproduct.module';
   templateUrl: './deleteproduct.component.html',
   styleUrl: './deleteproduct.component.scss'
 })
-export class DeleteproductComponent {
+export class DeleteproductComponent implements OnInit{
   products?: Product[] = [];
   constructor(private productService: DeleteproductService, private router: Router,private route: ActivatedRoute) {}
   ngOnInit(): void {

@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CustomeradminService } from './customeradmin.service';
 import { User,Role } from './customeradmin.module';
-import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-customeradmin',
   standalone: true,
-  imports: [RouterLink, CommonModule, DatePipe],
+  imports: [RouterLink, CommonModule],
   templateUrl: './customeradmin.component.html',
   styleUrl: './customeradmin.component.scss',
 })

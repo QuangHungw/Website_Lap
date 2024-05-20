@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { OrderDetail,Product,Category } from './cart.module';
+import { OrderDetail,Product } from './cart.module';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private apiUrl = 'http://localhost:3000/product';
-  private apiUrl1 = 'http://localhost:3000/orderdetail/cart';
-  private apiUrl2 = 'http://localhost:3000/category';
+  private apiUrl1 = 'http://localhost:3000/product';
+  private apiUrl2 = 'http://localhost:3000/orderdetail/cart';
   private apiUrl3 = 'http://localhost:3000/orderdetail/update';
   private apiUrl4 = 'http://localhost:3000/orderdetail/delete';
   constructor(private http: HttpClient) { }
   getOrderDetail(token?: string | null): Observable<OrderDetail> {
-    return this.http.get<OrderDetail>(this.apiUrl1, { headers: { Authorization: `Bearer ${token}` } });
+    return this.http.get<OrderDetail>(this.apiUrl2, { headers: { Authorization: `Bearer ${token}` } });
   }
   getProductById(Id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/${Id}`);
+    return this.http.get<Product>(`${this.apiUrl1}/${Id}`);
   }
-  getCategory(): Observable<Category> {
-    return this.http.get<Category>(this.apiUrl2);
-  }
+
   updateOrderDetail(token: string | null | undefined, id: number, quantity: number): Observable<OrderDetail> {
     const headers = ({
       Authorization: `Bearer ${token}`,

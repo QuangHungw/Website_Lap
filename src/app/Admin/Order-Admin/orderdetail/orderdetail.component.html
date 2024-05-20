@@ -1,0 +1,149 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a [routerLink]="['/admin']">Trang chủ</a><i class="fa fa-angle-right"></i
+      ><a [routerLink]="['/orderadmin']">Đơn hàng</a>
+      <i class="fa fa-angle-right"></i>Quản lý đơn hàng
+   
+  </li>
+</ol>
+
+<div class="grids">
+  <div class="agile-calendar-grid">
+    <div class="page">
+      <div class="w3l-calendar-left">
+        <div class="calendar-heading">
+          <div class="agile-tables">
+            <div class="w3l-table-info">
+              <button   [routerLink]="['/orderadmin']"  style="float: right;">Quay lại</button>
+              <h2>Quản lý đơn hàng</h2>
+              <br />
+              <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                  <div class="box-body form-horizontal"><form action="" *ngFor="let order of orders" >
+                    <ng-container *ngFor="let user of users">
+                    <br />
+                    <div class="form-group" >
+                        <label id="for123" class="control-label col-sm-2">Mã đơn hàng :</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{order.id}}</p>
+                        </div>
+                        <label class="control-label col-sm-2">Ngày lập đơn hàng :</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{order.create_at | date : "dd/MM/yyyy"}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                      <label id="for123" class="control-label col-sm-2">Tên khách hàng :</label>
+                      <div class="col-sm-4">
+                          <p class="form-control-static">{{user.name}}</p>
+                      </div>
+                      <label class="control-label col-sm-2">Ngày nhận đơn hàng :</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{order.order_time | date : "dd/MM/yyyy"}}</p>
+                        </div>
+                    </div>  
+                     <div class="form-group" >
+                      <label id="for123" class="control-label col-sm-2">Địa chỉ :</label>
+                      <div class="col-sm-4">
+                          <p class="form-control-static">{{user.address}}</p>
+                      </div>
+                    </div>
+                    <div class="form-group" >
+                      <label id="for123" class="control-label col-sm-2">Email :</label>
+                      <div class="col-sm-4">
+                          <p class="form-control-static">{{user.email}}</p>
+                      </div>
+                    </div>
+                    <div class="form-group" >
+                      <label id="for123" class="control-label col-sm-2">Tỉnh/Thành :</label>
+                      <div class="col-sm-4">
+                          <p class="form-control-static">{{user.province}}</p>
+                      </div>
+                    </div>
+            
+
+                    <div class="form-group">
+                        <label id="for123" class="control-label col-sm-2">Trạng thái đơn hàng:</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{order.status}}</p>
+                        </div>
+                        <label class="control-label col-sm-2">Thời điểm hoàn tất:</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{order.modified_at | date : "dd/MM/yyyy"}}</p>
+                        </div>
+                    </div>
+
+                  </ng-container>
+                    <br />
+                  <h4>Danh sách mặt hàng thuộc đơn hàng</h4>
+
+                  <div id="ab123">  <table id="table">
+                    <thead>
+                      <tr>
+                        <!-- <th>Mã đơn hàng</th> -->
+                        <th>Tên khách hàng</th>
+                        <th>Ngày lập đơn hàng</th>
+                        <th>Ngày nhận đơn hàng</th>
+                        <th>Mã thanh toán</th>
+                        <th>Tổng cộng</th>
+                        <th>Trạng thái</th>
+                        <th>Chi tiết</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="info" >
+                        <!-- <td>{{order.id} HH:mm:ss}</td> -->
+                        <td> order.name </td>
+                        <td> order.create_at | date : "dd/MM/yyyy " </td>
+                        <td> order.order_time | date : "dd/MM/yyyy" </td>
+                        <td> order.payment_id </td>
+                        <td> formatPrice(order.total) đ</td>
+                        <td> order.status </td>
+                        <td style="text-align: center">
+                          <a class="agile-icon"
+                            ><i
+                              [routerLink]="['/order', ]"
+                              class="fa-solid fa-list"
+                            ></i
+                          ></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table></div>
+<br>
+                    <button
+                      [routerLink]="['/orderadmin']"
+                      class="btn btn-default"
+                    >
+                      Duyệt đơn hàng
+                    </button>
+                    &#160;
+                    <button
+                      [routerLink]="['/orderadmin']"
+                      class="btn btn-danger"
+                    >
+                       Hủy đơn hàng
+                    </button>
+                  </form>
+                </div>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+              </div>
+           
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 wthree-crd">
+    <div class="card">
+      <div class="card-body"></div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="inner-block"></div>
+</div>

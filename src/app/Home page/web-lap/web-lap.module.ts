@@ -1,14 +1,3 @@
-// import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-
-
-
-// @NgModule({
-//   declarations: [],
-//   imports: [
-//     CommonModule
-//   ]
-// })
 
 export interface Product {
   id: number;
@@ -27,5 +16,6 @@ export interface OrderDetail {
   product_id : number;
   order_id   :number
 }
+
 
 export class WebLapModule { }

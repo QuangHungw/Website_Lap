@@ -1,37 +1,6 @@
 <div id="wrapper" class="container">
   <section class="homepage-slider" id="home-slider">
-    <div class="flexslider">
-      <ul class="slides">
-        <li>
-          <img
-            src="assets/themes/images/carousel/slider_1.jpg"
-            alt="anh bia 1"
-          />
-          <div class="intro">
-            <!--<h1>Laptop mua online</h1>
-							<p><span>Giảm thêm đến 1.000.000đ</span></p>
-							<p><span>Áp dụng kèm theo khuyến mãi trả thẳng khác</span></p> -->
-          </div>
-          <!-- </li>
-					<li>
-						<img src="assets/themes/images/carousel/slider_4.png" alt="anh bia 2" />
-						
-					</li>
-					<li>
-						<img src="assets/themes/images/carousel/slider_5.png" alt="anh bia 3" />
-						
-					</li>
-					<li>
-						<img src="assets/themes/images/carousel/slider_6.png" alt="anh bia 4" />
-						
-					</li>
-					<li>
-						<img src="assets/themes/images/carousel/slider_7.png" alt="anh bia 5" />
-						
-					</li> -->
-        </li>
-      </ul>
-    </div>
+    <app-post></app-post>
   </section>
 
   <section class="header_text">
@@ -62,7 +31,9 @@
                       <span class="sale_tag"></span>
                       <p>
                         <a [routerLink]="['/product_detail', product.id]"
-                          ><img src="assets/themes/images/cloth/{{ product.photo }}" alt=""
+                          ><img
+                            src="assets/themes/images/cloth/{{ product.photo }}"
+                            alt=""
                         /></a>
                       </p>
                       <a
@@ -113,7 +84,10 @@
                         <span class="sale_tag"></span>
                         <p>
                           <a [routerLink]="['/product_detail', product.id]"
-                            ><img src="assets/themes/images/cloth/{{ product.photo }}"
+                            ><img
+                              src="assets/themes/images/cloth/{{
+                                product.photo
+                              }}"
                           /></a>
                         </p>
                         <a
@@ -169,7 +143,11 @@
                         <span class="sale_tag"></span>
                         <p>
                           <a [routerLink]="['/product_detail', product.id]"
-                            ><img src="assets/themes/images/cloth/{{ product.photo }}" alt=""
+                            ><img
+                              src="assets/themes/images/cloth/{{
+                                product.photo
+                              }}"
+                              alt=""
                           /></a>
                         </p>
                         <a
@@ -221,7 +199,10 @@
                         <span class="sale_tag"></span>
                         <p>
                           <a [routerLink]="['/product_detail', product.id]"
-                            ><img src="assets/themes/images/cloth/{{ product.photo }}"
+                            ><img
+                              src="assets/themes/images/cloth/{{
+                                product.photo
+                              }}"
                           /></a>
                         </p>
                         <a

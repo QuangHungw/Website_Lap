@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { PostComponent } from '../../Function/post/post.component';
 
 
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, HttpClientModule,CommonModule],
+  imports: [FormsModule, HttpClientModule,CommonModule,PostComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -48,6 +49,7 @@ export class SignupComponent {
 export class Signup {
   email: string;
   password:string ;
+  confirmPassword: string;
   name:string;
   address:string;
   phone:string;
@@ -58,6 +60,7 @@ export class Signup {
     this.name =  "";
     this.email= "";
     this.password= "";
+    this.confirmPassword= "";
     this.address="";
     this.phone="";
     this.province="";

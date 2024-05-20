@@ -1,0 +1,118 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a [routerLink]="['/admin']">Trang chủ</a><i class="fa fa-angle-right"></i
+    ><a [routerLink]="['/postadmin']">Quảng cáo</a>
+    <i class="fa fa-angle-right"></i>Cập nhật quảng cáo
+  </li>
+</ol>
+
+<!-- grids -->
+<div class="grids">
+  <div class="agile-calendar-grid">
+    <div class="page">
+      <div class="w3l-calendar-left">
+        <div class="calendar-heading">
+          <div class="agile-tables">
+            <div class="w3l-table-info">
+              <h2>Cập nhật quảng cáo</h2>
+              <br />
+              <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                  <form action="" *ngFor="let post of posts">
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" id="ma" />
+                    </div>
+                    <div class="form-group">
+                      <label for="title">Tiêu đề:</label>
+                      <input
+                        type="text"
+                        [(ngModel)]="editObj.title"
+                        class="form-control"
+                        name="title"
+                        value="{{ post.title }}"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="content">Nội dung:</label>
+                      <textarea
+                      class="form-control"
+                      [(ngModel)]="editObj.content"
+                        rows="1"
+                        name="content"
+                        value="{{ post.content }}"
+                        required
+                      ></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="content">Được phát hành:</label>
+                      <select
+                        class="form-control"
+                        style="width: 226px"
+                        name="role"
+                        [(ngModel)]="editObj.published"
+                      >
+                        <option [ngValue]="true">True</option>
+                        <option [ngValue]="false">False</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="photo">Ảnh minh họa:</label>
+                      <input
+                        type="file"
+                        name="photo"
+                        accept="image/*"
+                        (change)="onFileSelected($event)"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input id="PhotoInput" type="hidden" name="Photo"/>
+                      <img class="img-bordered" [src]="editObj.image ? 'assets/themes/images/carousel/' + editObj.image : 'assets/themes/images/carousel/{{ post.image }}'" >
+                    </div>
+                    <div
+                      *ngIf="errorMessage"
+                      class="error-message"
+                      style="color: red"
+                    >
+                      {{ errorMessage }}
+                    </div>
+                    <br />
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="onUpdatePost()"
+                    >
+                    <i class="fa fa-floppy-o"></i> Lưu dữ liệu
+                    </button>
+                    &#160;
+                    <a [routerLink]="['/postadmin']" class="btn btn-default">
+                      Quay lại
+                    </a>
+                  </form>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!-- //grids -->
+<!--photoday-section-->
+
+<div class="col-sm-4 wthree-crd">
+  <div class="card">
+    <div class="card-body"></div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="inner-block"></div>

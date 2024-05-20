@@ -1,0 +1,82 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/admin']">Trang chủ</a><i class="fa fa-angle-right"></i
+      ><a [routerLink]="['/postadmin']">Quảng cáo</a>
+      <i class="fa fa-angle-right"></i>Xóa quảng cáo
+    </li>
+  </ol>
+  
+  <!-- grids -->
+  <div class="grids">
+    <div class="agile-calendar-grid">
+      <div class="page">
+        <div class="w3l-calendar-left">
+          <div class="calendar-heading">
+            <div class="agile-tables">
+              <div class="w3l-table-info">
+                <h2>Xóa quảng cáo</h2>
+                <br />
+                <div class="row">
+                  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <form action="" *ngFor="let post of posts">
+                      <div class="form-group">
+                        <input type="hidden" class="form-control" id="ma" />
+                      </div>
+                      <div class="form-group">
+                        <label for="title">Tiêu đề:</label>
+                      <span>{{ post.title}}</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="content">Nội dung:</label>
+                        <span>{{ post.content}}</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="published">Được phát hành:</label>
+                        <span>{{ post.published}}</span>
+                      </div>
+                      <div class="form-group">
+                        
+                        <label for="photo">Ảnh minh họa:</label>
+                        <img class="img-bordered" src="assets/themes/images/carousel/{{ post.image }} " >
+                      </div>
+                     
+                  
+                     
+                      <button
+                        type="submit"
+                        class="btn btn-danger"
+                        (click)="ondeletePost($event)"
+                      >
+                      <i class="fa fa-trash"></i> Xác nhận xóa
+                      </button>
+                      &#160;
+                      <a [routerLink]="['/postadmin']" class="btn btn-default">
+                        Quay lại
+                      </a>
+                    </form>
+                  </div>
+                  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!-- //grids -->
+  <!--photoday-section-->
+  
+  <div class="col-sm-4 wthree-crd">
+    <div class="card">
+      <div class="card-body"></div>
+    </div>
+  </div>
+  
+  <div class="clearfix"></div>
+  
+  <div class="inner-block"></div>
+  
