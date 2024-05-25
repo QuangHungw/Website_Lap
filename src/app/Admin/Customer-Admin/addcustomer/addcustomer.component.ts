@@ -21,23 +21,23 @@ onAddadmin() {
 
   // Assuming this.signupObj contains the registration data
   this.http.post<any>('http://localhost:3000/auth/admin-register', this.addadminObj).subscribe(
-      (res) => {
-          if (res) {
-              console.log(res);
-              // Optionally, you can redirect the user to the login page after successful signup
-              //window.location.href = "/customeradmin"
-              this.router.navigateByUrl('/customeradmin');
-              alert("Add admin successful");
-          } else {
-              alert("Add admin failed");
-          }
-      },
-      (error) => {
-        this.errorMessage=(error.error.message);
-          //console.error('Error:', error.error.message);
-         
-          
-      }
+      {next: (res) => {
+        if (res) {
+            console.log(res);
+            // Optionally, you can redirect the user to the login page after successful signup
+            //window.location.href = "/customeradmin"
+            this.router.navigateByUrl('/customeradmin');
+            alert("Add admin successful");
+        } else {
+            alert("Add admin failed");
+        }
+    },
+    error:(error) => {
+      this.errorMessage=(error.error.message);
+        //console.error('Error:', error.error.message);
+       
+        
+    }}
   );
 }
 }

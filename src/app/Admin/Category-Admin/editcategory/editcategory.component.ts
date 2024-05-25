@@ -27,6 +27,8 @@ export class EditcategoryComponent implements OnInit {
           this.categories?.push(data);
           this.editObj.category_name = data.category_name;
           this.editObj.description = data.description;
+          this.editObj.type= data.type;
+          
        // console.log(this.categories)
         });
       }
@@ -41,17 +43,18 @@ export class EditcategoryComponent implements OnInit {
         const updatedCategory: Category = { // Tạo một đối tượng Category từ Edit
           id: parseInt(categoryId), // Chuyển đổi categoryId thành số nguyên nếu cần
           category_name: this.editObj.category_name,
-          description: this.editObj.description
+          description: this.editObj.description,
+          type: this.editObj.type
         };
         this.categoryService.updateCategory(categoryId, updatedCategory).subscribe(
-          () => {
-            alert('Category updated successfully');
-            this.router.navigateByUrl('/categoryadmin');
-          },
-          (error) => {
-            this.errorMessage=(error.error.message);
-            //console.error('Error:', error.error.message);
-          }
+       {next:   () => {
+        alert('Category updated successfully');
+        this.router.navigateByUrl('/categoryadmin');
+      },
+      error: (error) => {
+        this.errorMessage=(error.error.message);
+        //console.error('Error:', error.error.message);
+      }}
         );
       }
     });
@@ -61,10 +64,12 @@ export class Edit {
 
   category_name:string ;
   description:string;
+  type:string;
  
   constructor() {
     this.category_name= "";
     this.description="";
+    this.type="";
 
   }
 }

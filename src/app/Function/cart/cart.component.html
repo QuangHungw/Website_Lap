@@ -55,7 +55,7 @@
               </ng-container>
             </ng-container>
             <tr>
-              <td>&nbsp;</td>
+              <td></td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
@@ -73,8 +73,8 @@
         <p class="buttons center">
           <button (click)="onEditClick()" class="btn" type="button">Cập Nhật</button>
           &nbsp;
-          <button (click)="onCheckoutClick()" class="btn btn-primary" type="submit" id="checkout">
-          Tiếp tục
+          <button class="btn btn-inverse" type="submit" id="checkout" (click)="onPayment()">
+            Thanh Toán
           </button>
         </p>
       </div>

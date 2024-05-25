@@ -3,7 +3,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './Sign in and log in/login/login.component';
 import { WebLapComponent } from './Home page/web-lap/web-lap.component';
 import { CartComponent } from './Function/cart/cart.component';
-import { CheckoutComponent } from './Function/checkout/checkout.component';
 import { CustomerComponent } from './Customers/customer/customer.component';
 import { ProductDetailComponent } from './Product/product-detail/product-detail.component';
 import { EditCustomerComponent } from './Customers/Editcutomer/editcustomer.component';
@@ -36,6 +35,11 @@ import { EditpostComponent } from './Admin/Post-Admin/editpost/editpost.componen
 import { DeletepostComponent } from './Admin/Post-Admin/deletepost/deletepost.component';
 import { PaymentComponent } from './Admin/Payment-Admin/payment/payment.component';
 import { OrderdetailComponent } from './Admin/Order-Admin/orderdetail/orderdetail.component';
+import { OrderComponent } from './Function/order/order.component';
+import { OrderconfirmdetailComponent } from './Admin/Order-Admin/orderconfirmdetail/orderconfirmdetail.component';
+import { OrderconfirmComponent } from './Function/orderconfirm/orderconfirm.component';
+import { DetailComponent } from './Function/detail/detail.component';
+import { DetailconfirmComponent } from './Function/detailconfirm/detailconfirm.component';
 
 
 
@@ -97,8 +101,20 @@ export const routes: Routes = [
     },
 
     {
-        path: 'checkout',
-        component: CheckoutComponent
+        path: 'order',
+        component: OrderComponent
+    },
+    {
+        path: 'order/:id',
+        component: DetailComponent
+    },
+    {
+        path: 'orderconfirm',
+        component: OrderconfirmComponent
+    },
+    {
+        path: 'orderconfirm/:id',
+        component: DetailconfirmComponent
     },
  
     
@@ -138,7 +154,10 @@ component: OrderadminComponent
         },  {
             path: 'orderdetail/:id',
             component: OrderdetailComponent
-        },
+        },          {
+                        path: 'orderconfirmdetail/:id',
+                        component: OrderconfirmdetailComponent
+                    },
 {
     path: 'productadmin',
     component: ProductadminComponent

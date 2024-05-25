@@ -49,14 +49,14 @@ export class EditpostComponent implements OnInit {
          
         };
         this.postService.updatePost(postId, updatedPost).subscribe(
-          () => {
+          {next : () => {
             alert('Product updated successfully');
             this.router.navigateByUrl('/postadmin');
           },
-          (error) => {
+          error:  (error) => {
             this.errorMessage=(error.error.message);
             //console.error('Error:', error.error.message);
-          }
+          }}
         );
       }
     });

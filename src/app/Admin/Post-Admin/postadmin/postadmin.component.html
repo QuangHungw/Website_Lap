@@ -44,7 +44,7 @@
                     <th style="width: 100px">Ảnh</th>
                     <th>Tiêu đề</th>
                     <th style="text-align: center">Nội dung</th>
-                    <th>Được phát hành</th>
+                    <th >Được phát hành</th>
                     <th>Chỉnh sửa</th>
                   </tr>
                 </thead>
@@ -60,7 +60,9 @@
                     </td>
                     <td>{{ post.title }}</td>
                     <td>{{ post.content }}</td>
-                    <td>{{ post.published }}</td>
+                    <td >
+                      <input type="checkbox" [checked]="post.published" disabled />
+                    </td>
                     <td>
                       <span>
                         <a

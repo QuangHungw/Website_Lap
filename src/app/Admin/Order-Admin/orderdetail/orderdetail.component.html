@@ -2,7 +2,7 @@
   <li class="breadcrumb-item">
     <a [routerLink]="['/admin']">Trang chủ</a><i class="fa fa-angle-right"></i
       ><a [routerLink]="['/orderadmin']">Đơn hàng</a>
-      <i class="fa fa-angle-right"></i>Quản lý đơn hàng
+      <i class="fa fa-angle-right"></i>Thông tin đơn hàng
    
   </li>
 </ol>
@@ -14,8 +14,9 @@
         <div class="calendar-heading">
           <div class="agile-tables">
             <div class="w3l-table-info">
-              <button   [routerLink]="['/orderadmin']"  style="float: right;">Quay lại</button>
-              <h2>Quản lý đơn hàng</h2>
+             <a [routerLink]="['/orderadmin']"style="float: right;font-size:25px"><i class="fa-solid fa-arrow-left"></i></a>
+             
+              <h2>Thông tin đơn hàng</h2>
               <br />
               <div class="row">
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -76,55 +77,69 @@
 
                   </ng-container>
                     <br />
-                  <h4>Danh sách mặt hàng thuộc đơn hàng</h4>
+                  <h4>Danh sách mặt hàng thuộc đơn hàng đã xác nhận</h4>
 
                   <div id="ab123">  <table id="table">
                     <thead>
                       <tr>
                         <!-- <th>Mã đơn hàng</th> -->
-                        <th>Tên khách hàng</th>
-                        <th>Ngày lập đơn hàng</th>
-                        <th>Ngày nhận đơn hàng</th>
-                        <th>Mã thanh toán</th>
-                        <th>Tổng cộng</th>
-                        <th>Trạng thái</th>
-                        <th>Chi tiết</th>
+                        <th>Mặt hàng</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá tiền </th>
+                        <th>Tổng</th>
+                      
                       </tr>
                     </thead>
                     <tbody>
+                      <ng-container *ngFor="let orderdetail of orderdetails">
+                        <ng-container *ngFor="let product of products">
+                          <ng-container *ngIf="orderdetail.product_id === product.id">
                       <tr class="info" >
+                        <!-- <tr> -->
                         <!-- <td>{{order.id} HH:mm:ss}</td> -->
-                        <td> order.name </td>
-                        <td> order.create_at | date : "dd/MM/yyyy " </td>
-                        <td> order.order_time | date : "dd/MM/yyyy" </td>
-                        <td> order.payment_id </td>
-                        <td> formatPrice(order.total) đ</td>
-                        <td> order.status </td>
-                        <td style="text-align: center">
-                          <a class="agile-icon"
-                            ><i
-                              [routerLink]="['/order', ]"
-                              class="fa-solid fa-list"
-                            ></i
-                          ></a>
-                        </td>
-                      </tr>
+                        <td>  <a [routerLink]="['/product_detail']"
+                          ><img
+                            style="width: 50%"
+                            src="assets/themes/images/cloth/{{ product.photo }}"
+                        /></a> </td>
+                        <td> {{ product.product_name }}</td>
+                        <td>{{orderdetail.quantity}} </td>
+                        <td>{{ formatPrice(product.price) }}{{ product.unit }}</td>
+                        <td>{{ formatPrice(orderdetail.total) }}{{ product.unit }}</td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                   
+                    <td>
+                      <strong>{{ formatPrice(this.totalSum) }}{{ this.unit }}</strong>
+                    </td>
+                    
+                   
+                  </tr>
                     </tbody>
                   </table></div>
-<br>
+<br><ng-container>
                     <button
-                      [routerLink]="['/orderadmin']"
+                     (click)="onConfirm($event)"
                       class="btn btn-default"
                     >
                       Duyệt đơn hàng
                     </button>
                     &#160;
                     <button
-                      [routerLink]="['/orderadmin']"
+                     (click)="onCancel($event)"
                       class="btn btn-danger"
                     >
                        Hủy đơn hàng
                     </button>
+                    </ng-container>
                   </form>
                 </div>
                 </div>

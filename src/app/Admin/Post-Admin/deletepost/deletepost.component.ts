@@ -31,14 +31,14 @@ export class DeletepostComponent {
       const postId = params.get('id');
       if (postId) {
     this.postService.deletePost(postId).subscribe(
-      () => {
-        alert('Post deleted successfully');
-         this.router.navigateByUrl('/postadmin');
-     
-      },
-      (error) => {
-        console.error('Error deleting product:', error);
-      }
+    {next:   () => {
+      alert('Post deleted successfully');
+       this.router.navigateByUrl('/postadmin');
+   
+    },
+    error:  (error) => {
+      console.error('Error deleting product:', error);
+    }}
     );
   }
   });

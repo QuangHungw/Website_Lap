@@ -23,25 +23,29 @@ onPost() {
   const published = this.postObj.published;
      // Assuming this.signupObj contains the registration data
      this.http.post<any>('http://localhost:3000/post', this.postObj).subscribe(
-         (res) => {
-             if (res) {
-                 console.log(res);
-              
-                 // Optionally, you can redirect the user to the login page after successful signup
-                 this.router.navigateByUrl('/postadmin');
-                 alert("Add post successful");
-             } else {
-                 alert("Add post failed");
-             }
-         },
-         (error) => {
-           this.errorMessage=(error.error.message);
-         }
+        {next :  (res) => {
+          if (res) {
+              console.log(res);
+           
+              // Optionally, you can redirect the user to the login page after successful signup
+              this.router.navigateByUrl('/postadmin');
+              alert("Add post successful");
+          } else {
+              alert("Add post failed");
+          }
+      },
+      error: (error) => {
+        this.errorMessage=(error.error.message);
+      }}
      );
    }
 
    onFileSelected(event: any) {
-    const file: File = event.target.files[0];
+     const file: File = event.target.files[0];
+     this.http.post<any>('http://localhost:3000/post/local',null).subscribe(
+     )
+
+     
     if (file) {
       // Extract only the file name
       const fileName: string = file.name;

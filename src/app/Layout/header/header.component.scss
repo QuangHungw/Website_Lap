@@ -1,3 +1,8 @@
+#margin6 {
+  margin: 6px;
+}
+#bars{
+}
 a, button {
     cursor: pointer;
   }
@@ -21,7 +26,55 @@ a, button {
     text-align: left;
     
   }
-  
-  .profile-menu {
-    margin-top: 10px; /* Khoảng cách giữa tên user và profile menu */
+  .marigin {
+    margin: 12px;
   }
+
+
+  .cart-items {
+    /* Container cho các đơn hàng */
+    max-height: 303px; /* Set the max height for the scrollable area */
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    margin-bottom: 60px; /* Add margin to make space for the button */
+  }
+  .cart-details {
+    position: absolute;
+    top: 100%; /* Position the dropdown below the "Giỏ hàng" link */
+    right: 182px; /* Align the dropdown to the right */
+    width: 180px; /* Set the width of the dropdown */
+    background-color: white; /* Set background color */
+    border: 1px solid #ccc; /* Add a border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+    z-index: 1000; /* Ensure the dropdown is above other content */
+    padding: 16px; /* Add padding */
+    text-align: center;
+    height: 321px;
+  
+    
+  }
+  #button1 {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 180px;
+    height: 44px;
+}
+
+  #strong1 {
+    position: absolute;
+    bottom: 51px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    background-color: white;
+    // border: 1px solid aliceblue;
+    width: 210px;
+    height: 30px;
+    align-items: center;
+    display: grid;
+}
+button#button1 {
+  outline: none;
+}

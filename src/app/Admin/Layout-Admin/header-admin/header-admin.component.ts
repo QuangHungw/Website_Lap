@@ -39,25 +39,25 @@ export class HeaderAdminComponent implements OnInit {
          }
       if (localStorage.getItem('accessToken')) {
         this.userService.getUser(this.token).subscribe(
-        (data: User) => {
-         console.log(data)
-         this.users = this.users?.concat(data);
-         if(data.role_id == 1) 
-          { 
-            alert("Bạn không có quyền truy cập này")
-           window.location.href = "/customer"
-         }
+      {next:   (data: User) => {
+        console.log(data)
+        this.users = this.users?.concat(data);
+        if(data.role_id == 1) 
+         { 
+           alert("Bạn không có quyền truy cập này")
+          window.location.href = "/customer"
+        }
 
-          },
-          (error) => {
-            if (error.status === 401 ) { // Xử lý lỗi token hết hạn
-              console.log('Token expired or invalid');
-              localStorage.removeItem('accessToken');
-              window.location.href = '/login'; // Xóa token hết hạn từ localStorage
-              // Redirect user to login page or display error message
-            }
-            
-          }
+         },
+         error:  (error) => {
+           if (error.status === 401 ) { // Xử lý lỗi token hết hạn
+             console.log('Token expired or invalid');
+             localStorage.removeItem('accessToken');
+             window.location.href = '/login'; // Xóa token hết hạn từ localStorage
+             // Redirect user to login page or display error message
+           }
+           
+         }}
       );
       }
     }

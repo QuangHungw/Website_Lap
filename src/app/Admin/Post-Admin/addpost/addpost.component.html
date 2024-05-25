@@ -40,11 +40,15 @@
                             </div>
                             <div class="form-group">
                               <label for="content">Được phát hành:</label>
-                              <select class="form-control" style="width: 226px;" name="role" [(ngModel)]="postObj.published">
-                                  <option [ngValue]="true">True</option>
-                                  <option [ngValue]="false">False</option>
-                              </select>
-                          </div>
+                              <input
+                                type="checkbox"
+                                class="form-check-input"
+                               style="width: 5%;    margin: -2px;"
+                                [(ngModel)]=" postObj.published"
+                                name="publishedCheckbox"
+                              />
+                             
+                            </div>
                          
                           
                             <!-- <div class="form-group">

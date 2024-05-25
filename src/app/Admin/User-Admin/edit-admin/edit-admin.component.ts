@@ -44,19 +44,19 @@ export class EditAdminComponent implements OnInit{
   onEdit() {
       // Gửi yêu cầu PUT lên server
       this.http.put<any>('http://localhost:3000/users/me', this.editObj, { headers: { Authorization: `Bearer ${this.token}` } }).subscribe(
-        (res) => {
-          if (res) {
-            console.log(res);
-          // window.location.href = "/customer";
-           this.router.navigateByUrl('/useradmin');
-            alert("Edit successful");
-          } else {
-            alert("Edit failed");
-          }
-        },
-        (error) => {
-          this.errorMessage=(error.error.message);
-        }
+  {next :       (res) => {
+    if (res) {
+      console.log(res);
+    // window.location.href = "/customer";
+     this.router.navigateByUrl('/useradmin');
+      alert("Edit successful");
+    } else {
+      alert("Edit failed");
+    }
+  },
+  error:  (error) => {
+    this.errorMessage=(error.error.message);
+  }}
       );
     }
   }

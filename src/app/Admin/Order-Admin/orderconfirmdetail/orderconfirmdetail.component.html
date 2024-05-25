@@ -1,0 +1,151 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/admin']">Trang chủ</a><i class="fa fa-angle-right"></i
+        ><a [routerLink]="['/confirmorder']">Đơn hàng xác nhận</a>
+        <i class="fa fa-angle-right"></i>Thông tin đơn hàng xác nhận
+     
+    </li>
+  </ol>
+  
+  <div class="grids">
+    <div class="agile-calendar-grid">
+      <div class="page">
+        <div class="w3l-calendar-left">
+          <div class="calendar-heading">
+            <div class="agile-tables">
+              <div class="w3l-table-info">
+               <a [routerLink]="['/confirmorder']"style="float: right;font-size:25px"><i class="fa-solid fa-arrow-left"></i></a>
+               
+                <h2>Thông tin đơn hàng xác nhận</h2>
+                <br />
+                <div class="row">
+                  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <div class="box-body form-horizontal"><form action="" *ngFor="let order of orders" >
+                      <ng-container *ngFor="let user of users">
+                      <br />
+                      <div class="form-group" >
+                          <label id="for123" class="control-label col-sm-2">Mã đơn hàng :</label>
+                          <div class="col-sm-4">
+                              <p class="form-control-static">{{order.id}}</p>
+                          </div>
+                          <label class="control-label col-sm-2">Ngày lập đơn hàng :</label>
+                          <div class="col-sm-4">
+                              <p class="form-control-static">{{order.create_at | date : "dd/MM/yyyy"}}</p>
+                          </div>
+                      </div>
+                      <div class="form-group" >
+                        <label id="for123" class="control-label col-sm-2">Tên khách hàng :</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{user.name}}</p>
+                        </div>
+                        <label class="control-label col-sm-2">Ngày nhận đơn hàng :</label>
+                          <div class="col-sm-4">
+                              <p class="form-control-static">{{order.order_time | date : "dd/MM/yyyy"}}</p>
+                          </div>
+                      </div>  
+                       <div class="form-group" >
+                        <label id="for123" class="control-label col-sm-2">Địa chỉ :</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{user.address}}</p>
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label id="for123" class="control-label col-sm-2">Email :</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{user.email}}</p>
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label id="for123" class="control-label col-sm-2">Tỉnh/Thành :</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{user.province}}</p>
+                        </div>
+                      </div>
+              
+  
+                      <div class="form-group">
+                          <label id="for123" class="control-label col-sm-2">Trạng thái đơn hàng:</label>
+                          <div class="col-sm-4">
+                              <p class="form-control-static">{{order.status}}</p>
+                          </div>
+                          <label class="control-label col-sm-2">Thời điểm hoàn tất:</label>
+                          <div class="col-sm-4">
+                              <p class="form-control-static">{{order.modified_at | date : "dd/MM/yyyy" }}</p>
+                          </div>
+                      </div>
+  
+                    </ng-container>
+                      <br />
+                    <h4>Danh sách mặt hàng thuộc đơn hàng</h4>
+  
+                    <div id="ab123">  <table id="table">
+                      <thead>
+                        <tr>
+                          <!-- <th>Mã đơn hàng</th> -->
+                          <th>Mặt hàng</th>
+                          <th>Tên sản phẩm</th>
+                          <th>Số lượng</th>
+                          <th>Giá tiền </th>
+                          <th>Tổng</th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let orderdetail of orderdetails">
+                          <ng-container *ngFor="let product of products">
+                            <ng-container *ngIf="orderdetail.product_id === product.id">
+                        <tr class="info" >
+                          <!-- <tr> -->
+                          <!-- <td>{{order.id} HH:mm:ss}</td> -->
+                          <td>  <a [routerLink]="['/product_detail']"
+                            ><img
+                              style="width: 50%"
+                              src="assets/themes/images/cloth/{{ product.photo }}"
+                          /></a> </td>
+                          <td> {{ product.product_name }}</td>
+                          <td>{{orderdetail.quantity}} </td>
+                          <td>{{ formatPrice(product.price) }}{{ product.unit }}</td>
+                          <td>{{ formatPrice(orderdetail.total) }}{{ product.unit }}</td>
+                          </tr>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                     
+                      <td>
+                        <strong>{{ formatPrice(this.totalSum) }}{{ this.unit }}</strong>
+                      </td>
+                      
+                     
+                    </tr>
+                      </tbody>
+                    </table></div>
+
+                    </form>
+                  </div>
+                  </div>
+                  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                </div>
+             
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 wthree-crd">
+      <div class="card">
+        <div class="card-body"></div>
+      </div>
+    </div>
+  
+    <div class="clearfix"></div>
+  
+    <div class="inner-block"></div>
+  </div>
+  

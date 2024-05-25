@@ -12,10 +12,15 @@ import { CommonModule } from '@angular/common';
 })
 export class PostComponent {
   posts: Post[] = [] ;
+  filteredPosts: Post[] = [];
   constructor(private postService: PostService){}
   ngOnInit(): void {
-    this.postService.getPosts().subscribe((data) => {
+    this.postService.getPosts().subscribe((data: Post[]) => {
+    
       this.posts = this.posts?.concat(data);
+      this.filteredPosts = this.posts.filter(post => post.published !== false);
+      
+     
     });
   }
 }

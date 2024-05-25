@@ -9,6 +9,7 @@ export interface Product {
   description: string;
   price: number;
   photo: string;
+  quantity:number;
   unit: string;
   category_id: number;
 }

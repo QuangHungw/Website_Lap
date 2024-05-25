@@ -31,14 +31,14 @@ export class DeleteproductComponent implements OnInit{
       const productId = params.get('id');
       if (productId) {
     this.productService.deleteProduct(productId).subscribe(
-      () => {
-        alert('Product deleted successfully');
-         this.router.navigateByUrl('/productadmin');
-     
-      },
-      (error) => {
-        console.error('Error deleting product:', error);
-      }
+   {next:    () => {
+    alert('Product deleted successfully');
+     this.router.navigateByUrl('/productadmin');
+ 
+  },
+  error : (error) => {
+    console.error('Error deleting product:', error);
+  }}
     );
   }
   });

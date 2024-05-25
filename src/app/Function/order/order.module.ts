@@ -1,10 +1,14 @@
-export interface OrderDetail {
+
+export interface Order {
   id: number;
-  price: number;
-  quantity: number;
-  product_id: number;
-  order_id: number;
+  payment_id: number;
+  order_time: Date;
+  create_at: Date;
+  modified_at: Date;
+  status: String;
   total: number;
+  user_id: string;
+  name: string;
 }
 export interface Product {
   id: number;
@@ -16,7 +20,5 @@ export interface Product {
   create_at: Date;
   category_id: number;
 }
-export interface Payment {
-  paymentMethod: string;
-}
-export class CheckoutModule {}
+
+export class OrderModule { }

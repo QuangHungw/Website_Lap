@@ -7,6 +7,7 @@ import { CartService } from './cart.service';
 import { FormsModule } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 import { PostComponent } from '../post/post.component';
+import { HeaderService } from '../../Layout/header/header.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,11 +22,12 @@ export class CartComponent implements OnInit {
   token?: string | null ;
   totalSum: number = 0;
   unit?: string | null;
+  paymentMethod?: string | null;
 
 
 
 
-  constructor(private router: Router,private cartService : CartService) {}
+  constructor(private router: Router,private userService: HeaderService,private cartService : CartService) {}
 ngOnInit(): void {
   if (typeof window !== 'undefined') {
   
@@ -33,20 +35,27 @@ ngOnInit(): void {
   if(this.token == null) { this.router.navigateByUrl("/login")}
   if (this.token) {
 this.cartService.getOrderDetail(this.token).subscribe(
-  (data : OrderDetail) => {
-    this.orders = this.orders.concat(data);
-
-    
-   // console.log(this.orders)
-   
-    this.fetchProductsForOrders();
+  (ordertail : OrderDetail[]) => {
+    this.orders = this.orders.concat(ordertail);
+    this.cartService.updateOrderDetails(ordertail);
+    console.log(ordertail)
+    // this.fetchProductsForOrders();
+    this.cartService.orderDetails$.subscribe(
+      (orderdetails: OrderDetail[]) => {
+         this.orders = orderdetails;
+        this.fetchProductsForOrders();
+        console.log(this.orders)
+        
+       },
+      
+    );
+    //console.log(data)
    },
-  (error) => {
-    console.log(error);
-  }
+  
 );
 }
   }
+  
 
 }
 fetchProductsForOrders(): void {
@@ -60,14 +69,13 @@ fetchProductsForOrders(): void {
         this.products?.push(product);
         this.totalSum += total
         this.unit = product.unit.toString();
+      // console.log(product);
        
         
        //console.log(product)
        // console.log(this.totalSum)
       },
-      (error) => {
-        console.error('Error fetching product for order:', error);
-      }
+     
     );
   });
 }
@@ -82,9 +90,7 @@ onEditClick() {
         // Re-fetch products and recalculate totals after updating orders
         this.fetchProductsForOrders();
       },
-      (error) => {
-        console.error('Error updating order details:', error);
-      }
+     
     );
   }
 }
@@ -97,20 +103,48 @@ deleteOrderDetail(orderId: number) {
          // Cập nhật lại danh sách sản phẩm và tính toán tổng số
          this.fetchProductsForOrders();
       },
-      (error) => {
-        console.error('Lỗi khi xóa chi tiết đơn hàng:', error);
-      }
+    
     );
   }
 }
+onPayment(){
+  //debugger
+  this.paymentMethod = "Thanh toán khi nhận hàng"
+ 
+  this.cartService.postPayment(this.token,this.paymentMethod).subscribe(
+    () => {
+     
+      
+      alert('Payment successfulley');
+      this.userService.getOrderDetail(this.token).subscribe({
+        next: (ordertail: OrderDetail[]) => {
+          this.orders = this.orders.concat(ordertail);
+          this.fetchProductsForOrders();
+           console.log(ordertail);
+          this.cartService.updateOrderDetails(ordertail);
+          this.cartService.orderDetails$.subscribe(
+            (orderdetails: OrderDetail[]) => {
+              this.orders = orderdetails;
+              this.fetchProductsForOrders();
+              console.log(orderdetails);
+            }
+          );
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+      this.router.navigateByUrl("/")
+    },
+   
+  ) ;  
 
+}
 formatPrice(price: number): string {
   return price.toLocaleString('vi-VN'); // Format with Vietnamese locale
 }
 
-onCheckoutClick() {
-  this.router.navigateByUrl("/checkout")
-}
+
 }
 
 

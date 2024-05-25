@@ -35,6 +35,7 @@ ngOnInit(): void {
         this.editObj.unit = data.unit;
         this.editObj.price = data.price;
         this.editObj.photo = data.photo;
+        this.editObj.quantity = data.quantity;
         this.editObj.category_id = data.category_id;   
       
       
@@ -53,6 +54,7 @@ onUpdateProduct(): void {
         description: this.editObj.description,
         unit: this.editObj.unit,
         price: this.editObj.price,
+        quantity: this.editObj.quantity,
         photo:this.editObj.photo,
         category_id:this.editObj.category_id
 
@@ -60,14 +62,14 @@ onUpdateProduct(): void {
     
       };
       this.productService.updateProduct(productId, updatedProduct).subscribe(
-        () => {
-          alert('Product updated successfully');
-          this.router.navigateByUrl('/productadmin');
-        },
-        (error) => {
-          this.errorMessage=(error.error.message);
-          //console.error('Error:', error.error.message);
-        }
+      {next:  () => {
+        alert('Product updated successfully');
+        this.router.navigateByUrl('/productadmin');
+      },
+      error : (error) => {
+        this.errorMessage=(error.error.message);
+        //console.error('Error:', error.error.message);
+      }}
       );
     }
   });
@@ -86,6 +88,7 @@ export class Edit {
   product_name: string;
   description: string;
   price: number;
+  quantity:number;
   photo: string;
   unit: string;
   category_id: number;
@@ -93,6 +96,7 @@ export class Edit {
     this.product_name="";
     this.description="";
     this.price=0;
+    this.quantity=0;
     this.photo="";
     this.unit="";
     this.category_id = 0;

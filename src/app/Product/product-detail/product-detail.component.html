@@ -1,27 +1,25 @@
 <div id="wrapper" class="container">
   <section class="header_text sub">
-    <img
-      class="pageBanner"
-      src="assets/themes/images/carousel/slider_2.jpg"
-      alt="New products"
-    />
+    <app-post></app-post>
     <h4><span>Chi tiết sản phẩm</span></h4>
   </section>
+  <app-notification></app-notification>
   <section class="main-content">
     <div class="row">
       <div class="span9">
         <div class="row">
-          <div class="span4" *ngIf = "products">
+          <div class="span4" *ngIf="products">
             <a
               href="assets/themes/images/cloth/{{ products.photo }}"
               class="thumbnail"
               data-fancybox-group="group1"
               title="Description 1"
-              ><img alt="" src="assets/themes/images/cloth/{{ products.photo }}"
+              ><img
+                alt=""
+                src="assets/themes/images/cloth/{{ products.photo }}"
             /></a>
-        
           </div>
-          <div class="span5" *ngIf = "products">
+          <div class="span5" *ngIf="products">
             <address *ngFor="let category of categories">
               <h4>
                 <strong>{{ products.product_name }}</strong>
@@ -30,9 +28,9 @@
 
               <strong>Thương hiệu: &#160;</strong>
               <span>{{ category.category_name }} </span> <br />
-              <strong>Tình trạng: &#160;</strong> <span> Hết hàng</span><br />
+              <strong>Tình trạng: &#160;</strong> <span> 2000</span><br />
               <strong>Lượt xem: &#160;</strong> <span> 21932</span><br />
-              <strong>Đã bán: &#160;</strong> <span> 2154</span><br />
+              <strong>Số lượng còn lại: &#160;</strong> <span> {{products.quantity}}</span><br />
             </address>
             <h4>
               <strong
@@ -41,42 +39,35 @@
               >
             </h4>
             <p>&nbsp;</p>
-            <input
-            type="number"
-            style="width: 16%;"
-            class="form-control"
-            name="gia"
-            [(ngModel)]="editObj.quantity"
-            required
-          />
-          </div>
-          <div class="span5"  *ngIf = "products">
-            <form class="form-inline">
+            <input  
+              type="number"
+              style="width: 7%"
+              class="form-control"
+              name="gia"
+              [(ngModel)]="editObj.quantity"
+              min="1"
+             [max]="products.quantity"
+              required
+            />
            
-             
+          </div>
+          <div class="span5" *ngIf="products">
+            <form class="form-inline">
+          
+              
               <button
-                height="2rem"
-                background-image="primary500"
-                class="btn btn-inverse"
-                (click)="oncheckoutClick(products.id,products.price)"
-                type="submit"
-              >
-                Mua Ngay
-              </button>
-              &#160;
-              <button 
                 height="2rem"
                 color="primary500"
                 class="btn btn-inve"
                 type="button"
-                (click)="onButton1Click(products.id,products.price)"
+                (click)="onButton1Click(products.id, products.price)"
               >
                 <div type="body" color="primary500">Thêm vào giỏ</div>
               </button>
             </form>
           </div>
         </div>
-        <div class="row" *ngIf = "products">
+        <div class="row" *ngIf="products">
           <div class="span9">
             <ul class="nav nav-tabs" id="myTab">
               <li class="active"><a href="#home">Miêu tả</a></li>
@@ -108,7 +99,12 @@
                       <div class="product-box">
                         <span class="sale_tag"></span>
                         <a [routerLink]="['/product_detail', product.id]"
-                          ><img alt="" src="assets/themes/images/cloth/{{ product.photo }}" /></a
+                          ><img
+                            alt=""
+                            style="height: 270px"
+                            src="assets/themes/images/cloth/{{
+                              product.photo
+                            }}" /></a
                         ><br />
                         <a
                           [routerLink]="['/product_detail', product.id]"
@@ -160,7 +156,12 @@
                       <div class="product-box">
                         <span class="sale_tag"></span>
                         <a [routerLink]="['/product_detail', product.id]"
-                          ><img alt="" src="assets/themes/images/cloth/{{ product.photo }}" /></a
+                          ><img
+                            alt=""
+                            style="height: 270px"
+                            src="assets/themes/images/cloth/{{
+                              product.photo
+                            }}" /></a
                         ><br />
                         <a
                           [routerLink]="['/product_detail', product.id]"
@@ -198,9 +199,11 @@
           <br />
           <ul class="nav nav-list below">
             <li class="nav-header">Hãng sản xuất</li>
-            <li  *ngFor="let category1 of categories1">
-              <a [routerLink]="['/products', category1.id]">{{category1.category_name}}</a></li>
-        
+            <li *ngFor="let category1 of categories1">
+              <a [routerLink]="['/products', category1.id]">{{
+                category1.category_name
+              }}</a>
+            </li>
           </ul>
         </div>
         <div class="block">
@@ -218,7 +221,10 @@
                     <div class="product-box">
                       <span class="sale_tag"></span>
                       <a [routerLink]="['/product_detail', product.id]"
-                        ><img src="assets/themes/images/cloth/{{ product.photo }}" alt=""
+                        ><img
+                        style="height: 270px"
+                          src="assets/themes/images/cloth/{{ product.photo }}"
+                          alt=""
                       /></a>
                       <br />
                       <a
@@ -251,7 +257,10 @@
                 [routerLink]="['/product_detail', product.id]"
                 title="Praesent tempor sem sodales"
               >
-                <img src="assets/themes/images/cloth/{{ product.photo }}" alt="" />
+                <img
+                  src="assets/themes/images/cloth/{{ product.photo }}"
+                  alt=""
+                />
               </a>
 
               <a [routerLink]="['/product_detail', product.id]">{{

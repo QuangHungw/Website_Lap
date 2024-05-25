@@ -10,7 +10,7 @@ export class ProductsService {
   private apiUrl1 = 'http://localhost:3000/orderdetail';
   private apiUrl2 = 'http://localhost:3000/category';
   private apiUrl3 = 'http://localhost:3000/product/search';
-
+  private apiUrl4 = 'http://localhost:3000/category/search/type';
   constructor(private http: HttpClient) {}
 
   getProduct(): Observable<Product> {
@@ -37,5 +37,8 @@ postOrderdetail(token: string | null | undefined,price: number,productId : numbe
   
   const headers = { Authorization: `Bearer ${token}` };
   return this.http.post<OrderDetail>(this.apiUrl1, {price:price,productId : productId,quantity:quantity}, { headers: headers  });
+}
+postType(type: string | null): Observable<Category[]> {
+  return this.http.post<Category[]>(this.apiUrl4,{ type : type});
 }
 }

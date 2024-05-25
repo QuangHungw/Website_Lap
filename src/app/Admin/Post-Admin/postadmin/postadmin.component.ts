@@ -12,6 +12,7 @@ import { Post } from './postadmin.module';
   styleUrl: './postadmin.component.scss'
 })
 export class PostadminComponent {
+ 
   posts: Post[] = [] ;
   constructor(private postadminService: PostadminService){}
   ngOnInit(): void {

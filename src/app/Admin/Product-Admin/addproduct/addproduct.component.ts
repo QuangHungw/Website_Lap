@@ -31,20 +31,20 @@ onProduct() {
  // debugger
     // Assuming this.signupObj contains the registration data
     this.http.post<any>('http://localhost:3000/product', this.productObj).subscribe(
-        (res) => {
-            if (res) {
-                console.log(res);
-             
-                // Optionally, you can redirect the user to the login page after successful signup
-                this.router.navigateByUrl('/productadmin');
-                alert("Add product successful");
-            } else {
-                alert("Add product failed");
-            }
-        },
-        (error) => {
-          this.errorMessage=(error.error.message);
-        }
+     {next :    (res) => {
+      if (res) {
+          console.log(res);
+       
+          // Optionally, you can redirect the user to the login page after successful signup
+          this.router.navigateByUrl('/productadmin');
+          alert("Add product successful");
+      } else {
+          alert("Add product failed");
+      }
+  },
+  error:   (error) => {
+    this.errorMessage=(error.error.message);
+  }}
     );
   }
   onFileSelected(event: any) {
@@ -62,12 +62,14 @@ export class Product {
   description: string;
   price: number;
   photo: string;
+  quantity:number;
   unit: string;
   category_id: string;
   constructor() {
     this.product_name="";
     this.description="";
     this.price=0;
+    this.quantity=0;
     this.photo="";
     this.unit="";
     this.category_id = "";

@@ -39,14 +39,14 @@ onUpdateCustomer(): void {
       const role_id = +this.editObj.role_id;  // Convert to number using the unary plus operator or parseInt()
       //  console.log(role_id)
       this.editcustomeradminService.updateUser(Id, role_id).subscribe(
-        () => {
-          alert('Account updated successfully');
-          this.router.navigateByUrl('/customeradmin');
-        },
-        (error) => {
-          this.errorMessage=(error.error.message);
-          //console.error('Error:', error.error.message);
-        }
+      {next:   () => {
+        alert('Account updated successfully');
+        this.router.navigateByUrl('/customeradmin');
+      },
+      error: (error) => {
+        this.errorMessage=(error.error.message);
+        //console.error('Error:', error.error.message);
+      }}
       );
     }
   });

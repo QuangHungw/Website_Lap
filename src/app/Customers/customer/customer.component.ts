@@ -26,10 +26,7 @@ export class CustomerComponent implements OnInit{
       this.userService.getUser(this.token).subscribe((data: User) => {
         //console.log(data);
         this.users = this.users?.concat(data);
-        // if(data.role_id == 0) 
-        //   { 
-        //     this.router.navigateByUrl('/admin');
-        //   }
+   
 
       });
     }

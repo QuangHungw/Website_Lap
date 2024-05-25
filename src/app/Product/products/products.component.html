@@ -8,6 +8,7 @@
     <br />Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới
     nhé!
   </section>
+  <app-notification></app-notification>
   <hr />
   <h4>
     <span *ngIf="routeSnapshot.paramMap.get('id')"
@@ -16,8 +17,20 @@
     <span *ngIf="routeSnapshot.paramMap.get('name')"
       >Product: {{ routeSnapshot.paramMap.get("name") }}</span
     >
+    <span *ngIf="(routeSnapshot.paramMap.get('price')) =='10000000'"
+      >Dưới 10 triệu</span
+    >
+    <span *ngIf="(routeSnapshot.paramMap.get('price')) =='20000000'"
+    >Từ 10 - 20 triệu</span
+    >
+    <span *ngIf="(routeSnapshot.paramMap.get('price')) =='20000001'"
+    >Từ 20 - 30 triệu</span
+     >
+    <span *ngIf="(routeSnapshot.paramMap.get('price')) =='30000001'"
+    >Trên 30 triệu</span
+   >
   </h4>
-
+  
   <section class="main-content">
     <div class="row">
       <div class="span9">
@@ -95,8 +108,32 @@
           <div>
             <br />
             <ul class="nav nav-list below">
-              <h3>Hãng Sản Xuất</h3>
-              <li *ngFor="let category1 of categories1">
+              <h3>Laptop</h3>
+              <li *ngFor="let category1 of filteredCategories">
+                <a [routerLink]="['/products', category1.id]">{{
+                  category1.category_name
+                }}</a>
+              </li>
+            </ul>
+            <ul class="nav nav-list below">
+              <h3>PC Máy tính bàn</h3>
+              <li *ngFor="let category1 of filteredCategories1">
+                <a [routerLink]="['/products', category1.id]">{{
+                  category1.category_name
+                }}</a>
+              </li>
+            </ul>
+            <ul class="nav nav-list below">
+              <h3>Bàn phím</h3>
+              <li *ngFor="let category1 of filteredCategories2">
+                <a [routerLink]="['/products', category1.id]">{{
+                  category1.category_name
+                }}</a>
+              </li>
+            </ul>
+            <ul class="nav nav-list below">
+              <h3>Chuột máy tính</h3>
+              <li *ngFor="let category1 of filteredCategories3">
                 <a [routerLink]="['/products', category1.id]">{{
                   category1.category_name
                 }}</a>

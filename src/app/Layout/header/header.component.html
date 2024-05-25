@@ -1,26 +1,9 @@
 <div id="top-bar" class="container">
   <div class="row">
-    <div class="span4">
+    <div class="span4" style="height: 35px">
       <form method="POST" class="search_form">
         <div class="input-group">
-          <input
-          [(ngModel)]="searchContent"
-            name="searchContent"
-            type="text"
-            class="search-query form-control input-group"
-            Placeholder="My laptop."
-          />
-          <span class="input-group-btn">
-            <button
-              class="btn btn-primary rounded-circle btnpro"
-              (click)="onSearchClick()"
-              type="button"
-              id="btn-search"
-              
-            >
-              <span class="fa fa-search"></span>
-            </button>
-          </span>
+          <a [routerLink]="['']" class="logo pull-left"><h4>ILAPTOP</h4></a>
         </div>
       </form>
     </div>
@@ -29,12 +12,10 @@
         <ul class="user-menu">
           <div *ngIf="!token; else elsetoken">
             <li>
-              <a [routerLink]="['/cart']">Giỏ hàng </a
-              >
+              <a [routerLink]="['/cart']">Giỏ hàng </a>
             </li>
             <li>
-              <a [routerLink]="['/checkout']">Thanh toán </a
-              >
+              <a [routerLink]="['/checkout']">Đơn hàng</a>
             </li>
             <li><a *ngIf="!token" [routerLink]="['/signup']">Đăng ký</a></li>
             <li><a [routerLink]="['/login']">Đăng nhập</a></li>
@@ -42,26 +23,89 @@
           <ng-template #elsetoken>
             <div *ngFor="let user of users">
               <div class="user-profile">
-                <li>
-                  <a [routerLink]="['/cart']">Giỏ hàng </a
-                  ><i class="fa-solid fa-cart-shopping"></i>
+                <li
+                  (mouseenter)="showCartDetails(true)"
+                  (mouseleave)="showCartDetails(false)"
+                >
+                  <a [routerLink]="['/cart']"
+                    >Giỏ hàng ({{ orderdetails.length }})
+                  </a>
+                  <!-- *ngIf="showCart" -->
+                  <div class="cart-details" *ngIf="showCart"  >
+                    <div class="cart-items">
+                    <ul  class="marigin">
+                      <li *ngFor="let product of products">
+                        <ng-container *ngFor="let orderdetail of orderdetails">
+                          <ng-container
+                            *ngIf="orderdetail.product_id === product.id"
+                          >
+                            <div>
+                              <a
+                                (click)="deleteOrderDetail(orderdetail.id)"
+                                style="float: right; font-size: 16px"
+                                ><i class="fa-solid fa-xmark"></i
+                              ></a>
+                              <img
+                                style="height: 60%"
+                                src="assets/themes/images/cloth/{{
+                                  product.photo
+                                }}"
+                                alt=""
+                              />
+
+                              <span
+                                >Số lượng:
+                                {{ formatPrice(orderdetail.quantity) }}</span
+                              >
+                              <br />
+                              <span
+                                >{{ formatPrice(orderdetail.price) }}
+                                {{ product.unit }}</span
+                              >
+
+                              <br />
+                            </div>
+                            <span>{{ product.product_name }}</span>
+                          </ng-container>
+                        </ng-container>
+                      </li>
+                     
+                    </ul>
+                  </div>
+                  <strong id="strong1"
+                  >Tổng: {{ formatPrice(totalSum)
+                  }}{{ this.unit }}</strong
+                >
+                  <button
+                  class="btn btn-primary"
+                    id="button1"
+                    routerLink="/cart"
+                  >
+                    Xem giỏ hàng
+                  </button>
+                  </div>
                 </li>
+                <!-- *ngIf="showCart"  -->
+
                 <li>
-                  <a [routerLink]="['/checkout']">Thanh toán </a
+                  <a [routerLink]="['/order']">Đơn hàng </a
                   ><i class="fa-regular fa-credit-card"></i>
                 </li>
-                <li style="border-right:none;"  (click)="toggleProfile()">
-                <a>{{ user.name }} </a><i class="fa fa-user"></i></li>
+                <li style="border-right: none" (click)="toggleProfile()">
+                  <a>{{ user.name }} </a><i class="fa fa-user"></i>
+                </li>
                 <!-- Hiển thị phần profile khi người dùng nhấp vào -->
                 <div *ngIf="showProfile" class="profile-container">
                   <ul class="profile-menu">
-                    <li style="display: block;border-right:none;">
-                      <a [routerLink]="['/customer']">Thông tin &#160; <i class="fa fa-user"></i> </a
-                      >
+                    <li style="display: block; border-right: none">
+                      <a [routerLink]="['/customer']"
+                        >Thông tin &#160; <i class="fa fa-user"></i>
+                      </a>
                     </li>
                     <li>
-                      <a (click)="logout()">Đăng xuất &#160; <i class="fa fa-sign-out"></i> </a
-                      >
+                      <a (click)="logout()"
+                        >Đăng xuất &#160; <i class="fa fa-sign-out"></i>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -74,12 +118,118 @@
   </div>
   <section class="navbar main-menu">
     <div class="navbar-inner main-menu">
-      <a [routerLink]="['']" class="logo pull-left"
-        ><h4 class="title">ILAPTOP</h4></a
+      <div
+        id="bars"
+        style="
+          float: left;
+          float: left;
+          height: 100%;
+          display: flex;
+          align-items: center;
+        "
       >
+        <nav id="menu" class="pull-right">
+          <ul>
+            <li>
+              <a [routerLink]="['/products']">
+                <i style="margin-right: 5px" class="fa-solid fa-bars"></i> Danh
+                mục
+              </a>
+              <ul class="dropdown">
+                <li>
+                  <a [routerLink]="['/products', 'gia-tien']">Laptop</a>
+                  <ul class="dropdown-submenu">
+                    <li *ngFor="let category of filteredCategories">
+                      <a [routerLink]="['/products', category.id]">{{
+                        category.category_name
+                      }}</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a [routerLink]="['/products', 'gia-tien']"
+                    >PC</a
+                  >
+                  <ul class="dropdown-submenu">
+                    <li *ngFor="let category of filteredCategories1">
+                      <a [routerLink]="['/products', category.id]">{{
+                        category.category_name
+                      }}</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a [routerLink]="['/products', 'gia-tien']">Bàn phím</a>
+                  <ul class="dropdown-submenu">
+                    <li *ngFor="let category of filteredCategories2">
+                      <a [routerLink]="['/products', category.id]">{{
+                        category.category_name
+                      }}</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a [routerLink]="['/products', 'gia-tien']">Chuột máy tính</a>
+                  <ul class="dropdown-submenu">
+                    <li *ngFor="let category of filteredCategories3">
+                      <a [routerLink]="['/products', category.id]">{{
+                        category.category_name
+                      }}</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a [routerLink]="['/products', 'may-tinh']">Giá Tiền</a>
+                  <ul class="dropdown-submenu">
+                    <li>
+                      <a [routerLink]="['/products/price/10000000']"
+                        >Dưới 10 triệu</a
+                      >
+                    </li>
+                    <li>
+                      <a [routerLink]="['/products/price/20000000']"
+                        >Từ 10 - 20 triệu</a
+                      >
+                    </li>
+                    <li>
+                      <a [routerLink]="['/products/price/20000001']"
+                        >Từ 20 - 30 triệu</a
+                      >
+                    </li>
+                    <li>
+                      <a [routerLink]="['/products/price/30000001']"
+                        >Trên 30 triệu</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <input
+        [(ngModel)]="searchContent"
+        name="searchContent"
+        type="text"
+        class="search-query form-control input-group"
+        Placeholder="My laptop."
+        id="margin6"
+      />
+      <span class="input-group-btn">
+        <button
+          class="btn btn-primary rounded-circle btnpro"
+          (click)="onSearchClick()"
+          type="button"
+          id="btn-search"
+        >
+          <span class="fa fa-search"></span>
+        </button>
+      </span>
+
       <nav id="menu" class="pull-right">
         <ul>
-          <li>
+          <!-- <li>
             <a [routerLink]="['/products']">Hãng sản xuất</a>
             <ul class="dropdown">
               <li *ngFor="let category of categories">
@@ -88,7 +238,7 @@
                 }}</a>
               </li>
             </ul>
-          </li>
+          </li> -->
 
           <!-- <li>
               <a [routerLink]="['/products']" >Loại sản phẩm</a>
@@ -101,8 +251,6 @@
             </li> -->
           <!-- <li><a [routerLink]="['/products']" >Man</a></li>						
 							<li><a [routerLink]="['/products']" >Hangbag</a></li> -->
-          <li><a [routerLink]="['/products']">Bán chạy nhất</a></li>
-          <li><a [routerLink]="['/products']">Sản phẩm mới</a></li>
         </ul>
       </nav>
     </div>
