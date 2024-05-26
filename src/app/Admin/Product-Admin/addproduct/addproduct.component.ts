@@ -18,6 +18,7 @@ export class AddproductComponent implements OnInit{
   productObj: Product;
   categories: Category[] = [];
   errorMessage: string = ''; 
+  imagePreviewUrl: string | ArrayBuffer | null = null;
   constructor(private addproductService: AddproductService,private http: HttpClient,private router: Router){
     this.productObj = new Product();
   }
@@ -53,6 +54,11 @@ onProduct() {
       // Extract only the file name
       const fileName: string = file.name;
       this.productObj.photo = fileName;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreviewUrl = reader.result; // Update the preview URL
+      };
+      reader.readAsDataURL(file);
     }
   }
 }

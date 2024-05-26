@@ -23,4 +23,7 @@ ngOnInit(): void {
   });
 }
 }
+formatPrice(price: number): string {
+  return price.toLocaleString('vi-VN'); // Format with Vietnamese locale
+}
 }

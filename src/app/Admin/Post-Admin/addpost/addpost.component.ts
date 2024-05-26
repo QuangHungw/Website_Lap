@@ -14,6 +14,8 @@ import { Router, RouterLink } from '@angular/router';
 export class AddpostComponent {
   postObj: Post;
   errorMessage: string = ''; 
+  imagePreviewUrl: string | ArrayBuffer | null = null;
+
   constructor(private http: HttpClient,private router: Router){
     this.postObj = new Post();
   }
@@ -42,14 +44,18 @@ onPost() {
 
    onFileSelected(event: any) {
      const file: File = event.target.files[0];
-     this.http.post<any>('http://localhost:3000/post/local',null).subscribe(
-     )
+    
 
      
     if (file) {
       // Extract only the file name
       const fileName: string = file.name;
       this.postObj.image = fileName;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreviewUrl = reader.result; // Update the preview URL
+      };
+      reader.readAsDataURL(file);
     }
   }
   }

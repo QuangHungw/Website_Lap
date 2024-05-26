@@ -228,6 +228,10 @@ component: OrderadminComponent
                                                             path: 'deletepost/:id',
                                                             component: DeletepostComponent
                                                         },   
+                                                        {
+                                                        path: 'postadmin/search/:title',
+                                                    component: PostadminComponent
+                                                            } ,
                                                         
  {
     path: 'payment',

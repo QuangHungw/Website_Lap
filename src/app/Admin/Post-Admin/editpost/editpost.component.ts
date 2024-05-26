@@ -17,6 +17,7 @@ export class EditpostComponent implements OnInit {
   posts?: Post[] = [];
   errorMessage: string = ''; 
   editObj: Edit;
+  imagePreviewUrl: string | ArrayBuffer | null = null;
   constructor(private postService: EditpostService, private router: Router,private route: ActivatedRoute) {this. editObj = new Edit();}
 
   ngOnInit(): void {
@@ -67,6 +68,11 @@ export class EditpostComponent implements OnInit {
       // Extract only the file name
       const fileName: string = file.name;
       this.editObj.image = fileName;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreviewUrl = reader.result; // Update the preview URL
+      };
+      reader.readAsDataURL(file);
     }
   }
 

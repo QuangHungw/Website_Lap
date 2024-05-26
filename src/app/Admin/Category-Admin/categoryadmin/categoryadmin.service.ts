@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CategoryadminService {
   private apiUrl = 'http://localhost:3000/category';
-  private apiUrl1 = 'http://localhost:3000/category/search';
+  private apiUrl1 = 'http://localhost:3000/category/search/name';
   constructor(private http: HttpClient) { }
   getCategory(): Observable<Category> {
     return this.http.get<Category>(this.apiUrl);

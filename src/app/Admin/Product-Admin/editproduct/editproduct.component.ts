@@ -17,6 +17,7 @@ export class EditproductComponent implements OnInit{
   products?: Product[] = [];
   categories: Category[] = [];
   errorMessage: string = ''; 
+  imagePreviewUrl: string | ArrayBuffer | null = null;
   editObj: Edit;
   constructor(private productService: EditproductService, private router: Router,private route: ActivatedRoute) {this. editObj = new Edit();}
 
@@ -80,6 +81,11 @@ onFileSelected(event: any) {
     // Extract only the file name
     const fileName: string = file.name;
     this.editObj.photo = fileName;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreviewUrl = reader.result; // Update the preview URL
+    };
+    reader.readAsDataURL(file);
   }
 }
 }

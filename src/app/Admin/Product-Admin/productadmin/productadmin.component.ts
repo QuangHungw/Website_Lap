@@ -52,6 +52,7 @@ export class ProductadminComponent implements OnInit{
   });
 }
 onSearchClick(): void {
+
   if (this.searchContent.trim() !== '') {
     // Chuyển hướng đến trang sản phẩm với nội dung tìm kiếm được thêm vào URL
     this.router.navigateByUrl(`/productadmin/search/${this.searchContent}`);

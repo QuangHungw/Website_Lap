@@ -15,15 +15,17 @@
             <div class="w3l-table-info">
               <h2>Danh sách quảng cáo</h2>
               <input
+              [(ngModel)]="searchContent"
                 style="width: 84.8%"
                 type="text"
                 class="search-query form-control input-group"
-                Placeholder="Nhập tên quảng cáo cần tìm"
+                Placeholder="Nhập tên tiêu đề quảng cáo cần tìm"
               />
 
               <span class="input-group-btn">
                 <button
                   class="btn btn-primary rounded-circle btnpro"
+                  (click)="onSearchClick()"
                   type="button"
                   id="btn-search"
                 >
@@ -49,7 +51,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="info" *ngFor="let post of posts">
+                  <tr class="info" *ngFor="let post of getPaginatedPost()">
                     <!-- <td>{{ product.id }}</td> -->
                     <td>
                       <img
@@ -91,11 +93,11 @@
                 </tbody>
               </table>
               <div class="pagination pagination-small pagination-centered">
-                <!-- <ul *ngIf="products.length > pageSize">
+                <ul *ngIf="posts.length > pageSize">
                     <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
                       <a (click)="setCurrentPage(page)">{{ page }}</a>
                     </li>
-                  </ul> -->
+                  </ul>
               </div>
             </div>
           </div>
