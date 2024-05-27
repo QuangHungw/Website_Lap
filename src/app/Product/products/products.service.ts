@@ -41,4 +41,5 @@ postOrderdetail(token: string | null | undefined,price: number,productId : numbe
 postType(type: string | null): Observable<Category[]> {
   return this.http.post<Category[]>(this.apiUrl4,{ type : type});
 }
+
 }
