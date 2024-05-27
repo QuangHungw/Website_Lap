@@ -10,13 +10,13 @@
         <div class="row">
           <div class="span4" *ngIf="products">
             <a
-              href="assets/themes/images/cloth/{{ products.photo }}"
+              href="http://localhost:3000/product/image/{{ products.photo }}"
               class="thumbnail"
               data-fancybox-group="group1"
               title="Description 1"
               ><img
                 alt=""
-                src="assets/themes/images/cloth/{{ products.photo }}"
+                src="http://localhost:3000/product/image/{{ products.photo }}"
             /></a>
           </div>
           <div class="span5" *ngIf="products">
@@ -30,6 +30,7 @@
               <span>{{ category.category_name }} </span> <br />
               <strong>Tình trạng: &#160;</strong> <span> 2000</span><br />
               <strong>Lượt xem: &#160;</strong> <span> 21932</span><br />
+              <strong>Đã bán: &#160;</strong> <span> {{products.sold}}</span><br />
               <strong>Số lượng còn lại: &#160;</strong> <span> {{products.quantity}}</span><br />
             </address>
             <h4>
@@ -102,7 +103,7 @@
                           ><img
                             alt=""
                             style="height: 270px"
-                            src="assets/themes/images/cloth/{{
+                            src="http://localhost:3000/product/image/{{
                               product.photo
                             }}" /></a
                         ><br />
@@ -159,7 +160,7 @@
                           ><img
                             alt=""
                             style="height: 270px"
-                            src="assets/themes/images/cloth/{{
+                            src="http://localhost:3000/product/image/{{
                               product.photo
                             }}" /></a
                         ><br />
@@ -223,7 +224,7 @@
                       <a [routerLink]="['/product_detail', product.id]"
                         ><img
                         style="height: 270px"
-                          src="assets/themes/images/cloth/{{ product.photo }}"
+                          src="http://localhost:3000/product/image/{{ product.photo }}"
                           alt=""
                       /></a>
                       <br />
@@ -246,29 +247,7 @@
             </div>
           </div>
         </div>
-        <div class="block">
-          <h4 class="title"><strong>Bán chạy</strong></h4>
-          <ul
-            class="small-product"
-            *ngFor="let product of products1?.slice(8, 11)"
-          >
-            <li>
-              <a
-                [routerLink]="['/product_detail', product.id]"
-                title="Praesent tempor sem sodales"
-              >
-                <img
-                  src="assets/themes/images/cloth/{{ product.photo }}"
-                  alt=""
-                />
-              </a>
-
-              <a [routerLink]="['/product_detail', product.id]">{{
-                product.product_name
-              }}</a>
-            </li>
-          </ul>
-        </div>
+       
       </div>
     </div>
   </section>

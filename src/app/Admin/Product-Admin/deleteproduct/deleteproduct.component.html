@@ -40,6 +40,10 @@
                       <span> {{ product.price }}</span>
                     </div>
                     <div class="form-group">
+                      <label for="sold">Đã bán:</label>
+                      <span> {{ product.sold }}</span>
+                    </div>
+                    <div class="form-group">
                       <label for="dv">Đơn vị:</label>
                       <span> {{ product.unit }}</span>
                     </div>
@@ -51,7 +55,7 @@
                       <label for="photo">Ảnh:</label>
                       <img
                         class="img-bordered"
-                        src="assets/themes/images/cloth/{{ product.photo }} "
+                        src="http://localhost:3000/product/image/{{ product.photo }} "
                         style="width: 200px; display: block;"
                       />
                     </div>

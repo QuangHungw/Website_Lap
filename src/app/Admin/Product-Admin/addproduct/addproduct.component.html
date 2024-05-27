@@ -67,6 +67,18 @@
                                 [(ngModel)]="productObj.quantity "
                               required 
                               />
+                              
+                            </div>
+                            <div class="form-group">
+                              <label for="sold">Đã bán:</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                name="sold"
+                                [(ngModel)]="productObj.sold "
+                              required 
+                              />
+                              
                             </div>
                             <div class="form-group">
                               <label for="dv">Đơn vị:</label>
@@ -84,7 +96,7 @@
                             </div>
                             <div class="form-group">
                               <input id="PhotoInput" type="hidden" name="Photo"/>
-                              <img class="img-bordered" [src]="imagePreviewUrl || 'assets/themes/images/carousel/nophoto.png'"  style="width: 200px;" >
+                              <img class="img-bordered" [src]="imagePreviewUrl || 'http://localhost:3000/product/image/nophoto.png'"  style="width: 200px;" >
                             </div>
                             <div *ngIf="errorMessage" class="error-message" style="color: red;">
                               {{ errorMessage }}

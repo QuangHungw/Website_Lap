@@ -44,6 +44,7 @@
                     <th style="text-align: center">Mô tả</th>
                     <th>Giá bán</th>
                     <th>Số lượng</th>
+                    <th>Đã bán</th>
                     <th>Loại sản phẩm</th>
                     <th>Chỉnh sửa</th>
                   </tr>
@@ -51,12 +52,13 @@
                 <tbody>
                   <tr class="info" *ngFor="let product of getPaginatedProducts()">
                     <!-- <td>{{ product.id }}</td> -->
-                    <td><img class="profile-user-img img-responsive img-bordered" src="assets/themes/images/cloth/{{ product.photo }} " alt=""> </td>
+                    <td><img class="profile-user-img img-responsive img-bordered" src="http://localhost:3000/product/image/{{ product.photo }} " alt=""> </td>
                     <td>{{ product.product_name }}</td>
                     <td>{{product.description}} </td>
                     <td>{{ formatPrice(product.price) }}{{ product.unit }}</td>
-                  <td *ngIf="product.quantity == 0" >Đã hết hàng</td>
+                    <td *ngIf="product.quantity == 0" >Đã hết hàng</td>
                     <td *ngIf="product.quantity != 0">{{product.quantity}} </td>
+                    <td>{{product.sold}}</td>
                     <td>{{product.category_name}}</td>
                     <td >
                       <span>

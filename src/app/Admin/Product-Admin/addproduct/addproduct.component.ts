@@ -19,6 +19,8 @@ export class AddproductComponent implements OnInit{
   categories: Category[] = [];
   errorMessage: string = ''; 
   imagePreviewUrl: string | ArrayBuffer | null = null;
+  fileName: string = '';
+  selectedFile: File | null = null;
   constructor(private addproductService: AddproductService,private http: HttpClient,private router: Router){
     this.productObj = new Product();
   }
@@ -35,10 +37,20 @@ onProduct() {
      {next :    (res) => {
       if (res) {
           console.log(res);
-       
-          // Optionally, you can redirect the user to the login page after successful signup
           this.router.navigateByUrl('/productadmin');
           alert("Add product successful");
+          const formData: FormData = new FormData();       
+          if (this.selectedFile) {
+            formData.append('photo', this.selectedFile);
+          }
+          this.http
+            .post<any>('http://localhost:3000/product/local', formData)
+            .subscribe({
+              next: () => {
+               
+              },
+            });
+
       } else {
           alert("Add product failed");
       }
@@ -51,9 +63,12 @@ onProduct() {
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
-      // Extract only the file name
-      const fileName: string = file.name;
-      this.productObj.photo = fileName;
+
+      this.productObj.photo = file.name; // Lưu tên file
+      this.selectedFile = file; // Lưu file đầy đủ
+      this.fileName = file.name; // Lưu tên file để hiển thị
+
+
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreviewUrl = reader.result; // Update the preview URL
@@ -69,6 +84,7 @@ export class Product {
   price: number;
   photo: string;
   quantity:number;
+  sold : number;
   unit: string;
   category_id: string;
   constructor() {
@@ -76,6 +92,7 @@ export class Product {
     this.description="";
     this.price=0;
     this.quantity=0;
+    this.sold=0;
     this.photo="";
     this.unit="";
     this.category_id = "";

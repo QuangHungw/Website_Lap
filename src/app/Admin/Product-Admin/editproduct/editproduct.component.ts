@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -18,8 +18,10 @@ export class EditproductComponent implements OnInit{
   categories: Category[] = [];
   errorMessage: string = ''; 
   imagePreviewUrl: string | ArrayBuffer | null = null;
+  fileName: string = '';
+  selectedFile: File | null = null;
   editObj: Edit;
-  constructor(private productService: EditproductService, private router: Router,private route: ActivatedRoute) {this. editObj = new Edit();}
+  constructor(private productService: EditproductService,private http: HttpClient, private router: Router,private route: ActivatedRoute) {this. editObj = new Edit();}
 
 ngOnInit(): void {
   this.productService.getCategory().subscribe((data: Category) => {
@@ -66,6 +68,17 @@ onUpdateProduct(): void {
       {next:  () => {
         alert('Product updated successfully');
         this.router.navigateByUrl('/productadmin');
+        const formData: FormData = new FormData();       
+        if (this.selectedFile) {
+          formData.append('photo', this.selectedFile);
+        }
+        this.http
+          .post<any>('http://localhost:3000/product/local', formData)
+          .subscribe({
+            next: () => {
+             
+            },
+          });
       },
       error : (error) => {
         this.errorMessage=(error.error.message);
@@ -79,8 +92,11 @@ onFileSelected(event: any) {
   const file: File = event.target.files[0];
   if (file) {
     // Extract only the file name
-    const fileName: string = file.name;
-    this.editObj.photo = fileName;
+  
+
+    this.editObj.photo = file.name; // Lưu tên file
+    this.selectedFile = file; // Lưu file đầy đủ
+    this.fileName = file.name; // Lưu tên file để hiển thị
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreviewUrl = reader.result; // Update the preview URL

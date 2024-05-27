@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -18,7 +18,9 @@ export class EditpostComponent implements OnInit {
   errorMessage: string = ''; 
   editObj: Edit;
   imagePreviewUrl: string | ArrayBuffer | null = null;
-  constructor(private postService: EditpostService, private router: Router,private route: ActivatedRoute) {this. editObj = new Edit();}
+    fileName: string = '';
+  selectedFile: File | null = null;
+  constructor(private postService: EditpostService, private router: Router,private route: ActivatedRoute,private http: HttpClient) {this. editObj = new Edit();}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -53,6 +55,17 @@ export class EditpostComponent implements OnInit {
           {next : () => {
             alert('Product updated successfully');
             this.router.navigateByUrl('/postadmin');
+            const formData: FormData = new FormData();       
+            if (this.selectedFile) {
+              formData.append('image', this.selectedFile);
+            }
+            this.http
+              .post<any>('http://localhost:3000/post/local', formData)
+              .subscribe({
+                next: () => {
+                 
+                },
+              });
           },
           error:  (error) => {
             this.errorMessage=(error.error.message);
@@ -66,8 +79,9 @@ export class EditpostComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       // Extract only the file name
-      const fileName: string = file.name;
-      this.editObj.image = fileName;
+    this.editObj.image = file.name; // Lưu tên file
+      this.selectedFile = file; // Lưu file đầy đủ
+      this.fileName = file.name; // Lưu tên file để hiển thị
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreviewUrl = reader.result; // Update the preview URL

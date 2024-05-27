@@ -5,6 +5,7 @@ export interface Product {
   description: string;
   price: number;
   photo: string;
+  sold : number;
   unit: string;
   quantity:number;
   create_at: Date;
