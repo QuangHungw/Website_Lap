@@ -51,7 +51,15 @@
                           {{ formatPrice(product.price) }} {{ product.unit }}
                         </p></a
                       >
+                      <span
+                      *ngIf="product.quantity == 0"
+                      
+                      >
+                      <strong>  Đã hết hàng</strong>
+                      
+                      </span>
                       <button
+                      *ngIf="product.quantity != 0"
                         height="2rem"
                         color="primary500"
                         class="css-16gdkk6"
@@ -106,7 +114,13 @@
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
+                        <span
+                        *ngIf="product.quantity == 0"
+                        >
+                        <strong>  Đã hết hàng</strong>
+                        </span>
                         <button
+                        *ngIf="product.quantity != 0"
                           height="2rem"
                           color="primary500"
                           class="css-16gdkk6"
@@ -223,7 +237,13 @@
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
+                        <span
+                        *ngIf="product.quantity == 0"
+                        >
+                        <strong>  Đã hết hàng</strong>
+                        </span>
                         <button
+                        *ngIf="product.quantity != 0"
                           height="2rem"
                           color="primary500"
                           class="css-16gdkk6"

@@ -40,7 +40,8 @@
               >
             </h4>
             <p>&nbsp;</p>
-            <input  
+            <input 
+             *ngIf="products.quantity != 0"
               type="number"
               style="width: 7%"
               class="form-control"
@@ -54,9 +55,13 @@
           </div>
           <div class="span5" *ngIf="products">
             <form class="form-inline">
-          
-              
+              <span
+              *ngIf="products.quantity == 0"
+              >
+              <strong>  Đã hết hàng</strong>
+              </span>
               <button
+              *ngIf="products.quantity != 0"
                 height="2rem"
                 color="primary500"
                 class="btn btn-inve"
@@ -120,7 +125,13 @@
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
+                        <span
+                        *ngIf="product.quantity == 0"
+                        >
+                        <strong>  Đã hết hàng</strong>
+                        </span>
                         <button
+                        *ngIf="products.quantity != 0"
                           height="2rem"
                           color="primary500"
                           class="css-16gdkk6"
@@ -177,7 +188,13 @@
                             {{ formatPrice(product.price) }} {{ product.unit }}
                           </p></a
                         >
+                        <span
+                        *ngIf="product.quantity == 0"
+                        >
+                        <strong>  Đã hết hàng</strong>
+                        </span>
                         <button
+                        *ngIf="product.quantity != 0"
                           height="2rem"
                           color="primary500"
                           class="css-16gdkk6"
@@ -207,7 +224,7 @@
             </li>
           </ul>
         </div>
-        <div class="block">
+        <!-- <div class="block">
           <h4 class="title">
             <span class="pull-left"><span class="text">Ngẫu nhiên</span></span>
           </h4>
@@ -246,7 +263,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
        
       </div>
     </div>

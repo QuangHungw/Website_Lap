@@ -96,6 +96,10 @@ export const routes: Routes = [
         component:  ProductsComponent
     },
     {
+        path: 'products/:name/:price',
+        component:  ProductsComponent
+    },
+    {
         path: 'cart',
         component: CartComponent
     },

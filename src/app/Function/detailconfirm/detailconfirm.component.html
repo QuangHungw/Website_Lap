@@ -13,33 +13,33 @@
           <a [routerLink]="['/orderconfirm']"style="float: right;font-size:25px"><i class="fa-solid fa-arrow-left"></i></a>
           <form action="" *ngFor="let order of orders" >
             <div class="form-group" >
-                <label id="for123" class="control-label col-sm-2">Mã đơn hàng :</label>
+                <label id="for123" class="control-label col-sm-2">Mã đơn hàng:</label>
                 <div class="col-sm-4">
                     <p class="form-control-static">{{order.id}}</p>
                 </div>
-                <label id="for123" class="control-label col-sm-2">Ngày lập đơn hàng :</label>
+                <label id="for123" class="control-label col-sm-2">Ngày lập đơn hàng:</label>
                 <div class="col-sm-4">
-                    <p class="form-control-static">{{order.create_at | date : "dd/MM/yyyy"}}</p>
+                    <p class="form-control-static">{{order.create_at | date : "dd/MM/yyyy &nbsp; HH:mm:ss"}}</p>
                 </div>
             </div>
             <div class="form-group" >
-                <label id="for123" class="control-label col-sm-2">Mã thanh toán :</label>
+                <label id="for123" class="control-label col-sm-2">Mã thanh toán:</label>
                 <div class="col-sm-4">
                     <p class="form-control-static">{{order.payment_id}}</p>
                 </div>
-              <label id="for123" class="control-label col-sm-2">Ngày nhận đơn hàng :</label>
+              <label id="for123" class="control-label col-sm-2">Ngày nhận đơn hàng:</label>
                 <div class="col-sm-4">
-                    <p class="form-control-static">{{order.order_time | date : "dd/MM/yyyy"}}</p>
+                    <p class="form-control-static">{{order.order_time | date : "dd/MM/yyyy &nbsp; HH:mm:ss"}}</p>
                 </div>
             </div>  
             <div class="form-group">
-                <label id="for123" class="control-label col-sm-2">Trạng thái đơn hàng :</label>
+                <label id="for123" class="control-label col-sm-2">Trạng thái đơn hàng:</label>
                 <div class="col-sm-4">
-                    <p class="form-control-static">{{order.status}}</p>
+                    <p class="form-control-static">Đơn hàng đã xác nhận</p>
                 </div>
-                <label id="for123" class="control-label col-sm-2">Thời điểm hoàn tất :</label>
+                <label id="for123" class="control-label col-sm-2">Thời điểm hoàn tất:</label>
                 <div class="col-sm-4">
-                    <p class="form-control-static">{{order.modified_at | date : "dd/MM/yyyy" }}</p>
+                    <p class="form-control-static">{{order.modified_at | date : "dd/MM/yyyy &nbsp; HH:mm:ss" }}</p>
                 </div>
             </div>
          
