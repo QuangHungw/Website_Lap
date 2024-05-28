@@ -37,18 +37,19 @@ ngOnInit(): void {
 this.cartService.getOrderDetail(this.token).subscribe(
   (ordertail : OrderDetail[]) => {
     this.orders = this.orders.concat(ordertail);
-    this.cartService.updateOrderDetails(ordertail);
+    // this.cartService.updateOrderDetails(ordertail);
+    this.fetchProductsForOrders();
     console.log(ordertail)
     // this.fetchProductsForOrders();
-    this.cartService.orderDetails$.subscribe(
-      (orderdetails: OrderDetail[]) => {
-         this.orders = orderdetails;
-        this.fetchProductsForOrders();
-        console.log(this.orders)
+    // this.cartService.orderDetails$.subscribe(
+    //   (orderdetails: OrderDetail[]) => {
+    //      this.orders = orderdetails;
+    //     this.fetchProductsForOrders();
+    //     console.log(this.orders)
         
-       },
+    //    },
       
-    );
+    // );
     //console.log(data)
    },
   

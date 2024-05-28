@@ -27,11 +27,13 @@
                   (mouseenter)="showCartDetails(true)"
                   (mouseleave)="showCartDetails(false)"
                 >
-                  <a [routerLink]="['/cart']"
+                
+                  <a  [routerLink]="['/cart']"
                     >Giỏ hàng ({{ orderdetails.length }})
                   </a>
+               
                   <!-- *ngIf="showCart" -->
-                  <div class="cart-details" *ngIf="showCart"  >
+                  <div class="cart-details"  *ngIf="showCart && !isCart "  >
                     <div class="cart-items">
                     <ul  class="marigin">
                       <li *ngFor="let product of products">

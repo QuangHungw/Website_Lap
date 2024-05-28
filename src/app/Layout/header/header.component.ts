@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   totalSum: number = 0;
   unit?: string | null;
   showCart: boolean = false;
-
+isCart: boolean = false;
   token?: string | null;
   users?: User[] = [];
   orders: Order[] = [];
@@ -45,6 +45,10 @@ export class HeaderComponent implements OnInit {
         if (event.url === '/customer') {
           this.loadUserInfo(); // Gọi hàm để cập nhật thông tin người dùng
         }
+        if (event.url === '/cart') {
+          this.isCart = true; // Gọi hàm để cập nhật thông tin người dùng
+        }
+        else (this.isCart = false)
       }
     });
   }
