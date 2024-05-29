@@ -25,13 +25,14 @@ import { HeaderService } from '../../Layout/header/header.service';
   styleUrl: './product-detail.component.scss',
 })
 export class ProductDetailComponent implements OnInit {
-  products1?: Product[] = [];
+  products1: Product[] = [];
   categories: Category[] = [];
   categories1?: Category[] = [];
   orders: OrderDetail[] = [];
   products: Product | undefined;
   token?: string | null;
   editObj: Edit;
+  randomProducts: Product[] = [];
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
@@ -92,8 +93,9 @@ export class ProductDetailComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.productService.getProduct().subscribe((product: Product) => {
-      this.products1 = this.products1?.concat(product);
+    this.productService.getProduct().subscribe((product: Product[]) => {
+      this.products1 = product;
+      this.refreshRandomProducts();
       // console.log(product)
     });
     this.productService.getCategory().subscribe((category1: Category) => {
@@ -104,6 +106,16 @@ export class ProductDetailComponent implements OnInit {
       const productId = params['id'];
       this.getProductDetail(productId);
     });
+  }
+   refreshRandomProducts() {
+    this.randomProducts = this.shuffleArray(this.products1).slice(0, 3);
+  }
+  shuffleArray(products: Product[]): Product[] {
+    for (let i = products.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [products[i], products[j]] = [products[j], products[i]];
+    }
+    return products;
   }
   getProductDetail(productId: string): void {
     // Xóa dữ liệu của sản phẩm hiện tại

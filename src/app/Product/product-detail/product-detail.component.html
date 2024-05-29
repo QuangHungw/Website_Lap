@@ -90,7 +90,7 @@
             <h4 class="title">
               <span class="pull-left"
                 ><span class="text"
-                  ><strong>Sản phẩm cùng loại</strong>
+                  ><strong>Các sản phẩm khác</strong>
                 </span></span
               >
             </h4>
@@ -100,11 +100,11 @@
                   <ul class="thumbnails listing-products">
                     <li
                       class="span3"
-                      *ngFor="let product of products1?.slice(2, 5)"
+                      *ngFor="let product of randomProducts"
                     >
                       <div class="product-box">
                         <span class="sale_tag"></span>
-                        <a [routerLink]="['/product_detail', product.id]"
+                        <a  (click)="refreshRandomProducts()" [routerLink]="['/product_detail', product.id]"
                           ><img
                             alt=""
                             style="height: 270px"
@@ -112,12 +112,12 @@
                               product.photo
                             }}" /></a
                         ><br />
-                        <a
+                        <a  (click)="refreshRandomProducts()"
                           [routerLink]="['/product_detail', product.id]"
                           class="title"
                           >{{ product.product_name }}</a
                         ><br />
-                        <a
+                        <a  (click)="refreshRandomProducts()"
                           [routerLink]="['/product_detail', product.id]"
                           class="category"
                         >
@@ -126,70 +126,7 @@
                           </p></a
                         >
                         <span
-                        *ngIf="product.quantity == 0"
-                        >
-                        <strong>  Đã hết hàng</strong>
-                        </span>
-                        <button
-                        *ngIf="products.quantity != 0"
-                          height="2rem"
-                          color="primary500"
-                          class="css-16gdkk6"
-                          type="button"
-                          (click)="onButtonClick(product.id, product.price)"
-                        >
-                          <div type="body" color="primary500">Thêm vào giỏ</div>
-                        </button>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="span9">
-            <br />
-            <h4 class="title">
-              <span class="pull-left"
-                ><span class="text"
-                  ><strong>Sản phẩm cùng nhà sản xuất</strong></span
-                ></span
-              >
-            </h4>
-            <div id="myCarousel-2" class="carousel slide">
-              <div class="carousel-inner">
-                <div class="active item">
-                  <ul class="thumbnails listing-products">
-                    <li
-                      class="span3"
-                      *ngFor="let product of products1?.slice(5, 8)"
-                    >
-                      <div class="product-box">
-                        <span class="sale_tag"></span>
-                        <a [routerLink]="['/product_detail', product.id]"
-                          ><img
-                            alt=""
-                            style="height: 270px"
-                            src="http://localhost:3000/product/image/{{
-                              product.photo
-                            }}" /></a
-                        ><br />
-                        <a
-                          [routerLink]="['/product_detail', product.id]"
-                          class="title"
-                          >{{ product.product_name }}</a
-                        ><br />
-                        <a
-                          [routerLink]="['/product_detail', product.id]"
-                          class="category"
-                        >
-                          <p class="price">
-                            {{ formatPrice(product.price) }} {{ product.unit }}
-                          </p></a
-                        >
-                        <span
-                        *ngIf="product.quantity == 0"
+                        *ngIf="product.quantity === 0"
                         >
                         <strong>  Đã hết hàng</strong>
                         </span>
@@ -210,6 +147,8 @@
               </div>
             </div>
           </div>
+
+         
         </div>
       </div>
       <div class="span3 col">
@@ -224,46 +163,7 @@
             </li>
           </ul>
         </div>
-        <!-- <div class="block">
-          <h4 class="title">
-            <span class="pull-left"><span class="text">Ngẫu nhiên</span></span>
-          </h4>
-          <div id="myCarousel" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="active item">
-                <ul class="thumbnails listing-products">
-                  <li
-                    class="span3"
-                    *ngFor="let product of products1?.slice(3, 4)"
-                  >
-                    <div class="product-box">
-                      <span class="sale_tag"></span>
-                      <a [routerLink]="['/product_detail', product.id]"
-                        ><img
-                        style="height: 270px"
-                          src="http://localhost:3000/product/image/{{ product.photo }}"
-                          alt=""
-                      /></a>
-                      <br />
-                      <a
-                        [routerLink]="['/product_detail', product.id]"
-                        class="title"
-                        >{{ product.product_name }}</a
-                      ><br />
-                      <a
-                        [routerLink]="['/product_detail', product.id]"
-                        class="category"
-                        ><p class="price">
-                          {{ formatPrice(product.price) }} {{ product.unit }}
-                        </p></a
-                      >
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
+  
        
       </div>
     </div>
