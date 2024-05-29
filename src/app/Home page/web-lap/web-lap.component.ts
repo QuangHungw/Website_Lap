@@ -17,7 +17,7 @@ import { HeaderService } from '../../Layout/header/header.service';
   styleUrl: './web-lap.component.scss',
 })
 export class WebLapComponent implements OnInit {
-  products?: Product[] = [];
+  products: Product[] = [];
 
   token?: string | null;
   orders: OrderDetail[] = [];
@@ -25,6 +25,7 @@ export class WebLapComponent implements OnInit {
   currentImage: string = '';
   currentIndex: number = 0;
   intervalId: any;
+  selectedProducts: Product[] = [];
 
   constructor(
     private productService: WebLapService, 
@@ -66,8 +67,27 @@ export class WebLapComponent implements OnInit {
     this.productService.getProduct().subscribe((data: Product) => {
       //console.log(data);
       this.products = this.products?.concat(data);
+      this.selectRandomProducts();
       // console.log(data)
     });
+  }
+  selectRandomProducts(): void {
+    const numberOfProducts = this.products.length;
+    const randomIndexes: number[] = [];
+    const selectedProducts: Product[] = [];
+
+    while (randomIndexes.length < 4) {
+      const randomIndex = Math.floor(Math.random() * numberOfProducts);
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
+      }
+    }
+
+    randomIndexes.forEach(index => {
+      selectedProducts.push(this.products[index]);
+    });
+
+    this.selectedProducts = selectedProducts;
   }
 
   formatPrice(price: number): string {

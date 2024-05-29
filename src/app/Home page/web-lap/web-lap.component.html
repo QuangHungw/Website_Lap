@@ -142,62 +142,7 @@
           </div>
         </div>
         <br />
-        <!-- <div class="row">
-          <div class="span12">
-            <h4 class="title">
-              <span class="text">
-                <strong>Các sản phẩm được xem nhiều nhất</strong>
-              </span>
-            </h4>
-            <div id="myCarousel-3" class="myCarousel carousel slide">
-              <div class="carousel-inner">
-                <div class="active item">
-                  <ul class="thumbnails">
-                    <li
-                      class="span3"
-                      *ngFor="let product of products?.slice(8, 12)"
-                    >
-                      <div class="product-box">
-                        <span class="sale_tag"></span>
-                        <p>
-                          <a [routerLink]="['/product_detail', product.id]"
-                            ><img
-                            style="height: 270px"
-                              src="assets/themes/images/cloth/{{
-                                product.photo
-                              }}"
-                              alt=""
-                          /></a>
-                        </p>
-                        <a
-                          [routerLink]="['/product_detail', product.id]"
-                          class="title"
-                          >{{ product.product_name }}</a
-                        ><br />
-                        <a
-                          [routerLink]="['/product_detail', product.id]"
-                          class="category"
-                          ><p class="price">
-                            {{ formatPrice(product.price) }} {{ product.unit }}
-                          </p></a
-                        >
-                        <button
-                          height="2rem"
-                          color="primary500"
-                          class="css-16gdkk6"
-                          type="button"
-                          (click)="onButtonClick(product.id, product.price)"
-                        >
-                          <div type="body" color="primary500">Thêm vào giỏ</div>
-                        </button>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
+       
         <br />
         <div class="row">
           <div class="span12">
@@ -212,7 +157,7 @@
                   <ul class="thumbnails">
                     <li
                       class="span3"
-                      *ngFor="let product of products?.slice(12, 16)"
+                      *ngFor="let product of selectedProducts"
                     >
                       <div class="product-box">
                         <span class="sale_tag"></span>
