@@ -42,6 +42,15 @@
                         required
                       />
                     </div>
+                    <div class="form-group">
+                      <label for="loai">Kiểu loại sản phẩm:</label> &#160;
+                      <select class="form-control"  style="width: 22%;"   [(ngModel)]="editObj.type" name="loai">
+                        <option  value="Laptop">Laptop</option>
+                        <option  value="PC">PC</option>
+                        <option  value="Bàn phím">Bàn phím</option>
+                        <option  value="Chuột">Chuột</option>
+                          </select>
+                      </div>
                     <div *ngIf="errorMessage" class="error-message" style="color: red;">
                       {{ errorMessage }}
                     </div>

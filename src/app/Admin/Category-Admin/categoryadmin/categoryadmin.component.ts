@@ -23,7 +23,7 @@ export class CategoryadminComponent  implements OnInit{
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
     this.categoryadminService.getCategory().subscribe((data: Category) => {
-      this.categories = this.categories?.concat(data);
+      this.categories = this.categories.concat(data);
       this.totalPages = Math.ceil(this.categories.length / this.pageSize);
     //  console.log(data)
     });
@@ -47,6 +47,7 @@ export class CategoryadminComponent  implements OnInit{
   });
 }
 onSearchClick(): void {
+
   if (this.searchContent.trim() !== '') {
     // Chuyển hướng đến trang sản phẩm với nội dung tìm kiếm được thêm vào URL
     this.router.navigateByUrl(`/categoryadmin/search/${this.searchContent}`);

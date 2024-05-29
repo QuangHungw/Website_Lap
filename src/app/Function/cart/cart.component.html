@@ -1,10 +1,6 @@
 <div id="wrapper" class="container">
   <section class="header_text sub">
-    <img
-      class="pageBanner"
-      src="assets/themes/images/baner.jpg"
-      alt="New products"
-    />
+   <app-post></app-post>
     <br />
     <h4><span>Shopping Cart</span></h4>
   </section>
@@ -36,7 +32,7 @@
                       <a [routerLink]="['/product_detail']"
                         ><img
                           style="width: 60%"
-                          src="assets/themes/images/cloth/{{ product.photo }}"
+                          src="http://localhost:3000/product/image/{{ product.photo }}"
                       /></a>
                     </td>
                     <td>{{ product.product_name }}</td>
@@ -59,7 +55,7 @@
               </ng-container>
             </ng-container>
             <tr>
-              <td>&nbsp;</td>
+              <td></td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
@@ -77,24 +73,12 @@
         <p class="buttons center">
           <button (click)="onEditClick()" class="btn" type="button">Cập Nhật</button>
           &nbsp;
-          <button class="btn btn-inverse" type="submit" id="checkout">
+          <button class="btn btn-inverse" type="submit" id="checkout" (click)="onPayment()">
             Thanh Toán
           </button>
         </p>
       </div>
-      <div class="span3 col">
-        <div class="block">
-          <ul class="nav nav-list below">
-            <li class="nav-header">Hãng sản xuất</li>
-            <li *ngFor="let category1 of categories1">
-              <a [routerLink]="['/products', category1.id]">{{
-                category1.category_name
-              }}</a>
-            </li>
-          </ul>
-          <br />
-        </div>
-      </div>
+    
     </div>
   </section>
 </div>

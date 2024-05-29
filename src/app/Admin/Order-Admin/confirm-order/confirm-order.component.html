@@ -1,0 +1,73 @@
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a  [routerLink]="['/admin']">Trang chủ</a
+    ><i class="fa fa-angle-right"></i>Đơn hàng xác nhận
+  </li>
+</ol>
+
+<div class="grids">
+  <div class="agile-calendar-grid">
+    <div class="page">
+      <div class="w3l-calendar-left">
+        <div class="calendar-heading">
+          <div class="agile-tables">
+            <div class="w3l-table-info">
+              <h2>Danh sách đơn hàng xác nhận</h2>
+              <table id="table">
+                <thead>
+                  <tr>
+                    <!-- <th>Mã đơn hàng</th> -->
+                    <th>Tên khách hàng</th>
+                    <th>Ngày lập đơn hàng</th>
+                    <th>Ngày nhận đơn hàng</th>
+                    <th>Mã thanh toán</th>
+                    <th>Tổng cộng</th>
+                    <th>Trạng thái</th>
+                    <th>Chi tiết</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr class="info" *ngFor="let order of orders">
+                    <!-- <td>{{order.id}}</td> -->
+                    <td>{{order.name}}</td>
+                    <td>{{order.order_time| date: 'dd/MM/yyyy' }}</td>
+                    <td>{{order.modified_at| date: 'dd/MM/yyyy' }}</td>
+                    <td>{{order.payment_id}}</td>
+                    <td>{{ formatPrice(order.total)}}đ</td>
+                    <td>Đã xác nhận</td>
+                    <td style="text-align: center">
+                      <a class="agile-icon"
+                      ><i
+                        [routerLink]="['/orderconfirmdetail', order.id]"
+                        class="fa-solid fa-list"
+                      ></i
+                    ></a>
+                    </td>
+                  </tr>
+                
+             
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Modal -->
+          
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!-- //grids -->
+  <!--photoday-section-->
+
+ 
+
+ 
+
+</div>
+
+

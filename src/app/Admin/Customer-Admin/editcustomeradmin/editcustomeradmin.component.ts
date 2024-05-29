@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { User } from './editcustomeradmin.module';
@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-editcustomeradmin',
   standalone: true,
-  imports: [CommonModule,RouterLink, DatePipe,FormsModule,HttpClientModule],
+  imports: [CommonModule,RouterLink,FormsModule,HttpClientModule],
   templateUrl: './editcustomeradmin.component.html',
   styleUrl: './editcustomeradmin.component.scss'
 })
@@ -31,7 +31,7 @@ export class EditcustomeradminComponent {
   });
 }
 
-onUpdateCategory(): void {
+onUpdateCustomer(): void {
  //debugger
   this.route.paramMap.subscribe(params => {
     const Id = params.get('id');
@@ -39,14 +39,14 @@ onUpdateCategory(): void {
       const role_id = +this.editObj.role_id;  // Convert to number using the unary plus operator or parseInt()
       //  console.log(role_id)
       this.editcustomeradminService.updateUser(Id, role_id).subscribe(
-        () => {
-          alert('Account updated successfully');
-          this.router.navigateByUrl('/customeradmin');
-        },
-        (error) => {
-          this.errorMessage=(error.error.message);
-          //console.error('Error:', error.error.message);
-        }
+      {next:   () => {
+        alert('Account updated successfully');
+        this.router.navigateByUrl('/customeradmin');
+      },
+      error: (error) => {
+        this.errorMessage=(error.error.message);
+        //console.error('Error:', error.error.message);
+      }}
       );
     }
   });

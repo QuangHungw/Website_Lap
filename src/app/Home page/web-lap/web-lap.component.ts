@@ -1,13 +1,18 @@
-import { Router, RouterLink } from '@angular/router';
+import {  RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Product ,OrderDetail} from './web-lap.module';
+import { Product, OrderDetail } from './web-lap.module';
 import { WebLapService } from './web-lap.service';
 import { CommonModule } from '@angular/common';
+import { PostComponent } from '../../Function/post/post.component';
+import { NotificationService } from '../notification/notification.service';
+import { NotificationComponent } from '../notification/notification.component';
+import { CartService } from '../../Function/cart/cart.service';
+import { HeaderService } from '../../Layout/header/header.service';
 
 @Component({
   selector: 'app-web-lap',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, PostComponent, NotificationComponent],
   templateUrl: './web-lap.component.html',
   styleUrl: './web-lap.component.scss',
 })
@@ -16,32 +21,55 @@ export class WebLapComponent implements OnInit {
 
   token?: string | null;
   orders: OrderDetail[] = [];
-  constructor(private productService: WebLapService, private router: Router) {}
+
+  currentImage: string = '';
+  currentIndex: number = 0;
+  intervalId: any;
+
+  constructor(
+    private productService: WebLapService, 
+    private notificationService: NotificationService,
+    private cartService: CartService,
+    private userService: HeaderService
+  ) {}
   onButtonClick(productId: number, price: number): void {
     this.token = localStorage.getItem('accessToken');
     if (this.token) {
       const quantity = 1;
-      this.productService.postOrderdetail(this.token, price, productId, quantity).subscribe(
-        (data1: OrderDetail) => {
-          this.orders.push(data1);
-        },
-        (error) => {
-          console.log(error);
+      this.productService
+        .postOrderdetail(this.token, price, productId, quantity)
+        .subscribe({
+          next: (data1: OrderDetail) => {
+              this.orders.push(data1);
+              //console.log(data1)
+              this.userService.getOrderDetail(this.token).subscribe(
+                (ordertail: OrderDetail[]) => {
+               // console.log(ordertail);
+                this.cartService.updateOrderDetails(ordertail);
+                })
+              this.cartService.updateOrderDetails(this.orders);
+              this.notificationService.show('Đã thêm sản phẩm vào giỏ hàng');
+            },
+            error:(error) => {
+                console.log(error);
+              }
         }
-      );
+        
+        );
     }
   }
 
   ngOnInit(): void {
+    this.cartService.orderDetails$.subscribe((orders: OrderDetail[]) => {
+      this.orders = orders;
+    });
     this.productService.getProduct().subscribe((data: Product) => {
       //console.log(data);
-
       this.products = this.products?.concat(data);
-     // console.log(data)
-    
+      // console.log(data)
     });
-    
   }
+
   formatPrice(price: number): string {
     return price.toLocaleString('vi-VN'); // Format with Vietnamese locale
   }

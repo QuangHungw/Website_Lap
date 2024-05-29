@@ -1,0 +1,122 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a [routerLink]="['/admin']">Trang chủ</a
+    ><i class="fa fa-angle-right"></i>Quảng cáo
+  </li>
+</ol>
+
+<!-- grids -->
+<div class="grids">
+  <div class="agile-calendar-grid">
+    <div class="page">
+      <div class="w3l-calendar-left">
+        <div class="calendar-heading">
+          <div class="agile-tables">
+            <div class="w3l-table-info">
+              <h2>Danh sách quảng cáo</h2>
+              <input
+              [(ngModel)]="searchContent"
+                style="width: 84.6%"
+                type="text"
+                class="search-query form-control input-group"
+                Placeholder="Nhập tên tiêu đề quảng cáo cần tìm"
+              />
+
+              <span class="input-group-btn">
+                <button
+                  class="btn btn-primary rounded-circle btnpro"
+                  (click)="onSearchClick()"
+                  type="button"
+                  id="btn-search"
+                >
+                  <span class="fa fa-search"></span>
+                </button>
+                <a
+                  [routerLink]="['/addpost']"
+                  class="btn btn-primary"
+                  style="margin-left: 5px"
+                >
+                  <i class="fa fa-plus"></i> Bổ sung
+                </a>
+              </span>
+              <table id="table">
+                <thead>
+                  <tr>
+                    <!-- <th>Mã sản phẩm</th> -->
+                    <th style="width: 100px">Ảnh</th>
+                    <th>Tiêu đề</th>
+                    <th style="text-align: center">Nội dung</th>
+                    <th >Được phát hành</th>
+                    <th>Chỉnh sửa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="info" *ngFor="let post of getPaginatedPost()">
+                    <!-- <td>{{ product.id }}</td> -->
+                    <td>
+                      <img
+                        class="profile-user-img img-responsive img-bordered"
+                        src="http://localhost:3000/post/image/{{ post.image }} "
+                        alt=""
+                      />
+                    </td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
+                    <td >
+                      <input type="checkbox" [checked]="post.published" disabled />
+                    </td>
+                    <td>
+                      <span>
+                        <a
+                          [routerLink]="['/editpost', post.id]"
+                          class="agile-icon"
+                          data-toggle="modal"
+                          data-target="#myModal"
+                          ><i
+                            class="fa fa-pencil-square-o"
+                            style="margin-bottom: 12px"
+                          ></i
+                        ></a>
+                      </span>
+                      <span>
+                        <a
+                          [routerLink]="['/deletepost', post.id]"
+                          class="agile-icon"
+                          href="#"
+                          data-toggle="modal"
+                          data-target="#myModal1"
+                          ><i class="fa fa-times-circle"></i
+                        ></a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="pagination pagination-small pagination-centered">
+                <ul *ngIf="posts.length > pageSize">
+                    <li *ngFor="let page of pageNumbers" [class.active]="page === currentPage">
+                      <a (click)="setCurrentPage(page)">{{ page }}</a>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!-- //grids -->
+<!--photoday-section-->
+
+<div class="col-sm-4 wthree-crd">
+  <div class="card">
+    <div class="card-body"></div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="inner-block"></div>

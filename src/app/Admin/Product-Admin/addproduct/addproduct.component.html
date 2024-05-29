@@ -39,16 +39,15 @@
                               ></textarea>
                             </div>
   
-                            <div class="form-group">
-                              <label for="loai">Loại sản phẩm:</label>
-                              <input
-                                type="number"
-                                class="form-control"
-                                name="loai"
-                                [(ngModel)]="productObj.category_id "
-                              required 
-                              />
-                            </div>
+                            <div class="form-group"   >
+                              <label for="loai">Loại sản phẩm:</label> &#160;
+                              <select class="form-control"  style="width: 22%;"   [(ngModel)]="productObj.category_id" name="loai">
+                                <option value="">Chọn Loại sản phẩm:</option> 
+                                  <option *ngFor="let category of categories" [ngValue]="category.id">{{category.category_name}}</option>
+        
+                                  <!-- editObj.role_id = parseInt(editObj.role_id); -->
+                              </select>
+                          </div>
                             <div class="form-group">
                               <label for="gia">Giá bán:</label>
                               <input
@@ -58,6 +57,28 @@
                                 [(ngModel)]="productObj.price "
                               required 
                               />
+                            </div>
+                            <div class="form-group">
+                              <label for="quantity">Số lượng:</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                name="quantity"
+                                [(ngModel)]="productObj.quantity "
+                              required 
+                              />
+                              
+                            </div>
+                            <div class="form-group">
+                              <label for="sold">Đã bán:</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                name="sold"
+                                [(ngModel)]="productObj.sold "
+                              required 
+                              />
+                              
                             </div>
                             <div class="form-group">
                               <label for="dv">Đơn vị:</label>
@@ -72,6 +93,10 @@
                             <div class="form-group">
                               <label for="photo">Ảnh minh họa:</label>
                               <input type="file" name="photo" accept="image/*"   (change)="onFileSelected($event)"  required>
+                            </div>
+                            <div class="form-group">
+                              <input id="PhotoInput" type="hidden" name="Photo"/>
+                              <img class="img-bordered" [src]="imagePreviewUrl || 'http://localhost:3000/product/image/nophoto.png'"  style="width: 200px;" >
                             </div>
                             <div *ngIf="errorMessage" class="error-message" style="color: red;">
                               {{ errorMessage }}

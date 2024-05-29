@@ -36,9 +36,7 @@ export class DeletecategoryComponent {
         this.router.navigate(['/categoryadmin']);
      // window.location.href = "/categoryadmin"
       },
-      (error) => {
-        console.error('Error deleting category:', error);
-      }
+     
     );
   }
   });

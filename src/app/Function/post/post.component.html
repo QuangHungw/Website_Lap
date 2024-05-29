@@ -1,0 +1,17 @@
+<div class="custom-bootstrap-scope">
+  <div style="margin-bottom: 1px;" *ngIf="filteredPosts.length > 0" id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let post of filteredPosts; let i = index" class="carousel-item" [class.active]="i === 0">
+        <img [src]="'http://localhost:3000/post/image/' + post.image" class="d-block w-100" alt="Carousel image">
+      </div>
+    </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>

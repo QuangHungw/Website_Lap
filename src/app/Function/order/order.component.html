@@ -1,0 +1,70 @@
+<div id="wrapper" class="container">
+    <section class="header_text sub">
+    <app-post></app-post>
+      <br />
+      <h4><span>Đơn hàng</span></h4>
+    </section>
+    <section class="main-content">
+      <div class="row">
+        <div class="span9">
+          <h4 class="title">
+            <span class="text"><strong>Đơn hàng Của Bạn </strong></span>
+          </h4>
+          <a  [routerLink]="['/orderconfirm']">Đơn hàng đã xác nhận</a>
+          
+          <br>
+          <br>
+          
+          <table id="table" class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th>Ngày lập đơn hàng</th>
+                <th>Ngày nhận đơn hàng</th>
+                <th>Mã thanh toán</th>
+                <th>Tổng cộng</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let order of orders">
+             
+                    <tr>
+                      <td>{{ order.create_at | date : "dd/MM/yyyy " }}</td>
+                      <td>{{ order.order_time | date : "dd/MM/yyyy" }}</td>
+                      <td>{{ order.payment_id }}</td>
+                      <td>{{ formatPrice(order.total) }}đ</td>
+                      <td>Đơn hàng đang chờ</td>
+                      <td style="text-align: center">
+                        <a class="agile-icon"
+                          ><i
+                            [routerLink]="['/order', order.id]"
+                            class="fa-solid fa-list"
+                          ></i
+                        ></a>
+                      </td>
+                    
+                    </tr>
+                  </ng-container>
+               
+              <tr>
+               
+               
+                
+                
+               
+              </tr>
+            </tbody>
+         
+          </table>
+          
+  
+         
+       
+        </div>
+    
+      </div>
+    </section>
+  </div>
+  

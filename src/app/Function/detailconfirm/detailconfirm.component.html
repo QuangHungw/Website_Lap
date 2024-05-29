@@ -1,0 +1,105 @@
+<div id="wrapper" class="container">
+    <section class="header_text sub">
+     <app-post></app-post>
+      <br />
+      <h4><span>Chi tiết đơn hàng</span></h4>
+    </section>
+    <section class="main-content">
+      <div class="row">
+        <div class="span9">
+          <h4 class="title">
+            <span class="text"><strong>Chi tiết đơn hàng Của Bạn </strong></span>
+          </h4>
+          <a [routerLink]="['/orderconfirm']"style="float: right;font-size:25px"><i class="fa-solid fa-arrow-left"></i></a>
+          <form action="" *ngFor="let order of orders" >
+            <div class="form-group" >
+                <label id="for123" class="control-label col-sm-2">Mã đơn hàng:</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{{order.id}}</p>
+                </div>
+                <label id="for123" class="control-label col-sm-2">Ngày lập đơn hàng:</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{{order.create_at | date : "dd/MM/yyyy &nbsp; HH:mm:ss"}}</p>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label id="for123" class="control-label col-sm-2">Mã thanh toán:</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{{order.payment_id}}</p>
+                </div>
+              <label id="for123" class="control-label col-sm-2">Ngày nhận đơn hàng:</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{{order.order_time | date : "dd/MM/yyyy &nbsp; HH:mm:ss"}}</p>
+                </div>
+            </div>  
+            <div class="form-group">
+                <label id="for123" class="control-label col-sm-2">Trạng thái đơn hàng:</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">Đơn hàng đã xác nhận</p>
+                </div>
+                <label id="for123" class="control-label col-sm-2">Thời điểm hoàn tất:</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{{order.modified_at | date : "dd/MM/yyyy &nbsp; HH:mm:ss" }}</p>
+                </div>
+            </div>
+         
+         
+         
+         
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th>Mặt hàng</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Số Lượng</th>
+                <th>Giá Tiền</th>
+                <th>Tổng</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let orderdetail of orderdetails">
+                <ng-container *ngFor="let product of products">
+                  <ng-container *ngIf="orderdetail.product_id === product.id">
+                    <tr>
+                  
+                      <td>
+                        <a [routerLink]="['/product_detail']"
+                          ><img
+                            style="width: 60%"
+                            src="http://localhost:3000/product/image/{{ product.photo }}"
+                        /></a>
+                      </td>
+                      <td>{{ product.product_name }}</td>
+                      <td>{{orderdetail.quantity}} </td>
+                      <td>{{ formatPrice(product.price) }}{{ product.unit }}</td>
+                      <td>{{ formatPrice(orderdetail.total) }}{{ product.unit }}</td>
+                    
+                    </tr>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <th>Tổng tất cả :</th>
+               
+                <td>
+                  <strong>{{ formatPrice(this.totalSum) }}{{ this.unit }}</strong>
+                </td>
+                
+               
+              </tr>
+            </tbody>
+          </table>
+  
+          <hr />
+     </form>
+        </div>
+      
+      </div>
+    </section>
+  </div>
+  

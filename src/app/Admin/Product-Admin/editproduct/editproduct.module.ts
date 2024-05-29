@@ -1,22 +1,17 @@
-// import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-
-
-
-// @NgModule({
-//   declarations: [],
-//   imports: [
-//     CommonModule
-//   ]
-// })
+export interface Category {
+  id: number;
+  category_name: string;
+  description: string;
+}
 export interface Product {
   id: number;
   product_name: string;
   description: string;
   price: number;
   photo: string;
+  quantity:number;
+
   unit: string;
   category_id: number;
-
 }
-export class EditproductModule { }
+export class EditproductModule {}

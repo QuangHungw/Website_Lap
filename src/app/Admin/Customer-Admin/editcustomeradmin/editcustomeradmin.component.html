@@ -51,13 +51,14 @@
                               <select class="form-control" style="display: inline; width: 25%;" [(ngModel)]="editObj.role_id" name="role">
                                   <option value="2">Admin</option>
                                   <option value="1">Customer</option>
+                                 
                               </select>
                           </div>
                           <div *ngIf="errorMessage" class="error-message" style="color: red;">
                             {{ errorMessage }}
                           </div>
                         <br>
-                          <button type="submit" class="btn btn-primary" (click)="onUpdateCategory()">
+                          <button type="submit" class="btn btn-primary" (click)="onUpdateCustomer()">
                               <i class="fa fa-floppy-o"></i> Lưu dữ liệu
                           </button>
                           &#160;

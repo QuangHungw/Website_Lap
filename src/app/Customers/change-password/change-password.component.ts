@@ -4,11 +4,12 @@ import { ChangePasswordService } from './change-password.service';
 import { FormsModule } from '@angular/forms';
 import { Password } from './change-password.module';
 import { NgIf } from '@angular/common';
+import { PostComponent } from '../../Function/post/post.component';
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [RouterLink, FormsModule,NgIf],
+  imports: [RouterLink, FormsModule,NgIf,PostComponent],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss',
 })
@@ -37,20 +38,20 @@ export class ChangePasswordComponent {
     this.changePasswordService
       .changePassword(passwordData, this.token)
       .subscribe(
-        (response: string) => {
+       {next:  (response: string) => {
          
-          alert(response); // Display the success message
-          localStorage.removeItem('accessToken');
-          window.location.href = '/login';
-        },
-        (error) => {
-          //console.error('Error:', error);
-          if (error.status === 400) {
-            this.errorMessage = 'Old password is incorrect';
-          } else {
-            this.errorMessage = 'Failed to change password. Please try again.';
-          }
+        alert(response); // Display the success message
+        localStorage.removeItem('accessToken');
+        window.location.href = '/login';
+      },
+      error: (error) => {
+        //console.error('Error:', error);
+        if (error.status === 400) {
+          this.errorMessage = 'Old password is incorrect';
+        } else {
+          this.errorMessage = 'Failed to change password. Please try again.';
         }
+      }}
       );
   }
 }

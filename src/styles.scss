@@ -73,7 +73,7 @@ a:hover {
 #wrapper,
 #top-bar {
   background: #fff;
-  margin: 20px auto 20px auto;
+  margin: 9px auto 20px auto;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
@@ -125,15 +125,15 @@ section.homepage-slider p {
   width: 100%;
   margin-bottom: 2px;
 }
-section.homepage-slider span {
-  background-color: #fff;
-  color: #000;
-  padding: 2px 10px;
-  line-height: 30px;
-  font-size: 28px;
-  float: left;
-  width: auto;
-}
+// section.homepage-slider span {
+//   background-color: #fff;
+//   color: #000;
+//   padding: 2px 10px;
+//   line-height: 30px;
+//   font-size: 28px;
+//   float: left;
+//   width: auto;
+// }
 section.header_text.sub {
   font-size: 14px;
   margin-bottom: 40px;
@@ -167,8 +167,9 @@ iframe {
   display: inline-block;
   //*display: inline;
   zoom: 1;
-  border-right: 1px solid #eee;
+  border-right: 0px solid #eee;
   padding: 5px 12px;
+  padding-bottom: 14px;
 }
 #top-bar .user-menu li:last-child {
   border-right: 0;
@@ -295,13 +296,37 @@ section.navbar {
   line-height: 17px;
   text-transform: none;
 }
-#menu > ul > li > ul.dropdown {
-  display: none; /* Ẩn menu dropdown ban đầu */
-  position: absolute; /* Đặt vị trí tuyệt đối để menu dropdown không làm ảnh hưởng đến cấu trúc của menu chính */
+// #menu > ul > li > ul.dropdown {
+//   display: none; /* Ẩn menu dropdown ban đầu */
+//   position: absolute; /* Đặt vị trí tuyệt đối để menu dropdown không làm ảnh hưởng đến cấu trúc của menu chính */
+// }
+
+// #menu > ul > li:hover > ul.dropdown {
+//   display: block; /* Hiển thị menu dropdown khi rê chuột vào menu cha */
+// }
+#menu > ul > li > ul.dropdown,
+#menu > ul > li > ul.dropdown > li > ul.dropdown-submenu {
+    display: none;
+    position: absolute;
+    // left: 0;
+    // top: 100%;
 }
 
+/* Hiển thị menu dropdown khi rê chuột vào menu cha */
 #menu > ul > li:hover > ul.dropdown {
-  display: block; /* Hiển thị menu dropdown khi rê chuột vào menu cha */
+    display: block;
+}
+
+/* Đặt vị trí cho menu dropdown cha */
+#menu > ul > li > ul.dropdown > li:hover > ul.dropdown-submenu {
+    display: block;
+    left: 86%;
+    top: -1px;
+}
+
+/* Style cho các mục con */
+#menu > ul > li > ul.dropdown > li {
+    position: relative; /* Đặt vị trí tương đối để submenu dựa trên menu chính */
 }
 #menu > ul {
   display: block;
@@ -314,7 +339,7 @@ section.navbar {
   margin-right: 0px;
 }
 #menu > ul > li > a {
-  font-size: 11px;
+  font-size: 12px;
   color: #0078d7;
   display: block;
   text-transform: uppercase;
@@ -337,7 +362,7 @@ section.navbar {
 }
 
 #menu ul ul {
-  background: none repeat scroll 0 0 #eee;
+  background: white;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
   padding: 0px;
   position: absolute;
@@ -8590,97 +8615,6 @@ a.badge:focus {
   }
 }
 
-/*!
- * Bootstrap Responsive v2.3.2
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- 
-
-  @media (min-width: 1200px) {
-    .pageBanner{width:100%; padding-bottom:8px;}
-    input,
-    textarea,
-    .uneditable-input {
-        margin-left: 0;
-    }
-    input.span12,
-    textarea.span12,
-    .uneditable-input.span12 {
-        width: 930px;
-    }
-    input.span11,
-    textarea.span11,
-    .uneditable-input.span11 {
-        width: 850px;
-    }
-    input.span10,
-    textarea.span10,
-    .uneditable-input.span10 {
-        width: 770px;
-    }
-    input.span9,
-    textarea.span9,
-    .uneditable-input.span9 {
-        width: 690px;
-    }
-    input.span8,
-    textarea.span8,
-    .uneditable-input.span8 {
-        width: 610px;
-    }
-    input.span7,
-    textarea.span7,
-    .uneditable-input.span7 {
-        width: 530px;
-    }
-    input.span6,
-    textarea.span6,
-    .uneditable-input.span6 {
-        width: 450px;
-    }
-    input.span5,
-    textarea.span5,
-    .uneditable-input.span5 {
-        width: 370px;
-    }
-    input.span4,
-    textarea.span4,
-    .uneditable-input.span4 {
-        width: 290px;
-    }
-    input.span3,
-    textarea.span3,
-    .uneditable-input.span3 {
-        width: 210px;
-    }
-    input.span2,
-    textarea.span2,
-    .uneditable-input.span2 {
-        width: 130px;
-    }
-    input.span1,
-    textarea.span1,
-    .uneditable-input.span1 {
-        width: 50px;
-    }
-    .thumbnails {
-        margin-left: -20px;
-    }
-    .thumbnails > li {
-        margin-left: 20px;
-    }
-    .row-fluid .thumbnails {
-        margin-left: 0;
-    }
-}
-
-/*
-  Rules for resolutions between 768 and 979px
-*/
-
 @media (max-width: 979px) and (min-width: 768px) {
   .navbar .container {
     width: 724px !important;
@@ -8717,18 +8651,6 @@ a.badge:focus {
   }
 }
 
-/*
- * jQuery FlexSlider v2.0
- * http://www.woothemes.com/flexslider/
- *
- * Copyright 2012 WooThemes
- * Free to use under the GPLv2 license.
- * http://www.gnu.org/licenses/gpl-2.0.html
- *
- * Contributing author: Tyler Smith (@mbmufffin)
- */
-
-/* Browser Resets */
 .flex-container a:active,
 .flexslider a:active,
 .flex-container a:focus,
@@ -8743,8 +8665,6 @@ a.badge:focus {
   list-style: none;
 }
 
-/* FlexSlider Necessary Styles
-*********************************/
 .flexslider {
   margin: 0;
   padding: 0;
@@ -8774,15 +8694,10 @@ html[xmlns] .slides {
   height: 1%;
 }
 
-/* No JavaScript Fallback */
-/* If you are not using another script, such as Modernizr, make sure you
- * include js that eliminates this class on page load */
 .no-js .slides > li:first-child {
   display: block;
 }
 
-/* FlexSlider Default Theme
-*********************************/
 .flex-viewport {
   max-height: 2000px;
   -webkit-transition: all 1s ease;

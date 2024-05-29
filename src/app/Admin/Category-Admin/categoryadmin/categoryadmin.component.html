@@ -18,7 +18,7 @@
                     <h2>Danh sách loại sản phẩm</h2>
                     <input
                     [(ngModel)]="searchContent"
-                    style="width:84.8%"
+                    style="width:84.6%"
                     type="text"
                     class="search-query form-control input-group"
                     Placeholder="Nhập tên loại hàng cần tìm"
@@ -43,6 +43,7 @@
                          
                           <th>Tên loại sản phẩm</th>
                           <th>Miêu tả</th>
+                          <th>Kiểu loại sản phẩm</th>
                           <th>Chỉnh sửa</th>
                         </tr>
                       </thead>
@@ -51,6 +52,7 @@
                         
                           <td>{{category.category_name}}</td>
                           <td>{{category.description}}</td>
+                          <td>{{category.type}}</td>
                           <td >
                             <span>
                               <a [routerLink]="['/editcategory', category.id]" 

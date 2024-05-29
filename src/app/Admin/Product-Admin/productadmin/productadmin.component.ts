@@ -19,14 +19,17 @@ export class ProductadminComponent implements OnInit{
   currentPage: number = 1;
   pageSize: number = 9;
   totalPages: number = 0;
+ 
   constructor(private productadminService: ProductadminService, private router: Router,private route: ActivatedRoute) {}
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
     this.productadminService.getProduct().subscribe((data: Product) => {
       this.products = this.products?.concat(data);
+     
       this.getCategoryNamesForProducts();
       this.totalPages = Math.ceil(this.products.length / this.pageSize);
       //console.log(data)
+    
     });
     
   }
@@ -36,6 +39,7 @@ export class ProductadminComponent implements OnInit{
       const name = product_name
      this.productadminService.searchProductsByName(name).subscribe((data2: Product[]) => {
        this.products = data2;
+       
        //console.log(data2)
        this.totalPages = Math.ceil(this.products.length / this.pageSize); 
        if(data2.length == 0) 
@@ -48,6 +52,7 @@ export class ProductadminComponent implements OnInit{
   });
 }
 onSearchClick(): void {
+
   if (this.searchContent.trim() !== '') {
     // Chuyển hướng đến trang sản phẩm với nội dung tìm kiếm được thêm vào URL
     this.router.navigateByUrl(`/productadmin/search/${this.searchContent}`);

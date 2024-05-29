@@ -36,20 +36,20 @@ export class ChangePasswordAdminComponent {
     this.changePasswordService
       .changePassword(passwordData, this.token)
       .subscribe(
-        (response: string) => {
+       {next:  (response: string) => {
          
-          alert(response); // Display the success message
-          localStorage.removeItem('accessToken');
-          window.location.href = '/login';
-        },
-        (error) => {
-          console.error('Error:', error);
-          if (error.status === 400) {
-            this.errorMessage = 'Old password is incorrect';
-          } else {
-            this.errorMessage = 'Failed to change password. Please try again.';
-          }
+        alert(response); // Display the success message
+        localStorage.removeItem('accessToken');
+        window.location.href = '/login';
+      },
+      error:  (error) => {
+        console.error('Error:', error);
+        if (error.status === 400) {
+          this.errorMessage = 'Old password is incorrect';
+        } else {
+          this.errorMessage = 'Failed to change password. Please try again.';
         }
+      }}
       );
   }
 }

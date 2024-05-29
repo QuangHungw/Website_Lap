@@ -3,7 +3,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './Sign in and log in/login/login.component';
 import { WebLapComponent } from './Home page/web-lap/web-lap.component';
 import { CartComponent } from './Function/cart/cart.component';
-import { CheckoutComponent } from './Function/checkout/checkout.component';
 import { CustomerComponent } from './Customers/customer/customer.component';
 import { ProductDetailComponent } from './Product/product-detail/product-detail.component';
 import { EditCustomerComponent } from './Customers/Editcutomer/editcustomer.component';
@@ -13,7 +12,7 @@ import { DefaultLayoutComponent } from './Layout/default-layout/default-layout.c
 import { ChangePasswordComponent } from './Customers/change-password/change-password.component';
 import { AdminComponent } from './Admin/Layout-Admin/admin/admin.component';
 import { LayoutadminComponent } from './Admin/Layout-Admin/layoutadmin/layoutadmin.component';
-import { OrderComponent } from './Admin/Order-Admin/order/order.component';
+import { OrderadminComponent } from './Admin/Order-Admin/orderadmin/orderadmin.component';
 import { ProductadminComponent } from './Admin/Product-Admin/productadmin/productadmin.component';
 import { CustomeradminComponent } from './Admin/Customer-Admin/customeradmin/customeradmin.component';
 import { CategoryadminComponent } from './Admin/Category-Admin/categoryadmin/categoryadmin.component';
@@ -28,6 +27,19 @@ import { EditAdminComponent } from './Admin/User-Admin/edit-admin/edit-admin.com
 import { ChangePasswordAdminComponent } from './Admin/User-Admin/change-password-admin/change-password-admin.component';
 import { DeleteproductComponent } from './Admin/Product-Admin/deleteproduct/deleteproduct.component';
 import { DeletecategoryComponent } from './Admin/Category-Admin/deletecategory/deletecategory.component';
+import { CancelOrderComponent } from './Admin/Order-Admin/cancel-order/cancel-order.component';
+import { ConfirmOrderComponent } from './Admin/Order-Admin/confirm-order/confirm-order.component';
+import { PostadminComponent } from './Admin/Post-Admin/postadmin/postadmin.component';
+import { AddpostComponent } from './Admin/Post-Admin/addpost/addpost.component';
+import { EditpostComponent } from './Admin/Post-Admin/editpost/editpost.component';
+import { DeletepostComponent } from './Admin/Post-Admin/deletepost/deletepost.component';
+import { PaymentComponent } from './Admin/Payment-Admin/payment/payment.component';
+import { OrderdetailComponent } from './Admin/Order-Admin/orderdetail/orderdetail.component';
+import { OrderComponent } from './Function/order/order.component';
+import { OrderconfirmdetailComponent } from './Admin/Order-Admin/orderconfirmdetail/orderconfirmdetail.component';
+import { OrderconfirmComponent } from './Function/orderconfirm/orderconfirm.component';
+import { DetailComponent } from './Function/detail/detail.component';
+import { DetailconfirmComponent } from './Function/detailconfirm/detailconfirm.component';
 
 
 
@@ -84,13 +96,29 @@ export const routes: Routes = [
         component:  ProductsComponent
     },
     {
+        path: 'products/:name/:price',
+        component:  ProductsComponent
+    },
+    {
         path: 'cart',
         component: CartComponent
     },
 
     {
-        path: 'checkout',
-        component: CheckoutComponent
+        path: 'order',
+        component: OrderComponent
+    },
+    {
+        path: 'order/:id',
+        component: DetailComponent
+    },
+    {
+        path: 'orderconfirm',
+        component: OrderconfirmComponent
+    },
+    {
+        path: 'orderconfirm/:id',
+        component: DetailconfirmComponent
     },
  
     
@@ -119,9 +147,21 @@ children: [
                                 component: ChangePasswordAdminComponent
                              },  
     {
-path: 'order',
-component: OrderComponent
-},
+path: 'orderadmin',
+component: OrderadminComponent
+},   {
+    path: 'cancelorder',
+    component: CancelOrderComponent
+    },   {
+        path: 'confirmorder',
+        component: ConfirmOrderComponent
+        },  {
+            path: 'orderdetail/:id',
+            component: OrderdetailComponent
+        },          {
+                        path: 'orderconfirmdetail/:id',
+                        component: OrderconfirmdetailComponent
+                    },
 {
     path: 'productadmin',
     component: ProductadminComponent
@@ -175,9 +215,36 @@ component: OrderComponent
                                                     component: CategoryadminComponent
                                                             } ,
 
-] 
 
-} 
+
+ {
+    path: 'postadmin',
+    component: PostadminComponent
+                    },          {
+                        path: 'addpost',
+                        component: AddpostComponent
+                                },
+                                        {
+                                            path: 'editpost/:id',
+                                            component: EditpostComponent
+                                        },
+                                                        {
+                                                            path: 'deletepost/:id',
+                                                            component: DeletepostComponent
+                                                        },   
+                                                        {
+                                                        path: 'postadmin/search/:title',
+                                                    component: PostadminComponent
+                                                            } ,
+                                                        
+ {
+    path: 'payment',
+   component: PaymentComponent
+               },                                                          
+
+            ] 
+
+            } 
 
 
    
