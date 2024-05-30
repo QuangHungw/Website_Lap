@@ -42,8 +42,9 @@
                         name="quantity"
                         [(ngModel)]="order.quantity"
                         class="input-mini"
-                       
-                     
+                        (click)="onEditClick()"
+                    min="1"
+                    [max]="product.quantity"
                         required
                       />
                     </td>
@@ -71,8 +72,8 @@
 
         <hr />
         <p class="buttons center">
-          <button (click)="onEditClick()" class="btn" type="button">Cập Nhật</button>
-          &nbsp;
+         
+         
           <button class="btn btn-inverse" type="submit" id="checkout" (click)="onPayment()">
             Thanh Toán
           </button>

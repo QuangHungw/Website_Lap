@@ -7,7 +7,7 @@
   <section class="main-content">
     <div class="row">
       <div class="span9">
-        <div class="row">
+        <div class="row" style="display: flex;">
           <div class="span4" *ngIf="products">
             <a
               href="http://localhost:3000/product/image/{{ products.photo }}"
@@ -51,28 +51,44 @@
              [max]="products.quantity"
               required
             />
+            <div class="span5" *ngIf="products">
+              <form class="form-inline">
+                <span
+                *ngIf="products.quantity == 0"
+                >
+                <strong>  Đã hết hàng</strong>
+                </span>
+                <button
+                *ngIf="products.quantity != 0"
+                  height="2rem"
+                  color="primary500"
+                  class="btn btn-inve"
+                  type="button"
+                  (click)="onButton1Click(products.id, products.price)"
+                >
+                  <div type="body" color="primary500">Thêm vào giỏ</div>
+                </button>
+              </form>
+            </div>
+          </div>
+        
+          <div class="span3 col">
+            <div class="block">
+              <br />
+              <ul class="nav nav-list below">
+                <li class="nav-header">Hãng sản xuất</li>
+                <li *ngFor="let category1 of categories1">
+                  <a [routerLink]="['/products', category1.id]">{{
+                    category1.category_name
+                  }}</a>
+                </li>
+              </ul>
+            </div>
+      
            
           </div>
-          <div class="span5" *ngIf="products">
-            <form class="form-inline">
-              <span
-              *ngIf="products.quantity == 0"
-              >
-              <strong>  Đã hết hàng</strong>
-              </span>
-              <button
-              *ngIf="products.quantity != 0"
-                height="2rem"
-                color="primary500"
-                class="btn btn-inve"
-                type="button"
-                (click)="onButton1Click(products.id, products.price)"
-              >
-                <div type="body" color="primary500">Thêm vào giỏ</div>
-              </button>
-            </form>
-          </div>
         </div>
+        
         <div class="row" *ngIf="products">
           <div class="span9">
             <ul class="nav nav-tabs" id="myTab">
@@ -151,21 +167,7 @@
          
         </div>
       </div>
-      <div class="span3 col">
-        <div class="block">
-          <br />
-          <ul class="nav nav-list below">
-            <li class="nav-header">Hãng sản xuất</li>
-            <li *ngFor="let category1 of categories1">
-              <a [routerLink]="['/products', category1.id]">{{
-                category1.category_name
-              }}</a>
-            </li>
-          </ul>
-        </div>
-  
-       
-      </div>
+ 
     </div>
   </section>
 </div>
