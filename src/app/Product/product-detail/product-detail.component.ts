@@ -108,7 +108,7 @@ export class ProductDetailComponent implements OnInit {
     });
   }
    refreshRandomProducts() {
-    this.randomProducts = this.shuffleArray(this.products1).slice(0, 3);
+    this.randomProducts = this.shuffleArray(this.products1).slice(0, 4);
   }
   shuffleArray(products: Product[]): Product[] {
     for (let i = products.length - 1; i > 0; i--) {

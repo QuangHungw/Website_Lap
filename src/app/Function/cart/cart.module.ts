@@ -18,6 +18,7 @@ export interface Product {
   price: number;
   photo: string;
   unit: string;
+  quantity:number;
   create_at: Date;
   category_id: number;
 
